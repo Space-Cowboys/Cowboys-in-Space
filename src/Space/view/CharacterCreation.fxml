@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.CharacterCreationController">
+   <children>
+      <VBox layoutX="89.0" layoutY="217.0" spacing="35.0">
+         <children>
+            <Text layoutX="313.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: White;" text="Pilot">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Text>
+            <Text layoutX="313.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="Engineering">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Text>
+            <Text layoutX="312.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="Charisma">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Text>
+            <Text layoutX="313.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="Luck">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <VBox layoutX="380.0" layoutY="229.0" spacing="55.0">
+         <children>
+            <HBox layoutX="381.0" layoutY="210.0" spacing="25.0">
+               <children>
+                  <Button layoutX="376.0" layoutY="119.0" mnemonicParsing="false" onAction="#pilotDown" text="&lt;">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="pilotLabel" layoutX="436.0" layoutY="123.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="487.0" layoutY="119.0" mnemonicParsing="false" onAction="#pilotUp" text="&gt;">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox layoutX="380.0" layoutY="299.0" spacing="25.0">
+               <children>
+                  <Button layoutX="376.0" layoutY="181.0" mnemonicParsing="false" onAction="#engineeringDown" text="&lt;">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="engineeringLabel" layoutX="436.0" layoutY="185.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="487.0" layoutY="181.0" mnemonicParsing="false" onAction="#engineeringUp" text="&gt;">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox layoutX="381.0" layoutY="394.0" spacing="25.0">
+               <children>
+                  <Button layoutX="376.0" layoutY="247.0" mnemonicParsing="false" onAction="#charismaDown" text="&lt;">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="charismaLabel" layoutX="436.0" layoutY="251.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="487.0" layoutY="247.0" mnemonicParsing="false" onAction="#charismaUp" text="&gt;">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox layoutX="381.0" layoutY="480.0" spacing="25.0">
+               <children>
+                  <Button layoutX="376.0" layoutY="307.0" mnemonicParsing="false" onAction="#luckDown" text="&lt;">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="luckLabel" layoutX="436.0" layoutY="311.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="487.0" layoutY="307.0" mnemonicParsing="false" onAction="#luckUp" text="&gt;">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Text fill="WHITE" layoutX="313.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create your character! ">
+         <font>
+            <Font size="85.0" />
+         </font>
+      </Text>
+      <TextField id="nameField" fx:id="nameField" layoutX="509.0" layoutY="139.0" prefHeight="40.0" prefWidth="286.0" promptText="Name" />
+      <Button layoutX="446.0" layoutY="677.0" mnemonicParsing="false" onAction="#confirm" text="Confirm Choices">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="703.0" layoutY="676.0" mnemonicParsing="false" onAction="#showWelcomeScreen" text="Back to Start">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Text fill="WHITE" layoutX="136.0" layoutY="636.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Skill Points Remaining:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Label fx:id="skillLabel" layoutX="366.0" layoutY="619.0" text="Label" textFill="#fcfcfc">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
