@@ -13,10 +13,16 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -40,6 +46,9 @@ public class CharacterCreationController implements Initializable {
         Label skillLabel; 
     @FXML //fx:id="nameField"
         TextField nameField; 
+    
+    @FXML //fx:id="reminder"
+        Text reminder; 
     
 
     public CharacterCreationController() {
@@ -142,7 +151,27 @@ public class CharacterCreationController implements Initializable {
 	    } 
 	}
         @FXML public void confirm() {
-           System.out.println(nameField.getCharacters());
-           RootLayoutController.setName(nameField.getCharacters().toString());
+            if(RootLayoutController.getSkillPoints() == 0) {
+                RootLayoutController.setName(nameField.getCharacters().toString());
+                System.out.println(RootLayoutController.getName());
+                try {
+	        // Load person overview. 
+	        FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(MainApp.class.getResource("view/Confirm.fxml"));
+                Pane confirm = (Pane) loader.load();
+                BorderPane rootLayout = MainApp.getRootLayout(); 
+                rootLayout.setCenter(confirm);
+                
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } 
+            } else {
+                remind();
+                
+            }
+        }
+        
+        @FXML public void remind() {
+            reminder.setFill(Color.WHITE);
         }
 }

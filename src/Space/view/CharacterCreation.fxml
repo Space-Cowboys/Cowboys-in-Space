@@ -134,10 +134,15 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Label fx:id="skillLabel" layoutX="366.0" layoutY="619.0" text="Label" textFill="#fcfcfc">
+      <Label fx:id="skillLabel" layoutX="366.0" layoutY="613.0" text="Label" textFill="#fcfcfc">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
+      <Text id="reminder" fx:id="reminder" layoutX="680.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please make sure to allocate all skill points and type in a name" textAlignment="CENTER" wrappingWidth="500.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

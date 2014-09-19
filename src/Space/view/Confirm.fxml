@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-color: black;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Space.controller.ConfirmController">
+   <children>
+      <Text fill="WHITE" layoutX="268.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here are the stats you've chosen:">
+         <font>
+            <Font size="62.0" />
+         </font>
+      </Text>
+      <VBox layoutX="371.0" layoutY="183.0" spacing="35.0">
+         <children>
+            <Text fill="WHITE" layoutX="268.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="268.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pilot:">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="268.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Engineering:">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="268.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Charisma:">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="268.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Luck:">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <VBox layoutX="634.0" layoutY="183.0" spacing="28.0">
+         <children>
+            <Label fx:id="name" layoutX="634.0" layoutY="191.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="pilot" layoutX="634.0" layoutY="260.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="engineer" layoutX="634.0" layoutY="345.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="charisma" layoutX="634.0" layoutY="426.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label fx:id="luck" layoutX="634.0" layoutY="494.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
