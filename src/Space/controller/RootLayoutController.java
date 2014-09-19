@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import spacecowboys.*;
 
 /**
  * FXML Controller class
@@ -55,6 +56,10 @@ public class RootLayoutController implements Initializable {
         luckSkill = 5;
         skillPoints = 5;
         name = "";
+        Universe u = new Universe(26);
+        for (int i = 0; i < u.getPlanets().length; i++){
+            System.out.println(u.getPlanets()[i]);
+        }
     }    
 
     public static int getSkillPoints() {
