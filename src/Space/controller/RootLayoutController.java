@@ -48,7 +48,7 @@ public class RootLayoutController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         player = new Player();
-        Universe u = new Universe(26);
+        Universe u = new Universe();
         for (int i = 0; i < u.getPlanets().length; i++){
             System.out.println(u.getPlanets()[i]);
         }

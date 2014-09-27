@@ -1,10 +1,13 @@
 package spacecowboys;
 
+import spacecowboys.ConstantData.Good;
 import spacecowboys.ConstantData.Government;
 import spacecowboys.ConstantData.Moon;
 import spacecowboys.ConstantData.Resource;
 import spacecowboys.ConstantData.StarSystem;
 import spacecowboys.ConstantData.TechLevel;
+import spacecowboys.ConstantData.Value;
+
 public class Planet{
     private final String name;
     private final Resource res;
@@ -17,8 +20,9 @@ public class Planet{
     private final StarSystem sys;
     private final int X;
     private final int Y;
+    private final Value[] goods;
     
-    public Planet(String name, Resource res, TechLevel tech, Government gov, Moon moon, int pirates, int traders, int police, StarSystem sys, int X, int Y){
+    public Planet(String name, Resource res, TechLevel tech, Government gov, Moon moon, int pirates, int traders, int police, StarSystem sys, int X, int Y, Value[] good){
         this.name = name;
         this.res = res;
         this.tech = tech;
@@ -30,7 +34,21 @@ public class Planet{
         this.sys = sys;
         this.X = X;
         this.Y = Y;
+        this.goods = good;
     }
+    
+    public String getName(){
+    	return this.name;
+    }
+    
+    public int getValue(Good check){
+    	return goods[(check).ordinal()].getV();
+    }
+    
+    public int getQuantity(Good check){
+    	return goods[(check).ordinal()].getQ();
+    }
+    
     @Override
     public String toString(){
         return name + "\t" +

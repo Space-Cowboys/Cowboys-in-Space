@@ -154,42 +154,76 @@ public class ConstantData{
     }
     
     public enum Good{
-        WATER("Water"),
-        FUR("Fur"),
-        FOOD("Food"),
-        ORE("Ore"),
-        GAMES("Games"),
-        FIREARMS("Firearms"),
-        MEDICINE("Medicine"),
-        MACHINES("Machines"),
-        NARCOTICS("Narcotics"),
-        ROBOTS("Robots");
+        WATER("Water", 10, 20),
+        FUR("Fur", 25, 45),
+        FOOD("Food", 30, 50),
+        ORE("Ore", 150, 800),
+        GAMES("Games", 50, 200),
+        FIREARMS("Firearms", 1500, 3000),
+        MEDICINE("Medicine", 500, 2500),
+        MACHINES("Machines", 900, 4000),
+        NARCOTICS("Narcotics", 2000, 5000),
+        ROBOTS("Robots", 1500, 6000);
         
         private final String name;
+        private final int min;
+        private final int max;
         
-        Good(String n){
+        Good(String n, int min, int max){
             this.name = n;
+            this.min = min;
+            this.max = max;
         }
         
         @Override
         public String toString(){
             return name;
         }
+        
+        public int getMin(){
+        	return min;
+        }
+        
+        public int getMax(){
+        	return max;
+        }
+    }
+    public enum Value{
+    	N(0,0),
+    	S(5,0),
+    	R(3,1),
+    	C(1,3);
+    	
+    	private final int value;
+    	private final int available;
+    	
+    	Value(int v, int a){
+    		this.value = v;
+    		this.available = a;
+    	}
+    	
+    	public int getV(){
+    		return value;
+    	}
+    	
+    	public int getQ(){
+    		return available;
+    	}
     }
     public enum StarSystem{
-        A("Rush Galaxy"),
-        B("Bastille System"),
-        C("Weezer Cluster"),
-        D("Queen Sector"),
-        E("Muse Nebula"),
-        F("Incubus System"),
-        G("Boston Sector"),
-        H("Oasis Galaxy"),
-        I("AC/DC Quadrant"),
-        J("Nirvana Quadrant"),
-        K("Silversun System"),
-        L("Rolling Stones Cluster"), 
-        M("Psy Nebula");
+        RUSH("Rush Galaxy"),
+        BASTILLE("Bastille System"),
+        WEEZER("Weezer Cluster"),
+        QUEEN("Queen Sector"),
+        MUSE("Muse Nebula"),
+        INCUBUS("Incubus System"),
+        BOSTON("Boston Sector"),
+        OASIS("Oasis Galaxy"),
+        ACDC("AC/DC Quadrant"),
+        NIRVANA("Nirvana Quadrant"),
+        SILVERSUN("Silversun System"),
+        ROLLINGSTONES("Rolling Stones Cluster"), 
+        PSY("Psy Nebula");
         
         private final String name;
         
