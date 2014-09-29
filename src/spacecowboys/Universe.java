@@ -107,10 +107,9 @@ public class Universe{
     	return null;
     }
     
-    public static void main(String[] args){
-        Universe u = new Universe();
-        for (Planet planet : u.getPlanets()) {
-            System.out.println(planet);
-        }
+    private static final Universe u = new Universe();
+    
+    public static Universe getUniverse(){
+        return u;
     }
 }

@@ -11,6 +11,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import spacecowboys.Planet;
 import spacecowboys.Universe;
 /**
  * 
@@ -48,10 +49,7 @@ public class RootLayoutController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         player = new Player();
-        Universe u = new Universe();
-        for (int i = 0; i < u.getPlanets().length; i++){
-            System.out.println(u.getPlanets()[i]);
-        }
+        Universe u = Universe.getUniverse();
     }    
 
     public static int getSkillPoints() {

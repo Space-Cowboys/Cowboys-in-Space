@@ -35,4 +35,8 @@ public class Player{
     public Planet getLocation(){
         return location;
     }
+    
+    public void setLocation(Planet p){
+        this.location = p;
+    }
 }
