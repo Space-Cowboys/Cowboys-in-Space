@@ -1,7 +1,7 @@
 package economy;
 
 import java.util.Random;
-import spacecowboys.ConstantData.Good;
+import economy.Good.Goods;
 import spacecowboys.Planet;
 
 public class PriceModel{
@@ -12,11 +12,11 @@ public class PriceModel{
 		this.location = location;
 	}
 	
-	private int getGoodValue(Good good){
+	private int getGoodValue(Goods good){
 		return location.getValue(good);
 	}
 	
-	private int getGoodQuantity(Good good){
+	private int getGoodQuantity(Goods good){
 		return location.getQuantity(good);
 	}
 	
@@ -24,11 +24,11 @@ public class PriceModel{
 		return (int)((rand.nextDouble()*(max-min))+min);
 	}
 	
-	public int showPrice(Good good){
+	public int showPrice(Goods good){
 		return randRange(good.getMin(), good.getMax())*getGoodValue(good);
 	}
 	
-	public int showQuantity(Good good){
+	public int showQuantity(Goods good){
 		return randRange(good.getMin(), good.getMax())*getGoodQuantity(good);
 	}
 }

@@ -1,12 +1,12 @@
 package spacecowboys;
 
-import spacecowboys.ConstantData.Good;
+import economy.Good.Goods;
 import spacecowboys.ConstantData.Government;
 import spacecowboys.ConstantData.Moon;
 import spacecowboys.ConstantData.Resource;
 import spacecowboys.ConstantData.StarSystem;
 import spacecowboys.ConstantData.TechLevel;
-import spacecowboys.ConstantData.Value;
+import economy.Good.Value;
 
 public class Planet{
     private final String name;
@@ -41,11 +41,11 @@ public class Planet{
     	return this.name;
     }
     
-    public int getValue(Good check){
+    public int getValue(Goods check){
     	return goods[(check).ordinal()].getV();
     }
     
-    public int getQuantity(Good check){
+    public int getQuantity(Goods check){
     	return goods[(check).ordinal()].getQ();
     }
     
