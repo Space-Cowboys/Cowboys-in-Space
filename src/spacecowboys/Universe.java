@@ -36,7 +36,7 @@ public class Universe{
     private final Planet Wisp;
     private final Planet Megami;
     
-    public Universe(){
+    private Universe(){
         
         this.Zoness = new Planet("Zoness", Resource.LOTSOFWATER, TechLevel.RENAISSANCE, Government.COMMUNIST, Moon.UNUSED, 8, 5, 8, StarSystem.RUSH, 56, 111, new Value[]{Value.C, Value.N, Value.C, Value.S, Value.R, Value.R, Value.S, Value.N, Value.N, Value.N});        
         this.Aurum = new Planet("Aurum", Resource.MINERALPOOR, TechLevel.PREAGRICULTURE, Government.CYBERNETIC, Moon.UNUSED, 0, 3, 3, StarSystem.RUSH, 84, 129, new Value[] {Value.N, Value.S, Value.N, Value.S, Value.R, Value.N, Value.N, Value.C, Value.R, Value.C});        
