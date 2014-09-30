@@ -13,66 +13,51 @@ package economy;
 public class MarketItem {
     
     private final Object type;
-    private final int height;
+    private int current;
+    private final int maximum;
     
-    public MarketItem(Object typ, int stackHeight){
+    public MarketItem(Object typ, int cur, int max){
         this.type = typ;
-        this.height = stackHeight;
+        this.current = cur;
+        this.maximum = max;
     }
     
     public Object getType(){
         return type;
     }
     
-    public int getHeight(){
-        return height;
+    public int getAmount(){
+        return current;
     }
     
-    /*
-    IMPORTANT
-    In order for the Inventory class to work,
-    MarketItem must have several things.
-    */
 
     public boolean isMaxed(){
-        //TO-DO returns true if the Amount == the Capcity
-        return false;
-    }
-
-
-
-    public int getAmount() {
-        //TO-DO: gets the amount of the item in the stack
-        return 0;
+        return current == maximum;
     }
 
 
     
     public void setAmount(int amount){
-        //TO-DO: sets the amoutn of the items stack
+        this.current = amount;
     }
 
 
    
     public int getCapacity() {
-        //TO-DO: returns max capacity of item's stack
-        return 0;
+        return maximum;
     }
 
 
 
     public boolean equals(MarketItem item) {
-        //TO-DO: checks to see if two items are the same regardless of items
-        // in the stack
-        return false;
+        return this.type.equals(item.type);
     }
 
 
     
     @Override
     public String toString() {
-        //TO-DO: Returns the item name and the amount in the stack
-        return "";
+        return type.toString() + "\t" + Integer.toString(current);
     }
 
     
