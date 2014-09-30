@@ -337,4 +337,11 @@ public class Inventory {
 		
 	}
 
+        public void printInventory() {
+            for(int i = 1; i <= occupation; i++) {
+                System.out.println(stash[i]);
+            }
+            System.out.println();
+        }
+
 }

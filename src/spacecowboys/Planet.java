@@ -1,6 +1,8 @@
 package spacecowboys;
 
+import economy.Good;
 import economy.Good.Goods;
+import static economy.Good.Goods.*;
 import spacecowboys.ConstantData.Government;
 import spacecowboys.ConstantData.Moon;
 import spacecowboys.ConstantData.Resource;
@@ -20,9 +22,14 @@ public class Planet{
     private final StarSystem sys;
     private final int X;
     private final int Y;
-    private final Value[] goods;
+    private final Value[] goodValues;
+    private GoodTracker[] gT;
     
-    public Planet(String name, Resource res, TechLevel tech, Government gov, Moon moon, int pirates, int traders, int police, StarSystem sys, int X, int Y, Value[] good){
+    public Planet(String name, Resource res, 
+            TechLevel tech, Government gov, Moon moon, int pirates, 
+            int traders, int police, StarSystem sys, int X, int Y, 
+            Value[] goodValues){
+        
         this.name = name;
         this.res = res;
         this.tech = tech;
@@ -34,7 +41,7 @@ public class Planet{
         this.sys = sys;
         this.X = X;
         this.Y = Y;
-        this.goods = good;
+        this.goodValues = goodValues;
     }
     
     public String getName(){
@@ -42,11 +49,11 @@ public class Planet{
     }
     
     public int getValue(Goods check){
-    	return goods[(check).ordinal()].getV();
+    	return goodValues[(check).ordinal()].getV();
     }
     
     public int getQuantity(Goods check){
-    	return goods[(check).ordinal()].getQ();
+    	return goodValues[(check).ordinal()].getQ();
     }
     
     @Override
@@ -63,4 +70,33 @@ public class Planet{
         "X-coord: " + Integer.toString(X) + "\t" +
         "Y-coord: " + Integer.toString(Y);
     }
+    
+    
+    public GoodTracker[] getListOfGoods() {
+        gT = new GoodTracker[10];
+        Goods[] goodTypes = {WATER, FUR, FOOD, ORE, GAMES, FIREARMS, MEDICINE, MACHINES, NARCOTICS, ROBOTS};
+        
+        for(int i = 0; i < 10; i++) {
+            
+            gT[i] = new GoodTracker(goodTypes[i], goodValues[i]);
+        }
+        
+            
+        
+        
+        return gT;
+    }
+    
+    public class GoodTracker {
+    
+
+        private final Goods type;
+        private final Value v;
+
+        public GoodTracker(Goods type, Value v) {
+            this.type = type;
+            this.v = v;
+    }
+    
+}
 }
