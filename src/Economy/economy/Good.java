@@ -71,8 +71,8 @@ public class Good extends MarketItem {
     	}
     }
 
-    public Good(Object typ, int stackHeight) {
-        super(typ, stackHeight);
+    public Good(Object typ, int stackHeight, int max) {
+        super(typ, stackHeight, max);
     }
     
 }
