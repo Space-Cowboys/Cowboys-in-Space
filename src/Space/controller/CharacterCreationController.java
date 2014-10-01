@@ -30,7 +30,7 @@ import javafx.stage.StageStyle;
  * @author Keanu
  */
 public class CharacterCreationController implements Initializable {
-    @FXML //fx:id="pilotLabel"
+@FXML //fx:id="pilotLabel"
         Label pilotLabel;
     
     @FXML //fx:id="charismaLabel"

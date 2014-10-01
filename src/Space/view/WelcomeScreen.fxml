@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1366.0" style="-fx-background-image: url(&quot;https://raw.githubusercontent.com/Space-Cowboys/Cowboys-in-Space/master/Art/Welcome%20Screen%20Sketch.png&quot;); -fx-background-size: 1366; -fx-border-image-repeat: no-repeat;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.WelcomeScreenController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1366.0" style="-fx-background-size: 1366; -fx-background-image: url(&quot;https://raw.githubusercontent.com/Space-Cowboys/Cowboys-in-Space/master/Art/Welcome%20Screen%20Sketch.png&quot;); -fx-border-image-repeat: no-repeat;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.WelcomeScreenController">
    <children>
       <AnchorPane layoutX="505.0" layoutY="241.0" />
       <VBox layoutX="1184.0" layoutY="437.0" prefHeight="180.0" prefWidth="138.0" spacing="40.0">
