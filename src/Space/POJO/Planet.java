@@ -63,6 +63,18 @@ public class Planet{
     	return goodValues[(check).ordinal()].getQ();
     }
     
+    public int getPirate(){
+        return this.pirates;
+    }
+    
+    public int getTrader(){
+        return this.traders;
+    }
+    
+    public int getPolice(){
+        return this.police;
+    }
+    
     @Override
     public String toString(){
         return name + "\t" +
