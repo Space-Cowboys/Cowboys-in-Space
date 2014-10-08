@@ -6,13 +6,16 @@
 
 package Space.controller;
 
+import Space.POJO.*;
 import Space.Player;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import Space.POJO.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 /**
  * 
  * FXML Controller class
@@ -25,12 +28,30 @@ public class RootLayoutController implements Initializable {
     private static Planet planet;
     private static Inventory inventory;
     private static int credits;
+    private static int fuel;
+    private static MediaPlayer mediaPlayer; 
+    private static int orientation; // must be either 0 or 1
+    //0 for left side of screen/1 for right
     
+    public static int getFuel() {
+        return fuel;
+    }
+    
+    public static void setFuel(int newFuel) {
+        fuel = newFuel;
+    }
     
     public static void setPlanetLocation(Planet p) {
         planet = p;
     }
     
+    public static int getOrientation() {
+        return orientation;
+    }
+    
+    public static void setOrientation(int i) {
+        orientation = i; 
+    }
     public static Inventory getInventory() {
         return inventory;
     }
@@ -59,6 +80,14 @@ public class RootLayoutController implements Initializable {
     public static int getLuckSkill() {
         return player.getLuck();
     }
+    
+    
+    public static void changeSong(String filename) {
+        mediaPlayer.stop();
+        mediaPlayer = new MediaPlayer(new Media(new File(filename).toURI().toString()));
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
+    }
 
 
     /**
@@ -70,6 +99,10 @@ public class RootLayoutController implements Initializable {
         u = new Universe();
         inventory = new Inventory(10);
         credits = 1000;
+        fuel = 400;
+        mediaPlayer = new MediaPlayer(new Media(new File("src/Space/Music/title.wav").toURI().toString()));
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
     }    
 
     public static Universe getUniverse() {

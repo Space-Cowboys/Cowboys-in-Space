@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-color: black;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Space.controller.ConfirmController">
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.ConfirmController">
    <children>
       <Text fill="WHITE" layoutX="268.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Here are the stats you've chosen:">
          <font>
@@ -73,5 +72,20 @@
             </Label>
          </children>
       </VBox>
+      <Text fill="WHITE" layoutX="411.0" layoutY="578.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Are these stats okay?">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Button layoutX="336.0" layoutY="618.0" mnemonicParsing="false" onMouseClicked="#cowboyTime" text="It's cowboy time!">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="607.0" layoutY="618.0" mnemonicParsing="false" onMouseClicked="#pussyOut" text="Lemme look back one more time...">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

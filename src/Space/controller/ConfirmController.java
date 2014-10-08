@@ -7,11 +7,15 @@
 package Space.controller;
 
 import Space.MainApp;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
 /**
  * FXML Controller class
@@ -48,5 +52,33 @@ public class ConfirmController implements Initializable {
         name.setText(RootLayoutController.getName());
         // TODO
     }    
+    
+    public void cowboyTime() {
+        try {
+	        // Load person overview. 
+	        FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(MainApp.class.getResource("view/ZonessMarket.fxml"));
+                Pane characterCreation = (Pane) loader.load();
+                BorderPane rootLayout = MainApp.getRootLayout(); 
+                rootLayout.setCenter(characterCreation);
+                
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } 
+    }
+    
+    public void pussyOut() {
+        try {
+	        // Load person overview. 
+	        FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(MainApp.class.getResource("view/CharacterCreation.fxml"));
+                Pane characterCreation = (Pane) loader.load();
+                BorderPane rootLayout = MainApp.getRootLayout(); 
+                rootLayout.setCenter(characterCreation);
+                
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } 
+    }
     
 }

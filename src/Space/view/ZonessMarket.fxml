@@ -11,14 +11,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-image: url(&quot;https://raw.githubusercontent.com/Space-Cowboys/Cowboys-in-Space/master/Art/Background/Zoness1.png&quot;); -fx-background-size: 1366 750;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.ZonessMarketController">
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-image: url(/Space/view/Zoness1.png); -fx-background-size: 100% 100%;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.ZonessMarketController">
    <children>
-      <ImageView id="testProtag" fx:id="shop" fitHeight="180.0" fitWidth="120.0" layoutX="70.0" layoutY="489.0">
+      <ImageView id="testProtag" fx:id="shop" fitHeight="195.0" fitWidth="120.0" layoutX="508.0" layoutY="482.0">
          <image>
             <Image url="@ZonessShopOwner.gif" />
          </image>
       </ImageView>
-      <ImageView id="testProtag" fx:id="protag" fitHeight="180.0" fitWidth="120.0" layoutX="70.0" layoutY="483.0">
+      <ImageView id="testProtag" fx:id="protag" fitHeight="195.0" fitWidth="120.0" layoutX="46.0" layoutY="474.0">
          <image>
             <Image url="@YuFlip.png" />
          </image>
@@ -44,24 +44,24 @@
                <children>
                   <VBox spacing="25.0">
                      <children>
-                        <Label fx:id="shopLabel1" layoutX="14.0" layoutY="14.0" onMouseClicked="#buy1" text="Label" textFill="WHITE">
+                        <Label fx:id="shopLabel1" layoutX="14.0" layoutY="14.0" onMouseClicked="#buy1" onMouseEntered="#mouseOverShop1" onMouseExited="#mouseGoneShop1" text="Label" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="shopLabel2" onMouseClicked="#buy2" text="Label" textFill="WHITE">
+                        <Label fx:id="shopLabel2" onMouseClicked="#buy2" onMouseEntered="#mouseOverShop2" onMouseExited="#mouseGoneShop2" text="Label" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
                      </children>
                   </VBox>
-                  <Label fx:id="shopLabel3" layoutX="14.0" layoutY="14.0" onMouseClicked="#buy3" text="Label" textFill="WHITE">
+                  <Label fx:id="shopLabel3" layoutX="14.0" layoutY="14.0" onMouseClicked="#buy3" onMouseEntered="#mouseOverShop3" onMouseExited="#mouseGoneShop3" text="Label" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="shopLabel4" layoutX="14.0" layoutY="46.0" onMouseClicked="#buy4" text="Label" textFill="WHITE">
+                  <Label fx:id="shopLabel4" layoutX="14.0" layoutY="46.0" onMouseClicked="#buy4" onMouseEntered="#mouseOverShop4" onMouseExited="#mouseGoneShop4" text="Label" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -183,52 +183,52 @@
                   </Label>
                   <VBox layoutX="116.0" layoutY="117.0" spacing="15.0">
                      <children>
-                        <Label fx:id="PQInv1" layoutX="17.0" layoutY="-1.0" text="Label">
+                        <Label fx:id="PQInv1" layoutX="17.0" layoutY="-1.0" text="Label" textFill="#a7a7a7">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="PQInv2" layoutX="17.0" layoutY="26.0" text="Label">
+                        <Label fx:id="PQInv2" layoutX="17.0" layoutY="26.0" text="Label" textFill="#a7a7a7">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="PQInv3" layoutX="17.0" layoutY="52.0" text="Label">
+                        <Label fx:id="PQInv3" layoutX="17.0" layoutY="52.0" text="Label" textFill="#a7a7a7">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="PQInv4" layoutX="17.0" layoutY="80.0" text="Label">
+                        <Label fx:id="PQInv4" layoutX="17.0" layoutY="80.0" text="Label" textFill="#a7a7a7">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="PQInv5" layoutX="17.0" layoutY="106.0" text="Label">
+                        <Label fx:id="PQInv5" layoutX="17.0" layoutY="106.0" text="Label" textFill="#a7a7a7">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="PQInv6" layoutX="17.0" layoutY="130.0" text="Label">
+                        <Label fx:id="PQInv6" layoutX="17.0" layoutY="130.0" text="Label" textFill="#a7a7a7">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="PQInv7" layoutX="17.0" layoutY="157.0" text="Label">
+                        <Label fx:id="PQInv7" layoutX="17.0" layoutY="157.0" text="Label" textFill="#a7a7a7">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="PQInv8" layoutX="17.0" layoutY="183.0" text="Label">
+                        <Label fx:id="PQInv8" layoutX="17.0" layoutY="183.0" text="Label" textFill="#a7a7a7">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="PQInv9" layoutX="17.0" layoutY="211.0" text="Label">
+                        <Label fx:id="PQInv9" layoutX="17.0" layoutY="211.0" text="Label" textFill="#a7a7a7">
                            <font>
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label fx:id="PQInv10" layoutX="17.0" layoutY="237.0" text="Label">
+                        <Label fx:id="PQInv10" layoutX="17.0" layoutY="237.0" text="Label" textFill="#a7a7a7">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -265,18 +265,18 @@
       </AnchorPane>
       <AnchorPane fx:id="buyWindow" layoutX="508.0" layoutY="42.0" prefHeight="324.0" prefWidth="234.0" style="-fx-background-color: black; -fx-border-color: green;" visible="false">
          <children>
-            <Text fill="WHITE" layoutX="62.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buy Window">
+            <Text fill="WHITE" layoutX="62.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buy Window" textAlignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
             <Button layoutX="80.0" layoutY="283.0" mnemonicParsing="false" onMouseClicked="#buyButton" prefHeight="27.0" prefWidth="74.0" text="OK" />
-            <Label fx:id="buyWindowTitleLabel" layoutX="94.0" layoutY="69.0" text="Label" textFill="WHITE">
+            <Label fx:id="buyWindowTitleLabel" alignment="CENTER" layoutX="94.0" layoutY="69.0" text="Label" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <HBox layoutX="44.0" layoutY="191.0" spacing="25.0">
+            <HBox alignment="CENTER" layoutX="46.0" layoutY="191.0" spacing="30.0">
                <children>
                   <Button layoutX="44.0" layoutY="191.0" mnemonicParsing="false" onMouseClicked="#quatDown" text="&lt;" />
                   <Label fx:id="buyWindowQuantityLabel" layoutX="94.0" layoutY="195.0" text="Label" textFill="WHITE">
@@ -287,7 +287,7 @@
                   <Button layoutX="142.0" layoutY="191.0" mnemonicParsing="false" onMouseClicked="#quatUp" text="&gt;" />
                </children>
             </HBox>
-            <HBox layoutX="56.0" layoutY="237.0" spacing="20.0">
+            <HBox alignment="CENTER" layoutX="56.0" layoutY="237.0" spacing="20.0">
                <children>
                   <Label layoutX="48.0" layoutY="231.0" text="Price:" textFill="WHITE">
                      <font>
@@ -301,7 +301,7 @@
                   </Label>
                </children>
             </HBox>
-            <Label layoutX="79.0" layoutY="132.0" text="Quantity:" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="79.0" layoutY="132.0" text="Quantity:" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -353,5 +353,20 @@
             </Label>
          </children>
       </AnchorPane>
+      <ImageView id="testProtag" fx:id="protagR" fitHeight="195.0" fitWidth="120.0" layoutX="14.0" layoutY="14.0" visible="false">
+         <image>
+            <Image url="@YuFlip.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="protagL" fitHeight="195.0" fitWidth="120.0" visible="false">
+         <image>
+            <Image url="@Yu.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="spacePortal" fitHeight="200.0" fitWidth="200.0" layoutY="492.0">
+         <image>
+            <Image url="@Portal.gif" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

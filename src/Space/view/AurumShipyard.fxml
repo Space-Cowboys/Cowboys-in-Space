@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-image: url(/Space/view/AurumShipyard.png); -fx-background-size: 100% 750;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.AurumShipyardController">
+   <children>
+      <ImageView fx:id="fuelShop" fitHeight="200.0" fitWidth="140.0" layoutX="683.0" layoutY="461.0">
+         <image>
+            <Image url="@Arson%20Amy.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="protag" fitHeight="195.0" fitWidth="120.0" layoutX="1151.0" layoutY="472.0">
+         <image>
+            <Image url="@Yu.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="protagL" fitHeight="195.0" fitWidth="120.0" layoutX="1151.0" layoutY="259.0" visible="false">
+         <image>
+            <Image url="@Yu.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="protagR" fitHeight="195.0" fitWidth="120.0" layoutX="8.0" layoutY="14.0" visible="false">
+         <image>
+            <Image url="@YuFlip.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="fuelShopContainer" layoutX="642.0" layoutY="100.0" prefHeight="279.0" prefWidth="293.0" style="-fx-background-color: black; -fx-border-color: lime;" visible="false">
+         <children>
+            <Text fill="LIME" layoutX="42.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Would you like to buy 300 gallons worth of flammable fuel for 300 credits?" textAlignment="CENTER" wrappingWidth="220.3671875">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Button fx:id="fuelAccept" layoutX="20.0" layoutY="176.0" mnemonicParsing="false" onMouseClicked="#accept" text="Light me up!" />
+            <Button fx:id="fuelRefuse" layoutX="137.0" layoutY="176.0" mnemonicParsing="false" onMouseClicked="#deny" text="I'd rather not blow up..." />
+            <Text fill="LIME" layoutX="61.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Fuel:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Label fx:id="currentFuel" layoutX="172.0" layoutY="96.0" text="Label" textFill="LIME">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="creditsLabel" layoutX="172.0" layoutY="132.0" text="Label" textFill="LIME">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Text fill="LIME" layoutX="62.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Credits:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Button layoutX="35.0" layoutY="224.0" mnemonicParsing="false" onMouseClicked="#barter" text="I'm an orphan, can I get a better price?" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="fuelCheckF" layoutX="935.0" layoutY="179.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black; -fx-border-color: Lime;" visible="false">
+         <children>
+            <Text fill="LIME" layoutX="16.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I already burn up enough of my fuel! Take it or leave it!" textAlignment="CENTER" wrappingWidth="167.9345703125">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="fuelCheckS" layoutX="642.0" layoutY="100.0" prefHeight="211.0" prefWidth="293.0" style="-fx-background-color: black; -fx-border-color: lime;" visible="false">
+         <children>
+            <Text fill="LIME" layoutX="42.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Poor Thing! How about 150 credits for 300 gallons?" textAlignment="CENTER" wrappingWidth="220.3671875">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Button fx:id="fuelAccept1" layoutX="20.0" layoutY="176.0" mnemonicParsing="false" onMouseClicked="#buy1" text="Light me up!" />
+            <Button fx:id="fuelRefuse1" layoutX="137.0" layoutY="176.0" mnemonicParsing="false" onMouseClicked="#deny" text="I'd rather not blow up..." />
+            <Text fill="LIME" layoutX="61.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Fuel:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Label fx:id="currentFuel1" layoutX="172.0" layoutY="96.0" text="Label" textFill="LIME">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="creditsLabel1" layoutX="172.0" layoutY="132.0" text="Label" textFill="LIME">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Text fill="LIME" layoutX="62.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Credits:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="spacePortal" fitHeight="200.0" fitWidth="200.0" layoutX="39.0" layoutY="492.0">
+         <image>
+            <Image url="@Portal.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="aurumMarketPortal" fitHeight="200.0" fitWidth="200.0" layoutX="1171.0" layoutY="492.0">
+         <image>
+            <Image url="@Portal.gif" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

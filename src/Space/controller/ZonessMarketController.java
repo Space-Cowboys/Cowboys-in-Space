@@ -15,8 +15,19 @@ import Space.POJO.Planet;
 import Space.POJO.Planet.GoodTracker;
 import Space.POJO.PriceModel;
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
+import javafx.animation.SequentialTransition;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +43,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.util.Duration;
+import java.util.Timer;
 
 /**
  * FXML Controller class
@@ -194,6 +208,16 @@ public class ZonessMarketController implements Initializable {
     int price2;
     int price3;
     int price4;
+    int salePrice1;
+    int salePrice2;
+    int salePrice3;
+    int salePrice4;
+    int salePrice5;
+    int salePrice6;
+    int salePrice7;
+    int salePrice8;
+    int salePrice9;
+    int salePrice10;
     /* price of good before quantity */
     int preMultiplier;
     PriceModel zonessModel;
@@ -205,15 +229,36 @@ public class ZonessMarketController implements Initializable {
     int buyablePrice;
     Label[] labels = new Label[10];
     GoodTracker[] goods;
+    GoodTracker[] playerGoods;
+    Timer timer;
+    @FXML //fx:id="back"
+    AnchorPane back;
+    
+    Boolean isJumping = false;
+    
+    @FXML //fx:id="protagL"
+    ImageView protagL;
+    
+    @FXML //fx:id="protagR"
+    ImageView protagR;
+    
+    @FXML //fx:id="shopContainer"
+    AnchorPane shopContainer;
+    
+    @FXML //fx:id="spacePortal"
+    ImageView spacePortal;
+
     /**
      * Initializes the controller class.
+     * This is what happens when the window itself is first initialized
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        shop.setX(500);
+        timer = new Timer(); 
         creditsLabel.setText(Integer.toString(RootLayoutController.getCredits()));
         Planet p = RootLayoutController.getUniverse().getFromName("Zoness");
         pInventory = RootLayoutController.getInventory();
+        playerGoods = p.getPlayerGT();
         Label[] listO = {PQInv1,PQInv2,PQInv3,PQInv4,PQInv5,PQInv6,PQInv7,PQInv8,PQInv9,PQInv10};
         for(int i=0;i <labels.length;i++) {
             labels[i] = listO[i]; 
@@ -224,13 +269,13 @@ public class ZonessMarketController implements Initializable {
         updatePInv();
         zonessModel = new PriceModel(p);
         BorderPane root = MainApp.getRootLayout(); 
-        Scene scene = root.getScene(); 
-
-        
+        Scene scene = root.getScene();
+        //Shop inventory set
         shopLabel1.setText(goods[0].getType().toString());
         shopLabel2.setText(goods[1].getType().toString());
         shopLabel3.setText(goods[2].getType().toString());
         shopLabel4.setText(goods[3].getType().toString());
+        //Prices for shop inventory set
         price1 = zonessModel.showPrice(goods[0].getType());
         price2 = zonessModel.showPrice(goods[1].getType());
         price3 = zonessModel.showPrice(goods[2].getType());
@@ -239,52 +284,115 @@ public class ZonessMarketController implements Initializable {
         priceLabel2.setText(Integer.toString(price2));
         priceLabel3.setText(Integer.toString(price3));
         priceLabel4.setText(Integer.toString(price4));
+        // sale prices
+        salePrice1 = zonessModel.showSalePrice(genericList[0]);
+        salePrice2 = zonessModel.showSalePrice(genericList[1]);
+        salePrice3 = zonessModel.showSalePrice(genericList[2]);
+        salePrice4 = zonessModel.showSalePrice(genericList[3]);
+        salePrice5 = zonessModel.showSalePrice(genericList[4]);
+        salePrice6 = zonessModel.showSalePrice(genericList[5]);
+        salePrice7 = zonessModel.showSalePrice(genericList[6]);
+        salePrice8 = zonessModel.showSalePrice(genericList[7]);
+        salePrice9 = zonessModel.showSalePrice(genericList[8]);
+        salePrice10 = zonessModel.showSalePrice(genericList[9]);
 
-         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        // Key event handling
+scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
                 if (ke.getCode().equals(KeyCode.DOWN)) {
-                    protag.setY(protag.getY()+5);
-                    System.out.println(protag.getX());
-                    System.out.println(shop.getX());
+                    protag.setLayoutY(protag.getLayoutY()+5);
+                    System.out.println(protag.getLayoutX());
+                    
                 }
                 if (ke.getCode().equals(KeyCode.RIGHT)) {
-                    protag.setX(protag.getX() +5);
-                }
+                    protag.setImage(protagR.getImage());
+                    protag.setLayoutX(protag.getLayoutX() +8);
+                    /*if(protag.getLayoutX() > 500 && protag.getLayoutX() < 1300) {
+                        back.setTranslateX(back.getTranslateX() - 8);
+                    }*/
+                    }
                 if (ke.getCode().equals(KeyCode.LEFT)) {
-                    protag.setX(protag.getX() - 5);
+                    protag.setImage(protagL.getImage());
+                    protag.setLayoutX(protag.getLayoutX() - 8);
+                   /* if(protag.getLayoutX() > 500 && protag.getLayoutX() < 1300) {
+                        back.setTranslateX(back.getTranslateX() + 8);
+                    }*/
+                    
                 }
                 if (ke.getCode().equals(KeyCode.UP)) {
-                    protag.setY(protag.getY() - 5);
-                } 
-                if(ke.getCode().equals(KeyCode.SPACE) && Math.abs(shop.getX() - protag.getX()) < 80) {
-                    System.out.println("this was reached");
+                    if (isJumping == false) {
+                        protag.setLayoutY(protag.getLayoutY() - 50);
+                        isJumping = true;
+                    
+                   timer.schedule(new TimerTask() {
+                    public void run() {
+                    Platform.runLater(new Runnable() {
+                    public void run() {
+                        protag.setLayoutY(protag.getLayoutY() + 50);
+                        isJumping = false;
+
+                    }
+                });
+            }
+        }, 750);}
+               }
+               if (ke.getCode().equals(KeyCode.SPACE) && Math.abs(shop.getLayoutX() - protag.getLayoutX()) < 80) {
                     shopWindowAnchor.setVisible(true);
                     shopWindowAnchor2.setVisible(true);
                     inventory.setVisible(true);
                     inventory1.setVisible(true);
                     messageWindow.setVisible(true);
 
-                }
+                } 
+               if (ke.getCode().equals(KeyCode.SPACE) && Math.abs(spacePortal.getLayoutX() - protag.getLayoutX()) < 80) {
+                   try {
+	        // Load person overview. 
+	        FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(MainApp.class.getResource("view/RushGalaxy.fxml"));
+                Pane characterCreation = (Pane) loader.load();
+                BorderPane rootLayout = MainApp.getRootLayout(); 
+                rootLayout.setCenter(characterCreation);
+                
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } 
+               }
             }
         });
+
          
     }
+    /*
+    * This updates all the player labels
+    */
     private void updatePInv() {
         MarketItem[] marketItemList = new MarketItem[10];
         for(int i = 0; i < genericList.length;i++) {
             marketItemList[i] = new MarketItem(genericList[i],0,99); 
         }
+        
         for(int i = 0; i < labels.length;i++) {
+            boolean a = false;
             labels[i].setText(Integer.toString(pInventory.totalItemCount(marketItemList[i])));
+            for(int j = 0; j < 6; j++) {
+                if(marketItemList[i].equals(new Good(playerGoods[j].getType(),0,99))) {
+                    a = true;
+                }
+                if(a) {
+                    labels[i].setTextFill(Color.BLACK);
+                }
+            
+            }
         }
     }
+    //The next four methods set their respective buy windows
     public void buy1() {
         messageWindow.setVisible(false);
         sellWindow.setVisible(false);
         buyWindow.setVisible(true);
         buyWindowTitleLabel.setText(shopLabel1.getText());
         buyWindowQuantityLabel.setText(Integer.toString(quantity));
-       preMultiplier =  price1;
+        preMultiplier =  price1;
         buyWindowPriceLabel.setText(Integer.toString(preMultiplier));    
         buyable = new MarketItem(goods[0].getType(),quantity,99); 
         
@@ -332,8 +440,12 @@ public class ZonessMarketController implements Initializable {
             RootLayoutController.setCredits(RootLayoutController.getCredits() - buyablePrice);
             creditsLabel.setText(Integer.toString(RootLayoutController.getCredits()));
             updatePInv();
+            buyWindowQuantityLabel.setText(Integer.toString(quantity));
+            buyWindowPriceLabel.setText(Integer.toString(preMultiplier * quantity));    
+
         }
     }    
+    //This is what happens when the user presses the exit label
     public void exitShop() {
         shopWindowAnchor.setVisible(false);
         shopWindowAnchor2.setVisible(false);
@@ -343,7 +455,7 @@ public class ZonessMarketController implements Initializable {
         sellWindow.setVisible(false);
         messageWindow.setVisible(false);
     }
-    
+        // Lowers the quantity of an item sold or bought
         public void quatDown(){
             if (quantity > 1) {
                 quantity--;
@@ -355,127 +467,206 @@ public class ZonessMarketController implements Initializable {
 
             }
         }
+        //increases the amount of an item to be bought or sold
         public void quatUp() {
             quantity++;
             sellWindowQuantityLabel.setText(Integer.toString(quantity));
             buyWindowQuantityLabel.setText(Integer.toString(quantity));
             sellWindowPriceLabel.setText(Integer.toString(preMultiplier * quantity));
             buyWindowPriceLabel.setText(Integer.toString(preMultiplier * quantity));    
-
-
-
-
         }
+        // Each produes a sell window with labels for each respective good
         public void sell1() {
         messageWindow.setVisible(false);
-        buyWindow.setVisible(false);
         sellWindow.setVisible(true);
-        sellWindowTitleLabel.setText(genericList[0].toString());
-        sellWindowQuantityLabel.setText(Integer.toString(quantity));
-        preMultiplier = zonessModel.showSalePrice(genericList[0]);
-        sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
-        sellable = new MarketItem(genericList[0],quantity,99); 
+        buyWindow.setVisible(false);
+        boolean a = false;
+        for(int i = 0; i < 6; i++) {
+            if(playerGoods[i].getType().equals(genericList[0])) {
+                a = true;
+            }
+        }
+        if(a) {
+            sellWindowTitleLabel.setText(genericList[0].toString());
+            sellWindowQuantityLabel.setText(Integer.toString(quantity));
+            preMultiplier= salePrice1;
+            sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
+            sellable = new MarketItem(genericList[0],quantity,99); 
+        }
     }
    
         public void sell2() {
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
-        sellWindowTitleLabel.setText(genericList[1].toString());
-        sellWindowQuantityLabel.setText(Integer.toString(quantity));
-        preMultiplier= zonessModel.showSalePrice(genericList[1]);
-        sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
-        sellable = new MarketItem(genericList[1],quantity,99); 
+        boolean a = false;
+        for(int i = 0; i < 6; i++) {
+            if(playerGoods[i].getType().equals(genericList[1])) {
+                a = true;
+            }
+        }
+        if(a) {
+            sellWindowTitleLabel.setText(genericList[1].toString());
+            sellWindowQuantityLabel.setText(Integer.toString(quantity));
+            preMultiplier= salePrice2;
+            sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
+            sellable = new MarketItem(genericList[1],quantity,99); 
+        }
     }
      
         public void sell3() {
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
-        sellWindowTitleLabel.setText(genericList[2].toString());
-        sellWindowQuantityLabel.setText(Integer.toString(quantity));
-        preMultiplier= zonessModel.showSalePrice(genericList[2]);
-        sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
-        sellable = new MarketItem(genericList[2],quantity,99); 
+        boolean a = false;
+        for(int i = 0; i < 6; i++) {
+            if(playerGoods[i].getType().equals(genericList[2])) {
+                a = true;
+            }
+        }
+        if(a) {
+            sellWindowTitleLabel.setText(genericList[2].toString());
+            sellWindowQuantityLabel.setText(Integer.toString(quantity));
+            preMultiplier= salePrice3;
+            sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
+            sellable = new MarketItem(genericList[2],quantity,99); 
+        }
     }
      
         public void sell4() {
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
-        sellWindowTitleLabel.setText(genericList[3].toString());
-        sellWindowQuantityLabel.setText(Integer.toString(quantity));
-        preMultiplier=zonessModel.showSalePrice(genericList[3]);
-        sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
-        sellable = new MarketItem(genericList[3],quantity,99); 
+        boolean a = false;
+        for(int i = 0; i < 6; i++) {
+            if(playerGoods[i].getType().equals(genericList[3])) {
+                a = true;
+            }
+        }
+        if(a) {
+            sellWindowTitleLabel.setText(genericList[3].toString());
+            sellWindowQuantityLabel.setText(Integer.toString(quantity));
+            preMultiplier=salePrice4;
+            sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
+            sellable = new MarketItem(genericList[3],quantity,99); 
+        }
     }
         
         public void sell5() {
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
-        sellWindowTitleLabel.setText(genericList[4].toString());
-        sellWindowQuantityLabel.setText(Integer.toString(quantity));
-        preMultiplier= zonessModel.showSalePrice(genericList[4]);
-        sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
-        sellable = new MarketItem(genericList[4],quantity,99); 
+        boolean a = false;
+        for(int i = 0; i < 6; i++) {
+            if(playerGoods[i].getType().equals(genericList[4])) {
+                a = true;
+            }
+        }
+        if(a) {
+            sellWindowTitleLabel.setText(genericList[4].toString());
+            sellWindowQuantityLabel.setText(Integer.toString(quantity));
+            preMultiplier= salePrice5;
+            sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
+            sellable = new MarketItem(genericList[4],quantity,99); 
+        }
     }
     
         public void sell6() {
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
-        sellWindowTitleLabel.setText(genericList[5].toString());
-        sellWindowQuantityLabel.setText(Integer.toString(quantity));
-        preMultiplier= zonessModel.showSalePrice(genericList[5]);
-        sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
-        sellable = new MarketItem(genericList[5],quantity,99); 
+        boolean a = false;
+        for(int i = 0; i < 6; i++) {
+            if(playerGoods[i].getType().equals(genericList[5])) {
+                a = true;
+            }
+        }
+        if(a) {
+            sellWindowTitleLabel.setText(genericList[5].toString());
+            sellWindowQuantityLabel.setText(Integer.toString(quantity));
+            preMultiplier= salePrice6;
+            sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
+            sellable = new MarketItem(genericList[5],quantity,99);
+        }
     }
         
         public void sell7() {
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
-        sellWindowTitleLabel.setText(genericList[6].toString());
-        sellWindowQuantityLabel.setText(Integer.toString(quantity));
-        preMultiplier= zonessModel.showSalePrice(genericList[6]);
-        sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
-        sellable = new MarketItem(genericList[6],quantity,99); 
+        boolean a = false;
+        for(int i = 0; i < 6; i++) {
+            if(playerGoods[i].getType().equals(genericList[6])) {
+                a = true;
+            }
+        }
+        if(a) {
+            sellWindowTitleLabel.setText(genericList[6].toString());
+            sellWindowQuantityLabel.setText(Integer.toString(quantity));
+            preMultiplier= salePrice7;
+            sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
+            sellable = new MarketItem(genericList[6],quantity,99);
+        }
     }
      
         public void sell8() {
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
-        sellWindowTitleLabel.setText(genericList[7].toString());
-        sellWindowQuantityLabel.setText(Integer.toString(quantity));
-        preMultiplier= zonessModel.showSalePrice(genericList[7]);
-        sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
-        sellable = new MarketItem(genericList[7],quantity,99); 
+        boolean a = false;
+        for(int i = 0; i < 6; i++) {
+            if(playerGoods[i].getType().equals(genericList[7])) {
+                a = true;
+            }
+        }
+        if(a) {
+            sellWindowTitleLabel.setText(genericList[7].toString());
+            sellWindowQuantityLabel.setText(Integer.toString(quantity));
+            preMultiplier= salePrice8;
+            sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
+            sellable = new MarketItem(genericList[7],quantity,99); 
+        }
     }
         
         public void sell9() {
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
-        sellWindowTitleLabel.setText(genericList[8].toString());
-        sellWindowQuantityLabel.setText(Integer.toString(quantity));
-        preMultiplier= zonessModel.showSalePrice(genericList[8]);
-        sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
-        sellable = new MarketItem(genericList[8],quantity,99); 
+        boolean a = false;
+        for(int i = 0; i < 6; i++) {
+            if(playerGoods[i].getType().equals(genericList[8])) {
+                a = true;
+            }
+        }
+        if(a) {
+            sellWindowTitleLabel.setText(genericList[8].toString());
+            sellWindowQuantityLabel.setText(Integer.toString(quantity));
+            preMultiplier= salePrice9;
+            sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
+            sellable = new MarketItem(genericList[8],quantity,99);
+        }
     }
         
         public void sell10() {
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
-        sellWindowTitleLabel.setText(genericList[9].toString());
-        sellWindowQuantityLabel.setText(Integer.toString(quantity));
-        preMultiplier= zonessModel.showSalePrice(genericList[9]);
-        sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
-        sellable = new MarketItem(genericList[9],quantity,99); 
+        boolean a = false;
+        for(int i = 0; i < 6; i++) {
+            if(playerGoods[i].getType().equals(genericList[9])) {
+                a = true;
+            }
+        }
+        if(a) {
+            sellWindowTitleLabel.setText(genericList[9].toString());
+            sellWindowQuantityLabel.setText(Integer.toString(quantity));
+            preMultiplier= salePrice10;
+            sellWindowPriceLabel.setText(Integer.toString(preMultiplier));    
+            sellable = new MarketItem(genericList[9],quantity,99); 
+        }
     }
-        
+    // dictates what the button in the sell window does.
+    // updates the inventory the windows
     public void sellButton() {
         if(pInventory.totalItemCount(sellable) >= quantity) {
             sellablePrice = preMultiplier * quantity;
@@ -484,7 +675,38 @@ public class ZonessMarketController implements Initializable {
             RootLayoutController.setCredits(RootLayoutController.getCredits() + sellablePrice);
             creditsLabel.setText(Integer.toString(RootLayoutController.getCredits()));
             updatePInv();
+            sellWindowPriceLabel.setText(Integer.toString(preMultiplier * quantity)); 
+            sellWindowQuantityLabel.setText(Integer.toString(quantity));
         }
     }
+    
+    public void mouseOverShop1() {
+        shopLabel1.setTextFill(Color.GREEN);
+    }
+    
+    public void mouseOverShop2() {
+        shopLabel2.setTextFill(Color.GREEN);
+    }
+
+    public void mouseOverShop3() {
+        shopLabel3.setTextFill(Color.GREEN);
+    }
+    
+    public void mouseOverShop4() {
+        shopLabel4.setTextFill(Color.GREEN);
+    }
+    public void mouseGoneShop1() {
+        shopLabel1.setTextFill(Color.WHITE);
+    }
+    public void mouseGoneShop2() {
+        shopLabel2.setTextFill(Color.WHITE);
+    }
+    public void mouseGoneShop3() {
+        shopLabel3.setTextFill(Color.WHITE);
+    }
+    public void mouseGoneShop4() {
+        shopLabel4.setTextFill(Color.WHITE);
+    }
+    
     
 }

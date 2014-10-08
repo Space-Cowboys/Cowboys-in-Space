@@ -1,6 +1,7 @@
 package Space.POJO;
 
 import Space.POJO.Good.Goods;
+import Space.controller.RootLayoutController;
 import java.util.Random;
 
 
@@ -25,11 +26,15 @@ public class PriceModel{
 	}
 	
 	public int showPrice(Goods good){
-		return randRange(good.getMin(), good.getMax())*getGoodValue(good);
-	}
+            int initial = randRange(good.getMin(), good.getMax())*getGoodValue(good);
+            int change = (int) ((int) initial * (RootLayoutController.getCharismaSkill() * .005));        
+            return initial - change; 
+	} 
         
         public int showSalePrice(Goods good) {
-            return randRange(good.getMin(), good.getMax())*getGoodValue(good) / 2;
+            int initial = randRange(good.getMin(), good.getMax())*getGoodValue(good) /2;
+            int change = (int) ((int) initial * (RootLayoutController.getCharismaSkill() * .005));        
+            return initial + change; 
         }
 	
 	public int showQuantity(Goods good){

@@ -30,7 +30,8 @@ public class Planet{
     private final int X;
     private final int Y;
     private final Value[] goodValues;
-    private GoodTracker[] gT = new GoodTracker[10];
+    private GoodTracker[] shopGT = new GoodTracker[10];
+    private GoodTracker[] playerGT = new GoodTracker[10];
 
     
     public Planet(String name, Resource res, TechLevel tech, Government gov, Moon moon, int pirates, int traders, int police, StarSystem sys, int X, int Y, Value[] good){
@@ -63,18 +64,6 @@ public class Planet{
     	return goodValues[(check).ordinal()].getQ();
     }
     
-    public int getPirate(){
-        return this.pirates;
-    }
-    
-    public int getTrader(){
-        return this.traders;
-    }
-    
-    public int getPolice(){
-        return this.police;
-    }
-    
     @Override
     public String toString(){
         return name + "\t" +
@@ -94,10 +83,15 @@ public class Planet{
         
         Goods[] goodTypes = {WATER, FUR, FOOD, ORE, GAMES, FIREARMS, MEDICINE, MACHINES, NARCOTICS, ROBOTS};
         int count = 0;
+        int otherCount = 0;
         for(int i = 0; i < 10; i++) {
             if(goodValues[i].getQ() > 0) {
-                gT[count] = new GoodTracker(goodTypes[i], goodValues[i]);
+                shopGT[count] = new GoodTracker(goodTypes[i], goodValues[i]);
                 count++;
+            }
+            if (goodValues[i].getV() > 0) {
+                playerGT[otherCount] = new GoodTracker(goodTypes[i], goodValues[i]);
+                otherCount++;
             }
         }
     }
@@ -106,7 +100,11 @@ public class Planet{
             return goodTypes;
         }
      public GoodTracker[] getGT() {
-        return gT; 
+        return shopGT; 
+    }
+     
+    public GoodTracker[] getPlayerGT() {
+        return playerGT;
     }
     public class GoodTracker {
     

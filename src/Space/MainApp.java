@@ -43,7 +43,7 @@ public class MainApp extends Application {
 	    try {
 	        // Load person overview.
 	        FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(MainApp.class.getResource("view/ZonessMarket.fxml"));
+	        loader.setLocation(MainApp.class.getResource("view/WelcomeScreen.fxml"));
 	        Pane welcomeScreen = (Pane) loader.load();	        
 	        rootLayout.setCenter(welcomeScreen);
 
@@ -51,7 +51,7 @@ public class MainApp extends Application {
 	        e.printStackTrace();
 	    }
 	}
-        
+   
         public static BorderPane getRootLayout() {
             return rootLayout;
         }
