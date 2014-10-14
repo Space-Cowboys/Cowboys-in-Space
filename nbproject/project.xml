@@ -16,7 +16,6 @@
             <name>SpaceCowboys</name>
             <source-roots>
                 <root id="src.dir"/>
-                <root id="MusicPlayer.dir"/>
                 <root id="Player.dir"/>
                 <root id="SpaceCowboys2.dir"/>
             </source-roots>

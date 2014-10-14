@@ -18,6 +18,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import java.util.Timer;
+import Space.POJO.Planet;
 
 /**
  * FXML Controller class
@@ -34,8 +35,11 @@ public class MissionController implements Initializable {
     @FXML //fx:id="rock"
     ImageView rock; 
     
+    Planet location;
+    Planet destination;
 
     Timer timer;
+    
     /**
      * Initializes the controller class.
      * This is what happens when the window itself is first initialized
@@ -46,22 +50,25 @@ public class MissionController implements Initializable {
         RootLayoutController.changeSong("src/Space/Music/flying.wav");
         BorderPane root = MainApp.getRootLayout(); 
         Scene scene = root.getScene();
+        Planet location = RootLayoutController.getPlanet();
+        Planet destination = RootLayoutController.getDestination();
+       
 
         // Key event handling
 scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
                 if (ke.getCode().equals(KeyCode.DOWN)) {
                     spaceship.setLayoutY(spaceship.getLayoutY()+8);
-                    
                 }
+                
                 if (ke.getCode().equals(KeyCode.RIGHT)) {
                     spaceship.setLayoutX(spaceship.getLayoutX() +8);
-
-                    }
+                }
+                
                 if (ke.getCode().equals(KeyCode.LEFT)) {
                     spaceship.setLayoutX(spaceship.getLayoutX() - 8);
-                    
                 }
+                
                 if (ke.getCode().equals(KeyCode.UP)) {
                     spaceship.setLayoutY(spaceship.getLayoutY() - 8);
                 }
