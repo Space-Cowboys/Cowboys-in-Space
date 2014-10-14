@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="back" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.MissionController">
+   <children>
+      <ImageView fx:id="spaceShip" fitHeight="313.0" fitWidth="265.0" layoutX="628.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Art/testShip.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="laser" fitHeight="75.0" fitWidth="7.0" layoutX="721.0" layoutY="319.0" visible="false">
+         <image>
+            <Image url="@Art/UntitledaserTest.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="enemyShip" fitHeight="200.0" fitWidth="200.0" layoutX="500.0" visible="false">
+         <image>
+            <Image url="@Art/enemyShipTest.png" />
+         </image>
+      </ImageView>
+      <Text fill="LIME" layoutX="21.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score:">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <Label fx:id="scoreLabel" layoutX="115.0" layoutY="14.0" text="Label" textFill="LIME">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
