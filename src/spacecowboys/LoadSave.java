@@ -162,7 +162,7 @@ public class LoadSave{
     }
     
     public int getFuel(String path) throws IOException{
-        return Integer.parseInt(this.load(path).get(10));
+        return Integer.parseInt(this.load(path).get(11));
     }
     
     public void setFuel(int n){
@@ -180,7 +180,7 @@ public class LoadSave{
     public int[] getInventory(String path) throws IOException{
         int[] items = new int[10];
         for (int i = 0; i < 10; i++){
-            items[i] = Integer.parseInt(this.load(path).get(i+11));
+            items[i] = Integer.parseInt(this.load(path).get(i+12));
         }
         return items;
     }
