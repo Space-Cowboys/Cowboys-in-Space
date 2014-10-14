@@ -7,7 +7,6 @@
 package Space.controller;
 
 import Space.MainApp;
-import Space.POJO.Universe;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -104,11 +103,8 @@ public class RushGalaxyController implements Initializable {
             try {
 	        // Load person overview. 
                 RootLayoutController.setOrientation(0);
-                RootLayoutController.setDestination(Universe.getUniverse().getFromName("Aurum"));
 	        FXMLLoader loader = new FXMLLoader();
-                //loader.setLocation(MainApp.class.getResource("view/FlyingMission.fxml"));
 	        loader.setLocation(MainApp.class.getResource("view/AurumShipyard.fxml"));
-                RootLayoutController.changeSong("src/Space/Music/cowboy ground.wav");
                 Pane characterCreation = (Pane) loader.load();
                 BorderPane rootLayout = MainApp.getRootLayout(); 
                 rootLayout.setCenter(characterCreation);
@@ -120,11 +116,8 @@ public class RushGalaxyController implements Initializable {
             try {
 	        // Load person overview. 
                 RootLayoutController.setOrientation(0);
-                RootLayoutController.setDestination(Universe.getUniverse().getFromName("Aurum"));
 	        FXMLLoader loader = new FXMLLoader();
-                //loader.setLocation(MainApp.class.getResource("view/FlyingMission.fxml"));
 	        loader.setLocation(MainApp.class.getResource("view/AurumShipyard.fxml"));
-                RootLayoutController.changeSong("src/Space/Music/cowboy ground.wav");
                 Pane characterCreation = (Pane) loader.load();
                 BorderPane rootLayout = MainApp.getRootLayout(); 
                 rootLayout.setCenter(characterCreation);
@@ -143,10 +136,7 @@ public class RushGalaxyController implements Initializable {
             try {
 	        // Load person overview. 
 	        FXMLLoader loader = new FXMLLoader();
-                RootLayoutController.setDestination(Universe.getUniverse().getFromName("Zoness"));
-                //loader.setLocation(MainApp.class.getResource("view/FlyingMission.fxml"));
 	        loader.setLocation(MainApp.class.getResource("view/ZonessMarket.fxml"));
-                RootLayoutController.changeSong("src/Space/Music/cowboy ground.wav");
                 Pane characterCreation = (Pane) loader.load();
                 BorderPane rootLayout = MainApp.getRootLayout(); 
                 rootLayout.setCenter(characterCreation);
@@ -158,10 +148,7 @@ public class RushGalaxyController implements Initializable {
             try {
 	        // Load person overview. 
 	        FXMLLoader loader = new FXMLLoader();
-                RootLayoutController.setDestination(Universe.getUniverse().getFromName("Zoness"));
-                //loader.setLocation(MainApp.class.getResource("view/FlyingMission.fxml"));
 	        loader.setLocation(MainApp.class.getResource("view/ZonessMarket.fxml"));
-                RootLayoutController.changeSong("src/Space/Music/cowboy ground.wav");
                 Pane characterCreation = (Pane) loader.load();
                 BorderPane rootLayout = MainApp.getRootLayout(); 
                 rootLayout.setCenter(characterCreation);

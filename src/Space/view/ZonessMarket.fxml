@@ -11,16 +11,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-image: url(/Space/view/Zoness1.png); -fx-background-size: 100% 100%;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.ZonessMarketController">
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-image: url(/Space/view/art/Zoness1.png); -fx-background-size: 100% 100%;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.ZonessMarketController">
    <children>
       <ImageView id="testProtag" fx:id="shop" fitHeight="195.0" fitWidth="120.0" layoutX="508.0" layoutY="482.0">
          <image>
-            <Image url="@ZonessShopOwner.gif" />
+            <Image url="@Art/ZonessShopOwner.gif" />
          </image>
       </ImageView>
-      <ImageView id="testProtag" fx:id="protag" fitHeight="195.0" fitWidth="120.0" layoutX="46.0" layoutY="474.0">
+      <ImageView id="testProtag" fx:id="protag" fitHeight="200.0" fitWidth="200.0" layoutY="480.0">
          <image>
-            <Image url="@YuFlip.png" />
+            <Image url="@Art/YuRight.png" />
          </image>
       </ImageView>
     <AnchorPane fx:id="shopWindowAnchor" layoutX="105.0" layoutY="42.0" minHeight="0.0" minWidth="0.0" prefHeight="46.0" prefWidth="403.0" style="-fx-border-color: Green; -fx-background-color: black;" visible="false">
@@ -353,19 +353,19 @@
             </Label>
          </children>
       </AnchorPane>
-      <ImageView id="testProtag" fx:id="protagR" fitHeight="195.0" fitWidth="120.0" layoutX="14.0" layoutY="14.0" visible="false">
+      <ImageView id="testProtag" fx:id="protagR" fitHeight="200.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" visible="false">
          <image>
-            <Image url="@YuFlip.png" />
+            <Image url="@Art/YuRight.png" />
          </image>
       </ImageView>
       <ImageView fx:id="protagL" fitHeight="195.0" fitWidth="120.0" visible="false">
          <image>
-            <Image url="@Yu.PNG" />
+            <Image url="@Art/YuLeft.png" />
          </image>
       </ImageView>
       <ImageView fx:id="spacePortal" fitHeight="200.0" fitWidth="200.0" layoutY="492.0">
          <image>
-            <Image url="@Portal.gif" />
+            <Image url="@Art/Portal.gif" />
          </image>
       </ImageView>
    </children>

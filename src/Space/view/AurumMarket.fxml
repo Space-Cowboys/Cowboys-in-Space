@@ -10,21 +10,21 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="back" maxWidth="-Infinity" prefHeight="750.0" prefWidth="2250.0" style="-fx-background-image: url(/Space/view/AurumMarketplace.png); -fx-background-size: 2250 750;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.AurumMarketController">
+<AnchorPane id="AnchorPane" fx:id="back" maxWidth="-Infinity" prefHeight="750.0" prefWidth="2250.0" style="-fx-background-image: url(/Space/view/Art/AurumMarketplace.png); -fx-background-size: 2250 750;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.AurumMarketController">
    <children>
       <ImageView fitHeight="175.0" fitWidth="175.0" layoutX="1038.0" layoutY="188.0">
          <image>
-            <Image url="@Clock.gif" />
+            <Image url="@Art/Clock.gif" />
          </image>
       </ImageView>
-      <ImageView fx:id="protagL" fitHeight="195.0" fitWidth="120.0" layoutX="418.0" layoutY="394.0" visible="false">
+      <ImageView fx:id="protagL" fitHeight="200.0" fitWidth="200.0" layoutX="418.0" layoutY="394.0" visible="false">
          <image>
-            <Image url="@Yu.PNG" />
+            <Image url="@Art/YuLeft.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="protagR" fitHeight="195.0" fitWidth="120.0" layoutX="14.0" layoutY="251.0" visible="false">
+      <ImageView fx:id="protagR" fitHeight="200.0" fitWidth="200.0" layoutX="14.0" layoutY="251.0" visible="false">
          <image>
-            <Image url="@YuFlip.png" />
+            <Image url="@Art/YuRight.png" />
          </image>
       </ImageView>
       <AnchorPane fx:id="shopContainer" layoutX="1318.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="637.0">
@@ -363,17 +363,17 @@
       </AnchorPane>
       <ImageView fx:id="shop" fitHeight="200.0" fitWidth="133.0" layoutX="1474.0" layoutY="478.0">
          <image>
-            <Image url="@ZonessShopOwner.gif" />
+            <Image url="@Art/ZonessShopOwner.gif" />
          </image>
       </ImageView>
-      <ImageView fx:id="protag" fitHeight="195.0" fitWidth="120.0" layoutX="64.0" layoutY="480.0">
+      <ImageView fx:id="protag" fitHeight="200.0" fitWidth="200.0" layoutX="24.0" layoutY="472.0">
          <image>
-            <Image url="@YuFlip.png" />
+            <Image url="@Art/YuRight.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="spacePortal" fitHeight="200.0" fitWidth="200.0" layoutX="24.0" layoutY="498.0">
+      <ImageView fx:id="spacePortal" fitHeight="200.0" fitWidth="200.0" layoutX="24.0" layoutY="492.0">
          <image>
-            <Image url="@Portal.gif" />
+            <Image url="@Art/Portal.gif" />
          </image>
       </ImageView>
    </children>

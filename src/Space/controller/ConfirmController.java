@@ -58,7 +58,6 @@ public class ConfirmController implements Initializable {
 	        // Load person overview. 
 	        FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(MainApp.class.getResource("view/ZonessMarket.fxml"));
-                RootLayoutController.changeSong("src/Space/Music/cowboy ground.wav");
                 Pane characterCreation = (Pane) loader.load();
                 BorderPane rootLayout = MainApp.getRootLayout(); 
                 rootLayout.setCenter(characterCreation);

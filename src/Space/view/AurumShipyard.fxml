@@ -8,26 +8,26 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-image: url(/Space/view/AurumShipyard.png); -fx-background-size: 100% 750;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.AurumShipyardController">
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-image: url(/Space/view/art/AurumShipyard.png); -fx-background-size: 100% 750;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.AurumShipyardController">
    <children>
       <ImageView fx:id="fuelShop" fitHeight="200.0" fitWidth="140.0" layoutX="683.0" layoutY="461.0">
          <image>
-            <Image url="@Arson%20Amy.PNG" />
+            <Image url="@Art/Arson%20Amy.PNG" />
          </image>
       </ImageView>
-      <ImageView fx:id="protag" fitHeight="195.0" fitWidth="120.0" layoutX="1151.0" layoutY="472.0">
+      <ImageView fx:id="protag" fitHeight="200.0" fitWidth="200.0" layoutX="1151.0" layoutY="472.0">
          <image>
-            <Image url="@Yu.PNG" />
+            <Image url="@Art/YuLeft.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="protagL" fitHeight="195.0" fitWidth="120.0" layoutX="1151.0" layoutY="259.0" visible="false">
+      <ImageView fx:id="protagL" fitHeight="200.0" fitWidth="200.0" layoutX="1151.0" layoutY="259.0" visible="false">
          <image>
-            <Image url="@Yu.PNG" />
+            <Image url="@Art/YuLeft.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="protagR" fitHeight="195.0" fitWidth="120.0" layoutX="8.0" layoutY="14.0" visible="false">
+      <ImageView fx:id="protagR" fitHeight="200.0" fitWidth="200.0" layoutX="8.0" layoutY="14.0" visible="false">
          <image>
-            <Image url="@YuFlip.png" />
+            <Image url="@Art/YuRight.png" />
          </image>
       </ImageView>
       <AnchorPane fx:id="fuelShopContainer" layoutX="642.0" layoutY="100.0" prefHeight="279.0" prefWidth="293.0" style="-fx-background-color: black; -fx-border-color: lime;" visible="false">
@@ -104,12 +104,12 @@
       </AnchorPane>
       <ImageView fx:id="spacePortal" fitHeight="200.0" fitWidth="200.0" layoutX="39.0" layoutY="492.0">
          <image>
-            <Image url="@Portal.gif" />
+            <Image url="@Art/Portal.gif" />
          </image>
       </ImageView>
       <ImageView fx:id="aurumMarketPortal" fitHeight="200.0" fitWidth="200.0" layoutX="1171.0" layoutY="492.0">
          <image>
-            <Image url="@Portal.gif" />
+            <Image url="@Art/Portal.gif" />
          </image>
       </ImageView>
    </children>

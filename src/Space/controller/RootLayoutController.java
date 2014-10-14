@@ -26,7 +26,6 @@ public class RootLayoutController implements Initializable {
     private static Player player; 
     private static Universe u;
     private static Planet planet;
-    private static Planet destination;
     private static Inventory inventory;
     private static int credits;
     private static int fuel;
@@ -44,10 +43,6 @@ public class RootLayoutController implements Initializable {
     
     public static void setPlanetLocation(Planet p) {
         planet = p;
-    }
-    
-    public static void setDestination(Planet p){
-        destination = p;
     }
     
     public static int getOrientation() {
@@ -68,10 +63,6 @@ public class RootLayoutController implements Initializable {
 
     public static Planet getPlanet() {
         return planet;
-    }
-    
-    public static Planet getDestination(){
-        return destination;
     }
     
     @FXML private void exit() {

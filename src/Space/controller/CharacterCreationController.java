@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -50,6 +51,18 @@ public class CharacterCreationController implements Initializable {
     @FXML //fx:id="reminder"
         Text reminder; 
     
+    @FXML //fx:id="pilotBar"
+    ProgressBar pilotBar; 
+    
+    @FXML //fx:id="engineeringBar"
+    ProgressBar engineeringBar;
+    
+    @FXML //fx:id="charismaBar"
+    ProgressBar charismaBar;
+    
+    @FXML //fx:id="luckBar"
+    ProgressBar luckBar;
+    
 
     public CharacterCreationController() {
         
@@ -59,6 +72,10 @@ public class CharacterCreationController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        pilotBar.setProgress(RootLayoutController.getPilotSkill() / 100.0); 
+        engineeringBar.setProgress(RootLayoutController.getEngineeringSkill() / 100.0);
+        charismaBar.setProgress(RootLayoutController.getCharismaSkill() / 100.0);
+        luckBar.setProgress(RootLayoutController.getLuckSkill() / 100.0);
         pilotLabel.setText(Integer.toString(RootLayoutController.getPilotSkill()));
         engineeringLabel.setText(Integer.toString(RootLayoutController.getEngineeringSkill()));
         charismaLabel.setText(Integer.toString(RootLayoutController.getCharismaSkill()));
@@ -73,6 +90,7 @@ public class CharacterCreationController implements Initializable {
             luckLabel.setText(Integer.toString(RootLayoutController.getLuckSkill()));
             RootLayoutController.setRemainingSkillPoints(RootLayoutController.getSkillPoints() - 1);
             skillLabel.setText(Integer.toString(RootLayoutController.getSkillPoints()));
+            luckBar.setProgress(RootLayoutController.getLuckSkill() / 100.0);
         }
     }
  
@@ -82,6 +100,7 @@ public class CharacterCreationController implements Initializable {
             luckLabel.setText(Integer.toString(RootLayoutController.getLuckSkill()));
             RootLayoutController.setRemainingSkillPoints(RootLayoutController.getSkillPoints() + 1);
             skillLabel.setText(Integer.toString(RootLayoutController.getSkillPoints()));
+            luckBar.setProgress(RootLayoutController.getLuckSkill() / 100.0);
         }
     }
     
@@ -91,6 +110,7 @@ public class CharacterCreationController implements Initializable {
             pilotLabel.setText(Integer.toString(RootLayoutController.getPilotSkill()));
             RootLayoutController.setRemainingSkillPoints(RootLayoutController.getSkillPoints() - 1);
             skillLabel.setText(Integer.toString(RootLayoutController.getSkillPoints()));
+            pilotBar.setProgress(RootLayoutController.getPilotSkill() / 100.0);
         }
     }
     public void pilotDown() { 
@@ -99,6 +119,7 @@ public class CharacterCreationController implements Initializable {
             pilotLabel.setText(Integer.toString(RootLayoutController.getPilotSkill()));
             RootLayoutController.setRemainingSkillPoints(RootLayoutController.getSkillPoints() + 1);
             skillLabel.setText(Integer.toString(RootLayoutController.getSkillPoints()));
+            pilotBar.setProgress(RootLayoutController.getPilotSkill() / 100.0);
         }
     }
     
@@ -108,6 +129,7 @@ public class CharacterCreationController implements Initializable {
             engineeringLabel.setText(Integer.toString(RootLayoutController.getEngineeringSkill()));
             RootLayoutController.setRemainingSkillPoints(RootLayoutController.getSkillPoints() - 1);
             skillLabel.setText(Integer.toString(RootLayoutController.getSkillPoints()));
+            engineeringBar.setProgress(RootLayoutController.getEngineeringSkill() / 100.0);
         }
     }
    
@@ -117,6 +139,7 @@ public class CharacterCreationController implements Initializable {
             engineeringLabel.setText(Integer.toString(RootLayoutController.getEngineeringSkill()));
             RootLayoutController.setRemainingSkillPoints(RootLayoutController.getSkillPoints() + 1);
             skillLabel.setText(Integer.toString(RootLayoutController.getSkillPoints()));
+            engineeringBar.setProgress(RootLayoutController.getEngineeringSkill() / 100.0);
         }
     }
     public void charismaUp() { 
@@ -125,6 +148,7 @@ public class CharacterCreationController implements Initializable {
             charismaLabel.setText(Integer.toString(RootLayoutController.getCharismaSkill()));
             RootLayoutController.setRemainingSkillPoints(RootLayoutController.getSkillPoints() - 1);
             skillLabel.setText(Integer.toString(RootLayoutController.getSkillPoints()));
+            charismaBar.setProgress(RootLayoutController.getCharismaSkill() / 100.0);
         }
     }
     
@@ -134,6 +158,7 @@ public class CharacterCreationController implements Initializable {
             charismaLabel.setText(Integer.toString(RootLayoutController.getCharismaSkill()));
             RootLayoutController.setRemainingSkillPoints(RootLayoutController.getSkillPoints() + 1);
             skillLabel.setText(Integer.toString(RootLayoutController.getSkillPoints()));
+            charismaBar.setProgress(RootLayoutController.getCharismaSkill() / 100.0);
         }
     }
     
@@ -172,6 +197,6 @@ public class CharacterCreationController implements Initializable {
         }
         
         @FXML public void remind() {
-            reminder.setFill(Color.WHITE);
+            reminder.setVisible(true);
         }
 }

@@ -103,7 +103,7 @@ public class AurumShipyardController implements Initializable {
             public void handle(KeyEvent ke) {
                 if (ke.getCode().equals(KeyCode.DOWN)) {
                     protag.setLayoutY(protag.getLayoutY()+5);
-                    System.out.println(protag.getLayoutX());
+                    System.out.println(protag.getLayoutY());
                     
                 }
                 if (ke.getCode().equals(KeyCode.RIGHT)) {
