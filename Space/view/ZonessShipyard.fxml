@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-image: url(/Space/view/art/ZonessPort.png); -fx-background-size: 100% 750;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.ZonessPortController">
+   <children>
+      <ImageView fx:id="protag" fitHeight="200.0" fitWidth="200.0" layoutX="904.0" layoutY="480.0">
+         <image>
+            <Image url="@Art/YuLeft.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="protagL" fitHeight="200.0" fitWidth="200.0" layoutX="638.0" layoutY="175.0" visible="false">
+         <image>
+            <Image url="@Art/YuLeft.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="protagR" fitHeight="200.0" fitWidth="200.0" visible="false">
+         <image>
+            <Image url="@Art/YuRight.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="portal1" fitHeight="200.0" fitWidth="200.0" layoutX="1135.0" layoutY="492.0">
+         <image>
+            <Image url="@Art/Portal.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="portal2" fitHeight="200.0" fitWidth="200.0" layoutX="328.0" layoutY="492.0">
+         <image>
+            <Image url="@Art/Portal.gif" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

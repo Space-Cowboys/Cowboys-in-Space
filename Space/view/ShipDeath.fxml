@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-color: black;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Space.controller.ShipDeathController">
+   <children>
+      <Text fill="WHITE" layoutX="378.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have met with a  terrible fate">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
+      <Button layoutX="378.0" layoutY="414.0" mnemonicParsing="false" onAction="#goAway" text="Let's pretend that didn't happen" />
+      <Button layoutX="791.0" layoutY="414.0" mnemonicParsing="false" onAction="#exit" text="I can't take it, I quit!" />
+   </children>
+</AnchorPane>
