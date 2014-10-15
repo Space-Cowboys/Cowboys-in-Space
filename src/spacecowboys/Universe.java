@@ -7,8 +7,7 @@ import spacecowboys.ConstantData.Moon;
 import spacecowboys.ConstantData.StarSystem;
 import economy.Good.Value;
 
-public class Universe{
-	
+public final class Universe{
     private final Planet Zoness;
     private final Planet Aurum;
     private final Planet Ferox;
@@ -35,10 +34,12 @@ public class Universe{
     private final Planet Kanto;
     private final Planet Wisp;
     private final Planet Megami;
-    
-    private Universe(){
-        
-        this.Zoness = new Planet("Zoness", Resource.LOTSOFWATER, TechLevel.RENAISSANCE, Government.COMMUNIST, Moon.UNUSED, 8, 5, 8, StarSystem.RUSH, 56, 111, new Value[]{Value.C, Value.N, Value.C, Value.S, Value.R, Value.R, Value.S, Value.N, Value.N, Value.N});        
+    private Universe() {
+        this.Zoness = new Planet("Zoness", Resource.LOTSOFWATER,
+                TechLevel.RENAISSANCE, Government.COMMUNIST, Moon.UNUSED,
+                8, 5, 8, StarSystem.RUSH, 56, 111,
+                new Value[]{Value.C, Value.N, Value.C, Value.S,
+                    Value.R, Value.R, Value.S, Value.N, Value.N, Value.N});      
         this.Aurum = new Planet("Aurum", Resource.MINERALPOOR, TechLevel.PREAGRICULTURE, Government.CYBERNETIC, Moon.UNUSED, 0, 3, 3, StarSystem.RUSH, 84, 129, new Value[] {Value.N, Value.S, Value.N, Value.S, Value.R, Value.N, Value.N, Value.C, Value.R, Value.C});        
         this.Ferox = new Planet("Ferox", Resource.DESERT, TechLevel.POSTINDUSTRIAL, Government.DEMOCRACY, Moon.NOMOON, 9, 4, 1, StarSystem.BASTILLE, 71, 182, new Value[] {Value.S, Value.N, Value.R, Value.C, Value.N, Value.C, Value.N, Value.R, Value.S, Value.N});        
         this.Kohilint = new Planet("Koholint", Resource.WEIRDMUSHROOMS, TechLevel.MEDIEVAL, Government.SATORI, Moon.UNUSED, 9, 6, 2, StarSystem.BASTILLE, 84, 53, new Value[] {Value.R, Value.N, Value.R, Value.S, Value.S, Value.N, Value.C, Value.N, Value.C, Value.N});        
@@ -65,8 +66,6 @@ public class Universe{
         this.Wisp = new Planet("Wisp", Resource.WARLIKE, TechLevel.MEDIEVAL, Government.DEMOCRACY, Moon.GOVSATELLITE, 3, 4, 1, StarSystem.PSY, 185, 11, new Value[] {Value.C, Value.N, Value.R, Value.N, Value.N, Value.C, Value.S, Value.S, Value.R, Value.N});
         this.Megami = new Planet("Megami", Resource.MINERALRICH, TechLevel.EARLYINDUSTRIAL, Government.SOCIALIST, Moon.GOVSATELLITE, 9, 0, 8, StarSystem.PSY, 31, 75, new Value[] {Value.C, Value.R, Value.N, Value.C, Value.R, Value.N, Value.N, Value.S, Value.N, Value.S});
     }
-    
-    
     public Planet[] getPlanets(){
         Planet[] universe = new Planet[26];
         universe[0] = Zoness;

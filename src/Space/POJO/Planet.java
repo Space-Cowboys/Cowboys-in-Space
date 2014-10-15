@@ -53,6 +53,19 @@ public class Planet{
     public String getName(){
     	return this.name;
     }
+    
+    public int getPirates(){
+        return pirates;
+    }
+    
+    public int getTraders(){
+        return traders;
+    }
+    
+    public int getPolice(){
+        return police;
+    }
+    
     public Value[] getGoods() {
         return goodValues; 
     }
