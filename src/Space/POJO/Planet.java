@@ -17,6 +17,11 @@ import static Space.POJO.Good.Goods.ORE;
 import static Space.POJO.Good.Goods.ROBOTS;
 import static Space.POJO.Good.Goods.WATER;
 import Space.POJO.Good.Value;
+
+/**
+ *
+ * @author Cameron
+ */
 public class Planet{
     private final String name;
     private final Resource res;
@@ -33,8 +38,22 @@ public class Planet{
     private GoodTracker[] shopGT = new GoodTracker[10];
     private GoodTracker[] playerGT = new GoodTracker[10];
 
-    
-    public Planet(String name, Resource res, TechLevel tech, Government gov, Moon moon, int pirates, int traders, int police, StarSystem sys, int X, int Y, Value[] good){
+    /**
+     *
+     * @param name
+     * @param res
+     * @param tech
+     * @param gov
+     * @param moon
+     * @param pirates
+     * @param traders
+     * @param police
+     * @param sys
+     * @param X
+     * @param Y
+     * @param good
+     */
+    public Planet(String name, Resource res, TechLevel tech, Government gov, Moon moon, int pirates, int traders, int police, StarSystem sys, int X, int Y, Value[] good) {
         this.name = name;
         this.res = res;
         this.tech = tech;
@@ -49,51 +68,85 @@ public class Planet{
         this.goodValues = good;
         getListOfGoods(); 
     }
-    
+
+    /**
+     *
+     * @return
+     */
     public String getName(){
-    	return this.name;
+        return this.name;
     }
-    
+
+    /**
+     *
+     * @return
+     */
     public int getPirates(){
         return pirates;
     }
-    
+
+    /**
+     *
+     * @return
+     */
     public int getTraders(){
         return traders;
     }
-    
-    public int getPolice(){
+
+    /**
+     *
+     * @return
+     */
+    public int getPolice() {
         return police;
     }
-    
+
+    /**
+     *
+     * @return
+     */
     public Value[] getGoods() {
-        return goodValues; 
+        return goodValues;
     }
-    public int getValue(Goods check){
+
+    /**
+     *
+     * @param check
+     * @return
+     */
+    public final int getValue(Goods check) {
     	return goodValues[(check).ordinal()].getV();
     }
     
-    public int getQuantity(Goods check){
+    /**
+     *
+     * @param check
+     * @return
+     */
+    public final int getQuantity(Goods check) {
     	return goodValues[(check).ordinal()].getQ();
     }
-    
+
     @Override
-    public String toString(){
-        return name + "\t" +
-        res.toString() + "\t" + 
-        tech.toString() + "\t" +
-        gov.toString() + "\t" +
-        moon.toString() + "\t" +
-        "Pirates: " + Integer.toString(pirates) + "\t" +
-        "Traders: " + Integer.toString(traders) + "\t" +
-        "Police: " + Integer.toString(police) + "\t" +
-        sys.toString() + "\t" +
-        "X-coord: " + Integer.toString(X) + "\t" +
-        "Y-coord: " + Integer.toString(Y);
+    public final String toString() {
+        return name + "\t"
+                + res.toString() + "\t"
+                + tech.toString() + "\t"
+                + gov.toString() + "\t"
+                + moon.toString() + "\t"
+                + "Pirates: " + Integer.toString(pirates) + "\t"
+                + "Traders: " + Integer.toString(traders) + "\t"
+                + "Police: " + Integer.toString(police) + "\t"
+                + sys.toString() + "\t"
+                + "X-coord: " + Integer.toString(X) + "\t"
+                + "Y-coord: " + Integer.toString(Y);
     }
-    
-        public void getListOfGoods() {
-        
+
+    /**
+     *
+     */
+    public void getListOfGoods() {
+
         Goods[] goodTypes = {WATER, FUR, FOOD, ORE, GAMES, FIREARMS, MEDICINE, MACHINES, NARCOTICS, ROBOTS};
         int count = 0;
         int otherCount = 0;
@@ -108,30 +161,57 @@ public class Planet{
             }
         }
     }
-        public Goods[] getGoodsList() {
+
+    /**
+     *
+     * @return
+     */
+    public Goods[] getGoodsList() {
             Goods[] goodTypes = {WATER, FUR, FOOD, ORE, GAMES, FIREARMS, MEDICINE, MACHINES, NARCOTICS, ROBOTS};
             return goodTypes;
         }
-     public GoodTracker[] getGT() {
+
+    /**
+     *
+     * @return
+     */
+    public GoodTracker[] getGT() {
         return shopGT; 
     }
      
+    /**
+     *
+     * @return
+     */
     public GoodTracker[] getPlayerGT() {
         return playerGT;
     }
+
+    /**
+     *
+     */
     public class GoodTracker {
-    
 
         private final Goods type;
         private final Value v;
 
-        public GoodTracker(Goods type, Value v) {
-            this.type = type;
+        /**
+         *
+         * @param type
+         * @param v
+         */
+        public GoodTracker(final Goods t, final Value v) {
+            this.type = t;
             this.v = v;
     }
+
+        /**
+         *
+         * @return
+         */
         public Goods getType() {
-            return type; 
+            return type;
         }
-    
+
 }
 }

@@ -184,9 +184,8 @@ public class LoadSave{
         }
         return items;
     }
-    
+
     public void setInventory(int[] n){
         this.inventory = n;
     }
 }
-    
