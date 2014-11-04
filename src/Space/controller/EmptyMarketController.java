@@ -2,32 +2,15 @@ package Space.controller;
 
 import Space.MainApp;
 import Space.POJO.Good;
-import Space.POJO.Good.Goods;
 import Space.POJO.Inventory;
 import Space.POJO.MarketItem;
 import Space.POJO.Planet;
-import Space.POJO.Planet.GoodTracker;
 import Space.POJO.PriceModel;
-import java.awt.BorderLayout;
-import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.TimerTask;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.animation.KeyFrame;
-import javafx.animation.PauseTransition;
-import javafx.animation.SequentialTransition;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
+import java.util.Timer;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SplitPane;
@@ -38,164 +21,166 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.util.Duration;
-import java.util.Timer;
+import javafx.scene.text.Text;
 /**
  *
  * @author Keanu
  */
-public class EmptyMarketController {
-    
-    @FXML //fx:id="protag"
-    ImageView protag; 
-    
+public class EmptyMarketController extends playerAreaController{
+
     @FXML //fx:id="shop"
     ImageView shop;
-    
+
     @FXML //fx:id="shopWindow"
     SplitPane shopWindow;
-    
+
     @FXML //fx:id="shopWindowAnchor"
     AnchorPane shopWindowAnchor;
-    
+
     @FXML //fx:id="shopWindowAnchor2"
     AnchorPane shopWindowAnchor2;
-   
+
     @FXML //fx:id="shopLabel1"
     Label shopLabel1;
-    
+
     @FXML //fx:id="shopLabel2"
     Label shopLabel2;
-    
+
     @FXML //fx:id="shopLabel3"
     Label shopLabel3;
-    
+
     @FXML //fx:id="shopLabel4"
     Label shopLabel4;
-    
+
     @FXML //fx:id="shopLabel5"
     Label shopLabel5;
-    
+
     @FXML //fx:id="shopLabel6"
     Label shopLabel6;
-    
+
     @FXML //fx:id="priceLabel1"
     Label priceLabel1;
-    
+
     @FXML //fx:id="priceLabel2"
     Label priceLabel2;
-    
+
     @FXML //fx:id="priceLabel3"
     Label priceLabel3;
 
     @FXML //fx:id="priceLabel4"
     Label priceLabel4;
-    
+
     @FXML //fx:id="priceLabel5"
     Label priceLabel5;
 
     @FXML //fx:id="priceLabel6"
     Label priceLabel6;
-    
+
     @FXML //fx:id="inventory"
-    ScrollPane inventory; 
-    
+    ScrollPane inventory;
+
     @FXML //fx:id="inventory1"
-    AnchorPane inventory1; 
-    
+    AnchorPane inventory1;
+
     @FXML //fx:id="buyWindowTitleLabel"
     Label buyWindowTitleLabel;
-    
+
     @FXML //fx:id="buyWindowQuantityLabel"
     Label buyWindowQuantityLabel;
-    
+
     @FXML //fx:id="buyWindowPriceLabel"
-    Label buyWindowPriceLabel; 
-    
+    Label buyWindowPriceLabel;
+
     @FXML //fx:id="sellWindowTitleLabel"
     Label sellWindowTitleLabel;
-    
+
     @FXML //fx:id="sellWindowQuantityLabel"
     Label sellWindowQuantityLabel;
-    
+
     @FXML //fx:id="sellWindowPriceLabel"
-    Label sellWindowPriceLabel; 
-    
+    Label sellWindowPriceLabel;
+
     @FXML //fx:id="creditsAmount"
     Label creditsAmount;
-    
+
     @FXML //fx:id="PInv1"
     Label PInv1;
-    
+
     @FXML //fx:id="PInv2"
     Label PInv2;
-    
+
     @FXML //fx:id="PInv3"
     Label PInv3;
-    
+
     @FXML //fx:id="PInv4"
     Label PInv4;
-    
+
     @FXML //fx:id="PInv5"
     Label PInv5;
-    
+
     @FXML //fx:id="PInv6"
     Label PInv6;
-    
+
     @FXML //fx:id="PInv7"
     Label PInv7;
-    
+
     @FXML //fx:id="PInv8"
     Label PInv8;
-    
+
     @FXML //fx:id="PInv9"
     Label PInv9;
-    
+
     @FXML //fx:id="PInv10"
     Label PInv10;
 
     @FXML //fx:id="PQInv1"
     Label PQInv1;
-    
+
     @FXML //fx:id="PQInv2"
     Label PQInv2;
-    
+
     @FXML //fx:id="PQInv3"
     Label PQInv3;
-    
+
     @FXML //fx:id="PQInv4"
     Label PQInv4;
-    
+
     @FXML //fx:id="PQInv5"
     Label PQInv5;
-    
+
     @FXML //fx:id="PQInv6"
     Label PQInv6;
-    
+
     @FXML //fx:id="PQInv7"
     Label PQInv7;
-    
+
     @FXML //fx:id="PQInv8"
     Label PQInv8;
-    
+
     @FXML //fx:id="PQInv9"
     Label PQInv9;
-    
+
     @FXML //fx:id="PQInv10"
     Label PQInv10;
-    
+
     @FXML //fx:id="creditsLabel"
     Label creditsLabel;
-    
+
     @FXML //fx:id="buyWindow"
     AnchorPane buyWindow;
-    
+
     @FXML //fx:id="sellWindow"
     AnchorPane sellWindow;
+
+    @FXML //fx:id="denialWindow"
+    AnchorPane denialWindow;
+    
+    @FXML //fx:id="denialText"
+    Text denialText; 
     
     @FXML //fx:id="messageWindow"
     AnchorPane messageWindow;
-    
+
     int quantity = 1;
     int price1;
     int price2;
@@ -224,37 +209,20 @@ public class EmptyMarketController {
     Planet.GoodTracker[] goods;
     Planet.GoodTracker[] playerGoods;
     Timer timer;
-    @FXML //fx:id="back"
-    AnchorPane back;
-    
-    Boolean isJumping = false;
-    
-    @FXML //fx:id="protagL"
-    ImageView protagL;
-    
-    @FXML //fx:id="protagR"
-    ImageView protagR;
     
     @FXML //fx:id="shopContainer"
     AnchorPane shopContainer;
-    
-    @FXML //fx:id="spacePortal"
-    ImageView spacePortal;
-    
-    Scene myScene;
-    
-    public void init(String planetName) {
+      @Override
+    public void init() {
+        super.init();
         //Getting planet goods & starting the view
-        Planet p = RootLayoutController.getUniverse().getFromName(planetName);
+        Planet p = RootLayoutController.getPlanet();
         pInventory = RootLayoutController.getInventory();
         playerGoods = p.getPlayerGT();
         planetModel = new PriceModel(p);
         RootLayoutController.setPlanetLocation(p);
-        BorderPane root = MainApp.getRootLayout(); 
-        myScene = root.getScene();
         goods = RootLayoutController.getPlanet().getGT();
-        planetGoodsList = RootLayoutController.getPlanet().getGoodsList();
-        timer = new Timer(); 
+        planetGoodsList = RootLayoutController.getPlanet().getGoodsList(); 
         
         //make shop labels
         Label[] quantityLabels = {PQInv1,PQInv2,PQInv3,PQInv4,PQInv5,PQInv6,PQInv7,PQInv8,PQInv9,PQInv10};
@@ -296,34 +264,6 @@ public class EmptyMarketController {
         // Key event handling
         myScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
-                
-                if (ke.getCode().equals(KeyCode.RIGHT)) {
-                    protag.setImage(protagR.getImage());
-                    protag.setLayoutX(protag.getLayoutX() + 8);
-                }
-                
-                if (ke.getCode().equals(KeyCode.LEFT)) {
-                    protag.setImage(protagL.getImage());
-                    protag.setLayoutX(protag.getLayoutX() - 8);
-                }
-                
-                if (ke.getCode().equals(KeyCode.UP)) {
-                    if (isJumping == false) {
-                        protag.setLayoutY(protag.getLayoutY() - 50);
-                        isJumping = true;
-                    
-                        timer.schedule(new TimerTask() {
-                            public void run() {
-                                Platform.runLater(new Runnable() {
-                                    public void run() {
-                                        protag.setLayoutY(protag.getLayoutY() + 50);
-                                        isJumping = false;
-                                    }
-                                });
-                            }
-                        }, 750);}
-                    }
-                
                if (ke.getCode().equals(KeyCode.SPACE) && Math.abs(shop.getLayoutX() - protag.getLayoutX()) < 80) {
                     shopWindowAnchor.setVisible(true);
                     shopWindowAnchor2.setVisible(true);
@@ -372,6 +312,7 @@ public class EmptyMarketController {
     }
     
      public void buy1() {
+        denialWindow.setVisible(false);
         messageWindow.setVisible(false);
         sellWindow.setVisible(false);
         buyWindow.setVisible(true);
@@ -384,6 +325,7 @@ public class EmptyMarketController {
     }
     
     public void buy2() {
+        denialWindow.setVisible(false);
         messageWindow.setVisible(false);
         sellWindow.setVisible(false);
         buyWindow.setVisible(true);
@@ -395,6 +337,7 @@ public class EmptyMarketController {
 
     }
     public void buy3() {
+        denialWindow.setVisible(false);
         messageWindow.setVisible(false);
         sellWindow.setVisible(false);
         buyWindow.setVisible(true);
@@ -406,6 +349,7 @@ public class EmptyMarketController {
 
     }
     public void buy4() {
+        denialWindow.setVisible(false);
         messageWindow.setVisible(false);
         sellWindow.setVisible(false);
         buyWindow.setVisible(true);
@@ -419,15 +363,25 @@ public class EmptyMarketController {
     
     public void buyButton() {
         buyablePrice = preMultiplier * quantity;
-        if(RootLayoutController.getCredits() >= buyablePrice) {
-            pInventory.store(buyable,quantity);
-            quantity = 1;
-            RootLayoutController.setCredits(RootLayoutController.getCredits() - buyablePrice);
-            creditsLabel.setText(Integer.toString(RootLayoutController.getCredits()));
-            updatePInv();
-            buyWindowQuantityLabel.setText(Integer.toString(quantity));
-            buyWindowPriceLabel.setText(Integer.toString(preMultiplier * quantity));    
-
+        if (RootLayoutController.getCredits() >= buyablePrice) {
+            if (RootLayoutController.getShip().getMaxCapacity() >= quantity + pInventory.totalItemCount(buyable)) {
+                denialWindow.setVisible(false);
+                pInventory.store(buyable,quantity);
+                quantity = 1;
+                RootLayoutController.setCredits(RootLayoutController.getCredits() - buyablePrice);
+                creditsLabel.setText(Integer.toString(RootLayoutController.getCredits()));
+                updatePInv();
+                buyWindowQuantityLabel.setText(Integer.toString(quantity));
+                buyWindowPriceLabel.setText(Integer.toString(preMultiplier * quantity));
+                denialWindow.setVisible(true);
+                denialText.setText("Transaction Successful!");
+            } else {
+            denialWindow.setVisible(true);
+            denialText.setText("You don't have enough space! Sorry!");
+            }
+        } else {
+            denialWindow.setVisible(true);
+            denialText.setText("It seems you don't have enough money.... Sorry!");
         }
     }    
     //This is what happens when the user presses the exit label
@@ -439,6 +393,7 @@ public class EmptyMarketController {
         buyWindow.setVisible(false);
         sellWindow.setVisible(false);
         messageWindow.setVisible(false);
+        denialWindow.setVisible(false);
     }
         // Lowers the quantity of an item sold or bought
         public void quatDown(){
@@ -462,6 +417,7 @@ public class EmptyMarketController {
         }
         // Each produes a sell window with labels for each respective good
         public void sell1() {
+        denialWindow.setVisible(false);
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
@@ -481,6 +437,7 @@ public class EmptyMarketController {
     }
    
         public void sell2() {
+        denialWindow.setVisible(false);
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
@@ -500,6 +457,7 @@ public class EmptyMarketController {
     }
      
         public void sell3() {
+        denialWindow.setVisible(false);
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
@@ -519,6 +477,7 @@ public class EmptyMarketController {
     }
      
         public void sell4() {
+        denialWindow.setVisible(false);
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
@@ -538,6 +497,7 @@ public class EmptyMarketController {
     }
         
         public void sell5() {
+        denialWindow.setVisible(false);
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
@@ -557,6 +517,7 @@ public class EmptyMarketController {
     }
     
         public void sell6() {
+        denialWindow.setVisible(false);
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
@@ -576,6 +537,7 @@ public class EmptyMarketController {
     }
         
         public void sell7() {
+        denialWindow.setVisible(false);
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
@@ -595,6 +557,7 @@ public class EmptyMarketController {
     }
      
         public void sell8() {
+        denialWindow.setVisible(false);
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
@@ -614,6 +577,7 @@ public class EmptyMarketController {
     }
         
         public void sell9() {
+        denialWindow.setVisible(false);
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
@@ -633,6 +597,7 @@ public class EmptyMarketController {
     }
         
         public void sell10() {
+        denialWindow.setVisible(false);
         messageWindow.setVisible(false);
         sellWindow.setVisible(true);
         buyWindow.setVisible(false);
@@ -654,6 +619,7 @@ public class EmptyMarketController {
     // updates the inventory the windows
     public void sellButton() {
         if(pInventory.totalItemCount(sellable) >= quantity) {
+            denialWindow.setVisible(false);
             sellablePrice = preMultiplier * quantity;
             pInventory.remove(sellable,quantity);
             quantity = 1;
@@ -662,6 +628,11 @@ public class EmptyMarketController {
             updatePInv();
             sellWindowPriceLabel.setText(Integer.toString(preMultiplier * quantity)); 
             sellWindowQuantityLabel.setText(Integer.toString(quantity));
+            denialWindow.setVisible(true);
+            denialText.setText("Transaction Successful!");
+        } else {
+            denialWindow.setVisible(true);
+            denialText.setText("You don't seem to have that many!");
         }
     }
     

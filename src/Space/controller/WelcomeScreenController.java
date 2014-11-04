@@ -52,6 +52,21 @@ public class WelcomeScreenController implements Initializable {
 	    } 
 	}
     
+    public void load() {
+        RootLayoutController.load();
+            String name = RootLayoutController.getPlanet().getName();
+            System.out.println(name);
+                try {
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(MainApp.class.getResource("view/" + name + "Shipyard.FXML"));
+                    Pane characterCreation = (Pane) loader.load();
+                    BorderPane rootLayout = MainApp.getRootLayout(); 
+                    rootLayout.setCenter(characterCreation);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+    }
     
     /**
      * Initializes the controller class.

@@ -7,6 +7,7 @@
 package Space.controller;
 
 import Space.MainApp;
+import Space.POJO.Planet;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,6 +57,9 @@ public class RushGalaxyController implements Initializable {
     
     @FXML //fx:id="fuelRem"
     Label fuelRem;
+    
+    Planet prevPlanet;
+    Planet toPlanet;
     /**
      * Initializes the controller class.
      */
@@ -63,6 +67,8 @@ public class RushGalaxyController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         fuelRem.setText(Integer.toString(RootLayoutController.getFuel()));
         RootLayoutController.changeSong("src/Space/Music/planetSelection.wav");
+        prevPlanet = RootLayoutController.getPlanet();
+        
         if (RootLayoutController.getPlanet().getName().equals("Aurum")) {
             zonessArrow.setVisible(false);
             aurumArrow.setVisible(true);
@@ -115,9 +121,10 @@ public class RushGalaxyController implements Initializable {
         } else if (RootLayoutController.getFuel() > 130) {
             try {
 	        // Load person overview. 
+                RootLayoutController.setToPlanet(RootLayoutController.getUniverse().getFromName("Aurum"));
                 RootLayoutController.setOrientation(0);
 	        FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(MainApp.class.getResource("view/AurumShipyard.fxml"));
+	        loader.setLocation(MainApp.class.getResource("view/FlyingMission.fxml"));
                 Pane characterCreation = (Pane) loader.load();
                 BorderPane rootLayout = MainApp.getRootLayout(); 
                 rootLayout.setCenter(characterCreation);
@@ -136,7 +143,8 @@ public class RushGalaxyController implements Initializable {
             try {
 	        // Load person overview. 
 	        FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(MainApp.class.getResource("view/ZonessMarket.fxml"));
+                RootLayoutController.setOrientation(0);
+	        loader.setLocation(MainApp.class.getResource("view/ZonessShipyard.fxml"));
                 Pane characterCreation = (Pane) loader.load();
                 BorderPane rootLayout = MainApp.getRootLayout(); 
                 rootLayout.setCenter(characterCreation);
@@ -148,7 +156,9 @@ public class RushGalaxyController implements Initializable {
             try {
 	        // Load person overview. 
 	        FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(MainApp.class.getResource("view/ZonessMarket.fxml"));
+                RootLayoutController.setOrientation(0);
+                RootLayoutController.setToPlanet(RootLayoutController.getUniverse().getFromName("Zoness"));
+	        loader.setLocation(MainApp.class.getResource("view/FlyingMission.fxml"));
                 Pane characterCreation = (Pane) loader.load();
                 BorderPane rootLayout = MainApp.getRootLayout(); 
                 rootLayout.setCenter(characterCreation);

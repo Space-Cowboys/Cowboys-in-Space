@@ -6,9 +6,22 @@
 
 package Space.controller;
 
+import Space.MainApp;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.TimerTask;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
 /**
  * FXML Controller class
@@ -23,6 +36,91 @@ public class ZonessMarketController extends EmptyMarketController implements Ini
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        init("Zoness");
+        super.init();
+       myScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            public void handle(KeyEvent ke) {
+                if (ke.getCode().equals(KeyCode.RIGHT)) {
+                    protag.setImage(new Image(MainApp.class.getResource("view/art/YuRight.png").toExternalForm()));
+                    protag.setLayoutX(protag.getLayoutX() + 8);
+                    if (protag.getLayoutX() > 500
+                        && protag.getLayoutX() < 1300) {
+                        back.setTranslateX(back.getTranslateX() - 8);
+                    }
+                }
+                if (ke.getCode().equals(KeyCode.LEFT)) {
+                    protag.setImage(new Image(MainApp.class.getResource("view/art/YuLeft.png").toExternalForm()));
+                    protag.setLayoutX(protag.getLayoutX() - 8);
+                    if(protag.getLayoutX() > 500
+                        && protag.getLayoutX() < 1300) {
+                        back.setTranslateX(back.getTranslateX() + 8);
+                    }
+                }
+                if (ke.getCode().equals(KeyCode.UP)) {
+                    if (isJumping == false) {
+                        protag.setLayoutY(protag.getLayoutY() - 50);
+                        isJumping = true;
+                        timer.schedule(new TimerTask() {
+                            public void run() {
+                                Platform.runLater(new Runnable() {
+                                    public void run() {
+                                        protag.setLayoutY(
+                                            protag.getLayoutY() + 50);
+                                        isJumping = false;
+                                    }
+                                });
+                            }
+                        }, 750);
+                    }
+               }
+               if (ke.getCode().equals(KeyCode.SPACE) && Math.abs(
+                       shop.getLayoutX() - protag.getLayoutX()) < 80) {
+                    shopWindowAnchor.setVisible(true);
+                    shopWindowAnchor2.setVisible(true);
+                    inventory.setVisible(true);
+                    inventory1.setVisible(true);
+                    messageWindow.setVisible(true);
+                    sellWindow.setVisible(false);
+                    buyWindow.setVisible(false);
+                    denialWindow.setVisible(false);
+                    shopContainer.setVisible(true);
+                }
+                if (ke.getCode().equals(KeyCode.SPACE) && Math.abs(
+                    spacePortal.getLayoutX() - protag.getLayoutX()) < 80) {
+                   try {
+                    // Load person overview.
+                    RootLayoutController.setOrientation(1);
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(MainApp.class.getResource(
+                        "view/ZonessShipyard.fxml"));
+                    Pane characterCreation = (Pane) loader.load();
+                    BorderPane rootLayout = MainApp.getRootLayout();
+                    rootLayout.setCenter(characterCreation);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (ke.getCode().equals(KeyCode.ENTER)) {
+                    try {
+                        // Load person overview.
+                        RootLayoutController.setLocation(
+                            "view/ZonessMarket.fxml");
+                        FXMLLoader loader = new FXMLLoader();
+                        loader.setLocation(MainApp.class.getResource(
+                            "view/Inventory.fxml"));
+                        Pane characterCreation = (Pane) loader.load();
+                        BorderPane rootLayout = MainApp.getRootLayout();
+                        rootLayout.setCenter(characterCreation);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            private Object getResource(String viewartYuLeftjpg) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+
     }
 }

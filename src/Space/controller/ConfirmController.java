@@ -57,7 +57,7 @@ public class ConfirmController implements Initializable {
         try {
 	        // Load person overview. 
 	        FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(MainApp.class.getResource("view/ZonessMarket.fxml"));
+	        loader.setLocation(MainApp.class.getResource("view/ZonessShipyard.fxml"));
                 Pane characterCreation = (Pane) loader.load();
                 BorderPane rootLayout = MainApp.getRootLayout(); 
                 rootLayout.setCenter(characterCreation);
