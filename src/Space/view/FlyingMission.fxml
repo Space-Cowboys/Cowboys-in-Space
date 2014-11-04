@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
@@ -9,21 +10,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="back" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.MissionController">
+<AnchorPane id="AnchorPane" fx:id="back" prefHeight="750.0" prefWidth="1366.0" scaleShape="false" style="-fx-background-image: url(/Space/view/Art/starField1.jpg); -fx-background-size: 100%  2000;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.MissionController">
    <children>
-      <ImageView fx:id="spaceShip" fitHeight="313.0" fitWidth="265.0" layoutX="628.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="laser" fitHeight="132.0" fitWidth="75.0" layoutX="691.0" layoutY="381.0" visible="false">
          <image>
-            <Image url="@Art/testShip.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="laser" fitHeight="75.0" fitWidth="7.0" layoutX="721.0" layoutY="319.0" visible="false">
-         <image>
-            <Image url="@Art/UntitledaserTest.png" />
+            <Image url="@Art/PlayerShipLaser.png" />
          </image>
       </ImageView>
       <ImageView fx:id="enemyShip" fitHeight="200.0" fitWidth="200.0" layoutX="500.0" visible="false">
          <image>
-            <Image url="@Art/enemyShipTest.png" />
+            <Image url="@Art/EnemyShip.png" />
          </image>
       </ImageView>
       <Text fill="LIME" layoutX="21.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score:">
@@ -36,5 +32,55 @@
             <Font size="28.0" />
          </font>
       </Label>
+      <ImageView fx:id="pirateShip" fitHeight="270.0" fitWidth="400.0" layoutX="529.0" layoutY="26.0" visible="false">
+         <image>
+            <Image url="@Art/PirateShip.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="pirateLaser" fitHeight="296.0" fitWidth="335.0" layoutX="561.0" layoutY="161.0" visible="false">
+         <image>
+            <Image url="@Art/PirateShipLaser.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="explosion1" fitHeight="200.0" fitWidth="200.0" layoutX="373.0" layoutY="34.0" visible="false">
+         <image>
+            <Image url="@Art/Explosion.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="explosion2" fitHeight="200.0" fitWidth="200.0" layoutX="573.0" layoutY="78.0" visible="false">
+         <image>
+            <Image url="@Art/Explosion.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="spaceShip" fitHeight="200.0" fitWidth="200.0" layoutX="676.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Art/PlayerShip2.gif" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="energyBar" layoutX="150.0" layoutY="686.0" prefHeight="29.0" prefWidth="335.0" progress="0.0" style="-fx-accent: blue;" />
+      <Text fill="LIME" layoutX="58.0" layoutY="705.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Energy">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <ProgressBar fx:id="healthBar" layoutX="150.0" layoutY="639.0" prefHeight="29.0" prefWidth="335.0" progress="0.0" style="-fx-accent: red;" />
+      <Text fill="LIME" layoutX="52.0" layoutY="659.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hull Strength">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="shield" fitHeight="200.0" fitWidth="200.0" layoutX="103.0" layoutY="134.0" visible="false">
+         <image>
+            <Image url="@Art/Shield1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="laserCannon" fitHeight="1138.0" fitWidth="106.0" layoutX="676.0" layoutY="-122.0" rotate="-60.0" scaleY="2.0" visible="false">
+         <image>
+            <Image url="@Art/Cannon1.gif" />
+         </image>
+         <rotationAxis>
+            <Point3D x="1.0" z="1.0" />
+         </rotationAxis>
+      </ImageView>
    </children>
 </AnchorPane>

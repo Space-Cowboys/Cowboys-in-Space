@@ -7,11 +7,8 @@ import Space.POJO.ConstantData.StarSystem;
 import Space.POJO.ConstantData.TechLevel;
 import Space.POJO.Good.Value;
 
-/**
- *
- * @author Cameron
- */
-public class Universe {
+
+public class Universe{
 	
     private final Planet Zoness;
     private final Planet Aurum;
@@ -39,10 +36,8 @@ public class Universe {
     private final Planet Kanto;
     private final Planet Wisp;
     private final Planet Megami;
-    /**
-     *
-     */
-    public  Universe() {
+    
+    public  Universe() {       
         this.Zoness = new Planet("Zoness", Resource.LOTSOFWATER, TechLevel.RENAISSANCE, Government.COMMUNIST, Moon.UNUSED, 8, 5, 8, StarSystem.RUSH, 56, 111, new Value[]{Value.C, Value.N, Value.C, Value.S, Value.R, Value.R, Value.S, Value.N, Value.N, Value.N});        
         this.Aurum = new Planet("Aurum", Resource.MINERALPOOR, TechLevel.PREAGRICULTURE, Government.CYBERNETIC, Moon.UNUSED, 0, 3, 3, StarSystem.RUSH, 84, 129, new Value[] {Value.N, Value.S, Value.N, Value.S, Value.R, Value.N, Value.N, Value.C, Value.R, Value.C});        
         this.Ferox = new Planet("Ferox", Resource.DESERT, TechLevel.POSTINDUSTRIAL, Government.DEMOCRACY, Moon.NOMOON, 9, 4, 1, StarSystem.BASTILLE, 71, 182, new Value[] {Value.S, Value.N, Value.R, Value.C, Value.N, Value.C, Value.N, Value.R, Value.S, Value.N});        
@@ -70,11 +65,9 @@ public class Universe {
         this.Wisp = new Planet("Wisp", Resource.WARLIKE, TechLevel.MEDIEVAL, Government.DEMOCRACY, Moon.GOVSATELLITE, 3, 4, 1, StarSystem.PSY, 185, 11, new Value[] {Value.C, Value.N, Value.R, Value.N, Value.N, Value.C, Value.S, Value.S, Value.R, Value.N});
         this.Megami = new Planet("Megami", Resource.MINERALRICH, TechLevel.EARLYINDUSTRIAL, Government.SOCIALIST, Moon.GOVSATELLITE, 9, 0, 8, StarSystem.PSY, 31, 75, new Value[] {Value.C, Value.R, Value.N, Value.C, Value.R, Value.N, Value.N, Value.S, Value.N, Value.S});
     }
-    /**
-     *
-     * @return
-     */
-    public final Planet[] getPlanets() {
+    
+    
+    public Planet[] getPlanets(){
         Planet[] universe = new Planet[26];
         universe[0] = Zoness;
         universe[1] = Aurum;
@@ -104,27 +97,19 @@ public class Universe {
         universe[25] = Megami;
         return universe;
     }
-    /**
-     *
-     * @param name
-     * @return
-     */
-    public Planet getFromName(String name) {
-    	for (int i = 0; i < 26; i++) {
-    		if (name.equals(getPlanets()[i].getName())) {
+    
+    public Planet getFromName(String name){
+    	for (int i = 0; i < 26; i++){
+    		if (name.equals(getPlanets()[i].getName())){
     			return getPlanets()[i];
-                }
+    		}	
     	}
     	return null;
     }
-
+    
     private static final Universe u = new Universe();
-
-    /**
-     *
-     * @return
-     */
-    public static Universe getUniverse() {
+    
+    public static Universe getUniverse(){
         return u;
     }
 }

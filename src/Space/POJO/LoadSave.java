@@ -23,23 +23,7 @@ public class LoadSave{
     private String location;
     private int[] inventory;
     
-    public LoadSave(String name, int pilot, int engineer,
-            int charisma, int luck, int xp, int level, int credits, int rep,
-            int skillpoints, int fuel, String location, int[] inventory){
-        this.charName = name;
-        this.pilot = pilot;
-        this.engineering = engineer;
-        this.charisma = charisma;
-        this.luck = luck;
-        this.xp = xp;
-        this.level = level;
-        this.credits = credits;
-        this.rep = rep;
-        this.skillPoints = skillpoints;
-        this.fuel = fuel;
-        this.location = location;
-        this.inventory = inventory;
-    }
+    public LoadSave() {}
     public void save(String filename) throws IOException{
         File savefile = new File(filename);
         try (FileWriter saver = new FileWriter(savefile, false)) {
@@ -61,14 +45,14 @@ public class LoadSave{
     
     private String invToString(){
         String str = new String();
-        for (int i: inventory){
+        for (int i = 0; i < inventory.length; i++){
             str += inventory[i];
             str += "\n";
         }
         return str;
     }
     
-    public ArrayList<String> load(String f) throws FileNotFoundException, IOException{
+    public ArrayList<String> load(String f) throws FileNotFoundException, IOException {
         ArrayList<String> lines = new ArrayList<>();
         File file = new File(f);
         try (FileReader fileReader = new FileReader(file)) {
@@ -77,6 +61,9 @@ public class LoadSave{
             while ((line = bufferedReader.readLine()) != null) {
                 lines.add(line);
             }
+        } catch(Exception e) {
+            System.out.println("rawr");
+            System.out.println(e.getCause());
         }
         return lines;
     }
@@ -162,7 +149,7 @@ public class LoadSave{
     }
     
     public int getFuel(String path) throws IOException{
-        return Integer.parseInt(this.load(path).get(10));
+        return Integer.parseInt(this.load(path).get(11));
     }
     
     public void setFuel(int n){
@@ -180,7 +167,7 @@ public class LoadSave{
     public int[] getInventory(String path) throws IOException{
         int[] items = new int[10];
         for (int i = 0; i < 10; i++){
-            items[i] = Integer.parseInt(this.load(path).get(i+11));
+            items[i] = Integer.parseInt(this.load(path).get(i+12));
         }
         return items;
     }

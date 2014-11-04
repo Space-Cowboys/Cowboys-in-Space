@@ -1,11 +1,582 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.InventoryController">
-    
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.InventoryController">
+   <children>
+      <AnchorPane prefHeight="750.0" prefWidth="200.0" style="-fx-background-color: black;">
+         <children>
+            <VBox alignment="TOP_CENTER" layoutX="39.0" layoutY="30.0" spacing="40.0">
+               <children>
+                  <Text fx:id="status" fill="WHITE" layoutX="66.0" layoutY="41.0" onMouseClicked="#showStatus" strokeType="OUTSIDE" strokeWidth="0.0" text="Status">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="inventory" fill="WHITE" layoutX="48.0" layoutY="107.0" onMouseClicked="#showInventory" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="skills" fill="#f8f8f8" layoutX="72.0" layoutY="176.0" onMouseClicked="#showSkills" strokeType="OUTSIDE" strokeWidth="0.0" text="Skills">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="showShip" fill="WHITE" onMouseClicked="#showShip" strokeType="OUTSIDE" strokeWidth="0.0" text="Ship Status">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="saveGame" fill="WHITE" layoutX="44.0" layoutY="229.0" onMouseClicked="#showSave" strokeType="OUTSIDE" strokeWidth="0.0" text="Save Game">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="89.0" layoutY="298.0" onMouseClicked="#exit" strokeType="OUTSIDE" strokeWidth="0.0" text="Exit">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="statusPane" layoutX="192.0" prefHeight="750.0" prefWidth="1168.0">
+         <children>
+            <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="203.0" layoutY="175.0">
+               <image>
+                  <Image url="@Art/YuLeft.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="creditsLabel" layoutX="463.0" layoutY="576.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Text layoutX="290.0" layoutY="599.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <VBox layoutX="596.0" layoutY="282.0" spacing="30.0">
+               <children>
+                  <Text layoutX="797.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pil">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="798.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Eng">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="798.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cha">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="798.0" layoutY="457.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Luk">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <Label fx:id="nameLabel" layoutX="344.0" layoutY="29.0" text="Label">
+               <font>
+                  <Font size="38.0" />
+               </font>
+            </Label>
+            <Text layoutX="232.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Health">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <ProgressBar fx:id="healthBar" layoutX="310.0" layoutY="167.0" prefWidth="200.0" progress="0.0" />
+            <Label fx:id="healthLabel" layoutX="538.0" layoutY="166.0" text="Label" />
+            <Text layoutX="673.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Label fx:id="levelLabel" layoutX="752.0" layoutY="213.0" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <VBox layoutX="665.0" layoutY="292.0" spacing="33.0">
+               <children>
+                  <Label fx:id="pilSkill" layoutX="1010.0" layoutY="282.0" text="Label">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="engSkill" layoutX="1010.0" layoutY="339.0" text="Label">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="chaSkill" layoutX="1010.0" layoutY="394.0" text="Label">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lukSkill" layoutX="1010.0" layoutY="451.0" text="Label">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <ProgressBar fx:id="pilBar" layoutX="736.0" layoutY="292.0" prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="engBar" layoutX="736.0" layoutY="357.0" prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="chaBar" layoutX="736.0" layoutY="418.0" prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="lukBar" layoutX="736.0" layoutY="471.0" prefWidth="200.0" progress="0.0" />
+            <Text layoutX="290.0" layoutY="666.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuel(in gallons):">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Label fx:id="fuelLabel" layoutX="463.0" layoutY="649.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="inventoryPane" layoutX="192.0" prefHeight="750.0" prefWidth="1168.0" visible="false">
+         <children>
+            <GridPane alignment="CENTER" layoutX="116.0" layoutY="95.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="79.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="154.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.0" minWidth="0.0" prefWidth="17.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="12.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="5.0" prefHeight="5.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Water" textAlignment="CENTER" wrappingWidth="127.35546875">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="waterLabel" text="Label" GridPane.columnIndex="2">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="1">
+                     <image>
+                        <Image url="@Art/water.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Food" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@Art/utensil.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="foodLabel" alignment="CENTER" contentDisplay="CENTER" style="-fx-alignment: center;" text="Label" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fur" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="furLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <image>
+                        <Image url="@Art/fur.png" />
+                     </image>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ore" GridPane.rowIndex="9">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="oreLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="9">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                     <image>
+                        <Image url="@Art/ore.png" />
+                     </image>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Games" GridPane.rowIndex="13">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="gamesLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="13">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                     <image>
+                        <Image url="@Art/games.jpeg" />
+                     </image>
+                  </ImageView>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="CROSSHAIR" />
+               </cursor>
+            </GridPane>
+            <GridPane alignment="CENTER" layoutX="576.0" layoutY="95.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Medicine" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="medicineLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@Art/Medicine.png" />
+                     </image>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Firearms">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="firearmsLabel" text="Label" GridPane.columnIndex="2">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="1">
+                     <image>
+                        <Image url="@Art/firearms.png" />
+                     </image>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Machines" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="machinesLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <image>
+                        <Image url="@Art/machine.png" />
+                     </image>
+                  </ImageView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Narcotics" GridPane.rowIndex="9">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="narcoticsLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="9">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Label>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Robots" GridPane.rowIndex="13">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                     <image>
+                        <Image url="@Art/narcotics.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="robotsLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="13">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                     <image>
+                        <Image url="@Art/robot.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.0" minWidth="10.0" prefWidth="204.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="126.0" minWidth="10.0" prefWidth="95.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="123.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.0" minWidth="0.0" prefWidth="30.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="93.0" minWidth="10.0" prefWidth="41.0" />
+               </columnConstraints>
+               <cursor>
+                  <Cursor fx:constant="CROSSHAIR" />
+               </cursor>
+               <rowConstraints>
+                  <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="26.0" minHeight="0.0" prefHeight="23.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="37.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="10.0" prefHeight="12.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="25.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="55.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="skillPane" layoutX="200.0" prefHeight="750.0" prefWidth="1174.0" visible="false">
+         <children>
+            <Text layoutX="221.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pilot">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="221.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Engineering">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="221.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Charisma">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="221.0" layoutY="549.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Luck">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="108.0" layoutY="642.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Skill Points Remaining">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Button fx:id="accept" layoutX="411.0" layoutY="693.0" mnemonicParsing="false" text="Accept" />
+            <Button fx:id="pilBarQautDown" layoutX="412.0" layoutY="199.0" mnemonicParsing="false" text="&lt;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="engBarQautDown" layoutX="412.0" layoutY="314.0" mnemonicParsing="false" text="&lt;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="chaBarQautDown" layoutX="412.0" layoutY="417.0" mnemonicParsing="false" text="&lt;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="lukBarQautDown" layoutX="412.0" layoutY="525.0" mnemonicParsing="false" text="&lt;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <ProgressBar fx:id="pilBar2" layoutX="479.0" layoutY="197.0" prefHeight="35.0" prefWidth="283.0" progress="0.0" />
+            <ProgressBar fx:id="engBar2" layoutX="479.0" layoutY="312.0" prefHeight="35.0" prefWidth="283.0" progress="0.0" />
+            <ProgressBar fx:id="chaBar2" layoutX="479.0" layoutY="415.0" prefHeight="35.0" prefWidth="283.0" progress="0.0" />
+            <ProgressBar fx:id="lukBar2" layoutX="479.0" layoutY="523.0" prefHeight="35.0" prefWidth="283.0" progress="0.0" />
+            <Button fx:id="pilBarQautUp" layoutX="799.0" layoutY="197.0" mnemonicParsing="false" text="&gt;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="engBarQautUp" layoutX="799.0" layoutY="313.0" mnemonicParsing="false" text="&gt;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="chaBarQautUp" layoutX="799.0" layoutY="417.0" mnemonicParsing="false" text="&gt;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="lukBarQautUp" layoutX="799.0" layoutY="525.0" mnemonicParsing="false" text="&gt;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="pilLabel2" layoutX="921.0" layoutY="204.0" text="Label">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lukLabel2" layoutX="924.0" layoutY="530.0" text="Label">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="chaLabel2" layoutX="921.0" layoutY="422.0" text="Label">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="engLabel2" layoutX="924.0" layoutY="318.0" text="Label">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="pointsRemaining" layoutX="366.0" layoutY="625.0" text="Label">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="savePane" layoutX="200.0" layoutY="-3.0" prefHeight="750.0" prefWidth="1174.0" visible="false">
+         <children>
+            <Text layoutX="156.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have succesfully saved the game!">
+               <font>
+                  <Font size="46.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="shipPane" layoutX="200.0" layoutY="4.0" prefHeight="750.0" prefWidth="1174.0" visible="false">
+         <children>
+            <ImageView fx:id="playerShip" fitHeight="400.0" fitWidth="400.0" layoutX="707.0" layoutY="148.0">
+               <image>
+                  <Image url="@Art/PlayerShip1Status.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="523.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Ship">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="841.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <VBox layoutX="147.0" layoutY="161.0" spacing="40.0">
+               <children>
+                  <Text layoutX="144.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cargo Capacity:">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="144.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ship Health:">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="144.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ship Energy:">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="144.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max Shield Level:">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="144.0" layoutY="467.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max Laser Level:">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="144.0" layoutY="564.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Shield Level:">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="144.0" layoutY="622.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Laser Level:">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <VBox layoutX="442.0" layoutY="159.0" spacing="37.0" />
+            <Button fx:id="currentShieldDown" layoutX="387.0" layoutY="494.0" mnemonicParsing="false" text="&lt;" />
+            <Button fx:id="currentLaserDown" layoutX="387.0" layoutY="565.0" mnemonicParsing="false" text="&lt;" />
+            <Button fx:id="currentShieldUp" layoutX="523.0" layoutY="494.0" mnemonicParsing="false" text="&gt;" />
+            <Button fx:id="currentLaserUp" layoutX="523.0" layoutY="565.0" mnemonicParsing="false" text="&gt;" />
+            <Label fx:id="shipHealthLabel" layoutX="621.0" layoutY="224.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ProgressBar fx:id="shipHealthBar" layoutX="400.0" layoutY="230.0" prefWidth="200.0" progress="0.0" />
+            <ProgressBar fx:id="shipEnergyBar" layoutX="400.0" layoutY="301.0" prefWidth="200.0" progress="0.0" />
+            <Label fx:id="cargoCap" layoutX="406.0" layoutY="159.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="shipEnergyLabel" layoutX="621.0" layoutY="295.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="maxShieldLevel" layoutX="403.0" layoutY="360.0" prefHeight="30.0" prefWidth="53.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="maxLaserLevel" layoutX="400.0" layoutY="424.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentShield" layoutX="442.0" layoutY="492.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentLaser" layoutX="442.0" layoutY="563.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="shipLevelLabel" layoutX="933.0" layoutY="159.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

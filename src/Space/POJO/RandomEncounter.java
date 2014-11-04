@@ -17,7 +17,7 @@ public class RandomEncounter {
         int occurPercent = Universe.getUniverse().getFromName(startPlanet).getPirates()
             + Universe.getUniverse().getFromName(endPlanet).getPirates();
         int randNum = (int)(rand.nextDouble()*100);
-        return occurPercent <= randNum;
+        return occurPercent >= randNum;
     }
 
     public boolean trader() {

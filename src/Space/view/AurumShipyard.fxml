@@ -10,7 +10,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-image: url(/Space/view/art/AurumShipyard.png); -fx-background-size: 100% 750;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.AurumShipyardController">
    <children>
-      <ImageView fx:id="fuelShop" fitHeight="200.0" fitWidth="140.0" layoutX="683.0" layoutY="461.0">
+      <ImageView fx:id="shipSeller" fitHeight="200.0" fitWidth="106.0" layoutX="860.0" layoutY="465.0">
+         <image>
+            <Image url="@Art/Conspiracy%20Keanu.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="fuelShop" fitHeight="200.0" fitWidth="140.0" layoutX="496.0" layoutY="465.0">
          <image>
             <Image url="@Art/Arson%20Amy.PNG" />
          </image>
@@ -112,5 +117,325 @@
             <Image url="@Art/Portal.gif" />
          </image>
       </ImageView>
+      <AnchorPane id="AnchorPane" fx:id="shipShop" layoutX="551.0" layoutY="22.0" prefHeight="270.0" prefWidth="600.0" visible="false">
+         <children>
+            <AnchorPane prefHeight="67.0" prefWidth="600.0" style="-fx-background-color: black; -fx-border-color: lime;">
+               <children>
+                  <Text fill="WHITE" layoutX="266.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ship Shop">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="275.0" layoutY="46.0" onMouseClicked="#exit" strokeType="OUTSIDE" strokeWidth="0.0" text="Exit Shop" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="selectWindow" layoutY="66.0" prefHeight="301.0" prefWidth="371.0" style="-fx-background-color: black; -fx-border-color: lime;">
+               <children>
+                  <VBox layoutX="14.0" layoutY="67.0" spacing="20.0">
+                     <children>
+                        <Text fill="WHITE" layoutX="22.0" layoutY="27.0" onMouseClicked="#shipLevel2Buy" strokeType="OUTSIDE" strokeWidth="0.0" text="Ship Level 2">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="22.0" layoutY="56.0" onMouseClicked="#shipLevel3Buy" strokeType="OUTSIDE" strokeWidth="0.0" text="Ship Level 3">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="22.0" layoutY="92.0" onMouseClicked="#shieldView" strokeType="OUTSIDE" strokeWidth="0.0" text="Shield Level 2">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="22.0" layoutY="123.0" onMouseClicked="#laserView" strokeType="OUTSIDE" strokeWidth="0.0" text="Laser Level 2">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="22.0" layoutY="166.0" onMouseClicked="#energyView" strokeType="OUTSIDE" strokeWidth="0.0" text="Energy Tanks">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" onMouseClicked="#showRepair" strokeType="OUTSIDE" strokeWidth="0.0" text="Repair Ship">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="267.0" layoutY="67.0" spacing="20.0">
+                     <children>
+                        <Text fill="WHITE" layoutX="271.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5000">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="267.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10000">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="271.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2500">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="271.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3000">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="276.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="50">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <Text fill="WHITE" layoutX="45.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="271.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="114.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Credits:" />
+                  <Label fx:id="creditsLabel2" layoutX="207.0" layoutY="14.0" text="Label" textFill="WHITE" />
+                  <Label fx:id="repairCost" layoutX="267.0" layoutY="261.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="messageWindow" layoutX="371.0" layoutY="67.0" prefHeight="301.0" prefWidth="229.0" style="-fx-background-color: black; -fx-border-color: lime;" visible="false">
+               <children>
+                  <Text fill="WHITE" layoutX="47.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select an item!">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="shipBuy" layoutX="371.0" layoutY="66.0" prefHeight="301.0" prefWidth="229.0" style="-fx-background-color: black; -fx-border-color: lime;">
+               <children>
+                  <VBox layoutX="21.0" layoutY="22.0" spacing="10.0">
+                     <children>
+                        <Text fill="WHITE" layoutX="30.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cargo Capacity:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="30.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hull Strength:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="30.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Energy Capacity:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Req. Pilot Level:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+                  <Text fill="WHITE" layoutX="44.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="buyShip2Button" layoutX="88.0" layoutY="254.0" mnemonicParsing="false" onAction="#buyShip2" text="Buy" visible="false" />
+                  <ImageView fx:id="playerShip" fitHeight="100.0" fitWidth="100.0" layoutX="62.0" layoutY="122.0">
+                     <image>
+                        <Image url="@Art/PlayerShip2Status.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="cargoLabel" layoutX="155.0" layoutY="22.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="hullLabel" layoutX="155.0" layoutY="56.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="energyLabel" layoutX="155.0" layoutY="84.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="pilotLabel" layoutX="155.0" layoutY="112.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="shipPriceLabel" layoutX="130.0" layoutY="221.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="buyShip3Button" layoutX="88.0" layoutY="254.0" mnemonicParsing="false" onAction="#buyShip3" text="Buy" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="shieldBuy" layoutX="371.0" layoutY="66.0" prefHeight="301.0" prefWidth="229.0" style="-fx-background-color: black; -fx-border-color: lime;" visible="false">
+               <children>
+                  <Text fill="WHITE" layoutX="69.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shield Level 2">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="24.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This shield system will allow your shield to use two energy tanks to produce a shield that can last for up to five seconds or take up to two hits!" textAlignment="CENTER" wrappingWidth="180.130859375">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="72.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What a deal!">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="46.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="96.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#buyShield" text="Buy" />
+                  <Label layoutX="132.0" layoutY="216.0" text="2500" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="laserBuy" layoutX="371.0" layoutY="66.0" prefHeight="301.0" prefWidth="229.0" style="-fx-background-color: black; -fx-border-color: lime;" visible="false">
+               <children>
+                  <Text fill="WHITE" layoutX="69.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Laser Level 2">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="24.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This new powerful Laser will take up two tanks of energy, but last up to five seconds of continus laser!" textAlignment="CENTER" wrappingWidth="180.130859375">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="72.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What a deal!">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="46.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="96.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#buyLaser" text="Buy" />
+                  <Label layoutX="132.0" layoutY="216.0" text="3000" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="energyTankScreen" layoutX="371.0" layoutY="66.0" prefHeight="301.0" prefWidth="229.0" style="-fx-background-color: black; -fx-border-color: lime;" visible="false">
+               <children>
+                  <Text fill="#f8f6f6" layoutX="71.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Energy Tanks">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="14.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Energy Tanks:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="14.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ship's Max Capacity:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="14.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="32.0" layoutY="184.0" mnemonicParsing="false" onMouseClicked="#quatDown" text="&lt;" />
+                  <Button layoutX="149.0" layoutY="184.0" mnemonicParsing="false" onMouseClicked="#quatUp" text="&gt;" />
+                  <Button layoutX="86.0" layoutY="223.0" mnemonicParsing="false" onMouseClicked="#buyEnergy" text="Buy" />
+                  <Button layoutX="68.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#setMax" text="set to max" />
+                  <Label fx:id="energyPrice" layoutX="126.0" layoutY="132.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="energyTanksQuantity" layoutX="87.0" layoutY="186.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="currentEnergy" layoutX="174.0" layoutY="44.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="maxEnergy" layoutX="174.0" layoutY="82.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="repairScreen" layoutX="371.0" layoutY="66.0" prefHeight="301.0" prefWidth="229.0" style="-fx-background-color: black; -fx-border-color: lime;" visible="false">
+               <children>
+                  <Text fill="WHITE" layoutX="20.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hull Srength:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="20.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Max Hull Strength:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#f2efef" layoutX="20.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cost to repair:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="80.0" layoutY="231.0" mnemonicParsing="false" onMouseClicked="#repairIt" text="Repair" />
+                  <Label fx:id="currentShipStrength" layoutX="158.0" layoutY="27.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="maxShipStrength" layoutX="155.0" layoutY="63.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="repairCost1" layoutX="158.0" layoutY="142.0" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="denialWindow" layoutX="922.0" layoutY="390.0" prefHeight="50.0" prefWidth="229.0" style="-fx-background-color: black; -fx-border-color: lime;" visible="false">
+         <children>
+            <Text fx:id="message" fill="WHITE" layoutX="14.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

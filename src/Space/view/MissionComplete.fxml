@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.MissionCompleteController">
+   <children>
+      <Text fill="WHITE" layoutX="502.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations!">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="464.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You made it through!">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="475.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your score:">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Label fx:id="scoreLabel" layoutX="699.0" layoutY="260.0" text="Label" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Text fill="WHITE" layoutX="483.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="For your performance, you got:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <HBox layoutX="517.0" layoutY="414.0" spacing="10.0">
+         <children>
+            <Label fx:id="fuelReward" layoutX="464.0" layoutY="415.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Text fill="WHITE" layoutX="574.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="gallons of fuel">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <Button layoutX="552.0" layoutY="569.0" mnemonicParsing="false" onAction="#onwards" text="Onwards!">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Text layoutX="575.0" layoutY="479.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <HBox layoutX="517.0" layoutY="451.0" spacing="10.0">
+         <children>
+            <Label fx:id="creditsReward" layoutX="464.0" layoutY="415.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Text fill="WHITE" layoutX="574.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="credits">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

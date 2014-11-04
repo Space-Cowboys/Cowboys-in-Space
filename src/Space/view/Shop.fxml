@@ -5,10 +5,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="637.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane fx:id="sellWindow" layoutX="403.0" prefHeight="324.0" prefWidth="234.0" style="-fx-background-color: black; -fx-border-color: green;">
+      <AnchorPane fx:id="sellWindow" layoutX="403.0" prefHeight="324.0" prefWidth="234.0" style="-fx-background-color: black; -fx-border-color: green;" visible="false">
          <children>
             <Text fill="WHITE" layoutX="62.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sale Window">
                <font>
@@ -53,7 +52,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="buyWindow" prefHeight="324.0" prefWidth="234.0" style="-fx-background-color: black; -fx-border-color: green;" visible="false">
+      <AnchorPane fx:id="buyWindow" layoutX="403.0" prefHeight="324.0" prefWidth="234.0" style="-fx-background-color: black; -fx-border-color: green;" visible="false">
          <children>
             <Text fill="WHITE" layoutX="62.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buy Window" textAlignment="CENTER">
                <font>
@@ -98,7 +97,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="messageWindow" prefHeight="324.0" prefWidth="234.0" style="-fx-background-color: black; -fx-border-color: green;" visible="false">
+      <AnchorPane fx:id="messageWindow" layoutX="403.0" prefHeight="324.0" prefWidth="234.0" style="-fx-background-color: black; -fx-border-color: green;">
          <children>
             <Text fill="WHITE" layoutX="26.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pleae select an item in the shop's inventory to buy it, or an item in your inventory to sell." textAlignment="CENTER" wrappingWidth="181.412109375">
                <font>
@@ -321,6 +320,15 @@
                   <Font size="18.0" />
                </font>
             </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="denialWindow" layoutX="215.0" layoutY="323.0" minHeight="0.0" minWidth="0.0" prefHeight="46.0" prefWidth="422.0" style="-fx-border-color: Green; -fx-background-color: black;">
+         <children>
+            <Text fx:id="denialText" fill="WHITE" layoutX="23.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="shopWindowAnchor" minHeight="0.0" minWidth="0.0" prefHeight="46.0" prefWidth="403.0" style="-fx-border-color: Green; -fx-background-color: black;">

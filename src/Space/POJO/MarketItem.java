@@ -11,11 +11,11 @@ package Space.POJO;
  * @author Cameron
  */
 public class MarketItem {
-    
+
     private final Object type;
     private int current;
     private final int maximum;
-    
+
     public MarketItem(Object typ, int cur, int max){
         this.type = typ;
         this.current = cur;

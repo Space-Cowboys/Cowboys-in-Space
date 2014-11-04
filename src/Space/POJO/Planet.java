@@ -166,7 +166,7 @@ public class Planet{
      *
      * @return
      */
-    public Goods[] getGoodsList() {
+    public static Goods[] getGoodsList() {
             Goods[] goodTypes = {WATER, FUR, FOOD, ORE, GAMES, FIREARMS, MEDICINE, MACHINES, NARCOTICS, ROBOTS};
             return goodTypes;
         }

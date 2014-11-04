@@ -5,6 +5,8 @@
  */
 package Space.POJO;
 
+import Space.POJO.Good.Goods;
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import org.omg.CORBA.DynAnyPackage.InvalidValue;
 
@@ -21,15 +23,10 @@ import org.omg.CORBA.DynAnyPackage.InvalidValue;
  * @version 1.0  Sept 29, 2014.
  */
 public class Inventory {
-	
-	/** Maximum Capacity of the Inventory; Can be extended */
-	private int maxCapacity;
 
-	/** The amount of stacks of items in the inventory */
-	private int occupation;
 
-	/** The array of MarketItems */
-	private MarketItem [] stash; //Goods
+        static MarketItem[] marketInventory; 
+        static int size = 0;
 
 	/** 
 	 * Creates new inventory.
@@ -40,20 +37,19 @@ public class Inventory {
 	 * 
 	 * @param maxCap the max capacity for the inventory
 	 **/
-	//public int getCapacity();
-	public Inventory(int maxCap) {
-		stash =  new MarketItem[maxCap];
-		maxCapacity = maxCap;
-		occupation = 0;
-	}
+        public Inventory() {
+            marketInventory = new MarketItem[11];
+        }
+//public int getCapacity();
 
         public int indexOf(MarketItem item) {
             int index = -1;
-            for(int i = 0; i <= occupation; i++) {
-                if(item.equals(stash[i])) {
+            for (int i=0; i< marketInventory.length; i++) {
+                if (item.equals(marketInventory[i])) {
                     index = i;
-		}
+                }
             }
+            
             return index;
         }
 	
@@ -64,13 +60,15 @@ public class Inventory {
 	 * @param item that needs to be added to the stash
 	 **/
 	public void store(MarketItem  item) {
-		if(hasSpace()) {
-			stash[occupation + 1] = item;
+                int num = indexOf(item);
+                if (num > -1) {
+                    MarketItem thing = new MarketItem(item.getType(),marketInventory[num].getAmount() + item.getAmount(),99);
+                    marketInventory[num] = thing;
+                }
+                else {
+                    marketInventory[size] = item; 
+                    size++;
 		}
-		/*if(!hasSpace()) {
-			throw new IndexOutOfBoundsException("There is not "
-                                + "space in Inventory");
-		}*/
 
 		/*int possibleIndex = getStore(item);
 		if(possibleIndex != 0) {
@@ -81,18 +79,16 @@ public class Inventory {
 			stash[getEmptySlot()] = item;
 			occupation++;
 		}*/
-                occupation++;
-
 	}
 
-	private int getEmptySlot() {
+	/*private int getEmptySlot() {
                 for (int i = 1; i < occupation+1; i++) {
                     if(stash[i] == null) {
                         return i;
                     }
 		}
 		return 0;
-        }
+        }*/
 	/** 
 	 * This store method is only used to create a MarketItem at the same
 	 * instance it is being stored
@@ -119,9 +115,13 @@ public class Inventory {
 	 * @return MarketItem removed which still holds the amount removed
 	 **/
 	public MarketItem remove(MarketItem  item, int amount) {
-            int index = indexOf(item);
-            stash[index].setAmount(totalItemCount(item) - amount);
-            return item;
+            if (isStored(item)) {
+                int index = indexOf(item);
+                MarketItem thing = new MarketItem(item.getType(),marketInventory[index].getAmount() - amount,99);
+                marketInventory[index] = thing;
+                return item;
+            }
+            return null;
 	}
 	/** 
 	 * Removes an item from the inventory. The method will not remove
@@ -190,7 +190,6 @@ public class Inventory {
 		}*/
                 
 
-		occupation--;
                 return item;
 	
 	}
@@ -203,16 +202,28 @@ public class Inventory {
 	 * @return amount of the item that exists in the inventory
 	 **/
 	//oest through entire inventory and counts the amount of a specific item
-	public int totalItemCount(MarketItem item) {
+	public static int totalItemCount(MarketItem item) {
 		int count = 0;
-		for(int i = 0; i <= occupation; i++) {
-			if(item.equals(stash[i])) {
-				count += stash[i].getAmount();
+		for(int i = 0; i <= size; i++) {
+			if(item.equals(marketInventory[i])) {
+				count = marketInventory[i].getAmount();
 			}
 		}
 		return count;
 	}
 
+        public static int[] quantityCount() {
+            int[] quantity = new int[10];
+            Goods[] planetGoods = Planet.getGoodsList();
+            MarketItem[] marketItemList = new MarketItem[10];
+            for(int i = 0; i < planetGoods.length;i++) {
+                marketItemList[i] = new MarketItem(planetGoods[i],0,99); 
+            }
+            for (int i = 0;i < quantity.length;i++) {
+                quantity[i] = totalItemCount(marketItemList[i]);
+            }
+            return quantity;
+        }
 	/** 
 	 * Used by the Add method to find empty space to add an item
 	 *
@@ -220,7 +231,7 @@ public class Inventory {
 	 * @param item to store
 	 * @return the index that the available space is
 	 **/
-	private int getStore(MarketItem item) { //gets next 
+	/*private int getStore(MarketItem item) { //gets next 
                                                 //availible space 
                                                 //to storE inventory
 		if (item == null) {
@@ -251,8 +262,8 @@ public class Inventory {
 	 * @return true if MarketItem of the same type exists in the inventory
 	 **/
 	public boolean isStored(MarketItem item) {
-		for(int i = 1; i <= occupation; i++) {
-			if(item.equals(stash[1])) {
+		for(int i = 0; i <= size; i++) {
+			if(item.equals(marketInventory[i])) {
 				return true;
 			}
 		}
@@ -264,7 +275,7 @@ public class Inventory {
 	 * 
 	 * @Param index to add the item on the stack
 	 **/
-	private void addToStack(int index, MarketItem item) {
+	/*private void addToStack(int index, MarketItem item) {
 		int totalItemCount = stash[index].getAmount() + item.getAmount();
 		if(totalItemCount > stash[index].getCapacity()) {
 			int stackDeficit = totalItemCount 
@@ -283,7 +294,7 @@ public class Inventory {
 	 * @param addedSize to be added to the inventory
          * @throws InvalidValue if a negative value is passed in
 	 **/
-	public void increaseSize(int addedSize) throws InvalidValue {
+	/*public void increaseSize(int addedSize) throws InvalidValue {
 		if (addedSize < 0) {
 			throw new InvalidValue("Cannot decrease "
                                 + "size of inventory");
@@ -315,7 +326,7 @@ public class Inventory {
 	 * @return true if inventory is empty
 	 **/
 	public boolean isEmpty() {
-		return (occupation == 0);
+		return (size == 0);
 	}
 
 	/** 
@@ -325,13 +336,13 @@ public class Inventory {
 	 * @return the size of space occupied in the inventory
 	 **/
 	public int getOccupationSize() { 
-		return occupation;
+		return size;
 	}
 	/** 
 	 * Clears the whole inventory
 	 *
 	 **/
-	public void emptyInventory() { 
+	/*public void emptyInventory() { 
 		MarketItem[] clear = new MarketItem[maxCapacity];
 		stash = clear;
 		occupation = 0;
@@ -344,13 +355,13 @@ public class Inventory {
 	 * @return true if there is additional space in the inventory
 	 **/
 	public boolean hasSpace() {
-            return(occupation <= maxCapacity);
+            return(size <= marketInventory.length);
 		
 	}
 
         public void printInventory() {
-            for(int i = 1; i <= occupation; i++) {
-                System.out.println(stash[i]);
+            for(int i = 1; i <= size; i++) {
+                System.out.println(marketInventory[i]);
             }
             System.out.println();
         }

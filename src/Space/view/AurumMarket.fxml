@@ -27,7 +27,22 @@
             <Image url="@Art/YuRight.png" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="shopContainer" layoutX="1318.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="637.0">
+      <ImageView fx:id="shop" fitHeight="200.0" fitWidth="133.0" layoutX="1474.0" layoutY="478.0">
+         <image>
+            <Image url="@Art/ZonessShopOwner.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="protag" fitHeight="200.0" fitWidth="200.0" layoutX="24.0" layoutY="472.0">
+         <image>
+            <Image url="@Art/YuRight.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="spacePortal" fitHeight="200.0" fitWidth="200.0" layoutX="24.0" layoutY="492.0">
+         <image>
+            <Image url="@Art/Portal.gif" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="shopContainer" layoutX="1336.0" layoutY="32.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="637.0" visible="false">
          <children>
             <AnchorPane fx:id="sellWindow" layoutX="403.0" prefHeight="324.0" prefWidth="234.0" style="-fx-background-color: black; -fx-border-color: green;" visible="false">
                <children>
@@ -119,7 +134,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="messageWindow" layoutX="403.0" prefHeight="324.0" prefWidth="234.0" style="-fx-background-color: black; -fx-border-color: green;" visible="false">
+            <AnchorPane fx:id="messageWindow" layoutX="403.0" prefHeight="324.0" prefWidth="234.0" style="-fx-background-color: black; -fx-border-color: green;">
                <children>
                   <Text fill="WHITE" layoutX="26.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pleae select an item in the shop's inventory to buy it, or an item in your inventory to sell." textAlignment="CENTER" wrappingWidth="181.412109375">
                      <font>
@@ -128,9 +143,9 @@
                   </Text>
                </children>
             </AnchorPane>
-            <ScrollPane fx:id="inventory" layoutX="7.0" layoutY="46.0" prefHeight="276.0" prefWidth="208.0" visible="false">
+            <ScrollPane fx:id="inventory" layoutX="7.0" layoutY="46.0" prefHeight="276.0" prefWidth="208.0">
                <content>
-                  <AnchorPane fx:id="inventory1" prefHeight="256.0" prefWidth="205.0" visible="false">
+                  <AnchorPane fx:id="inventory1" prefHeight="256.0" prefWidth="205.0">
                      <children>
                         <VBox layoutX="12.0" layoutY="117.0" spacing="15.0">
                            <children>
@@ -269,7 +284,7 @@
                   </AnchorPane>
                </content>
             </ScrollPane>
-            <AnchorPane fx:id="shopWindowAnchor2" layoutX="215.0" layoutY="45.0" prefHeight="278.0" prefWidth="188.0" style="-fx-border-color: Green; -fx-background-color: black;" visible="false">
+            <AnchorPane fx:id="shopWindowAnchor2" layoutX="215.0" layoutY="45.0" prefHeight="278.0" prefWidth="188.0" style="-fx-border-color: Green; -fx-background-color: black;">
                <children>
                   <VBox layoutX="14.0" layoutY="81.0" spacing="25.0">
                      <children>
@@ -344,7 +359,16 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="shopWindowAnchor" minHeight="0.0" minWidth="0.0" prefHeight="46.0" prefWidth="403.0" style="-fx-border-color: Green; -fx-background-color: black;" visible="false">
+            <AnchorPane fx:id="denialWindow" layoutX="215.0" layoutY="323.0" minHeight="0.0" minWidth="0.0" prefHeight="46.0" prefWidth="422.0" style="-fx-border-color: Green; -fx-background-color: black;">
+               <children>
+                  <Text fx:id="denialText" fill="WHITE" layoutX="23.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="shopWindowAnchor" minHeight="0.0" minWidth="0.0" prefHeight="46.0" prefWidth="403.0" style="-fx-border-color: Green; -fx-background-color: black;">
                <children>
                   <HBox layoutX="14.0" layoutY="10.0" spacing="45.0" />
                   <Label layoutX="282.0" layoutY="10.0" onMouseClicked="#exitShop" text="Exit" textFill="WHITE">
@@ -361,20 +385,5 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <ImageView fx:id="shop" fitHeight="200.0" fitWidth="133.0" layoutX="1474.0" layoutY="478.0">
-         <image>
-            <Image url="@Art/ZonessShopOwner.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="protag" fitHeight="200.0" fitWidth="200.0" layoutX="24.0" layoutY="472.0">
-         <image>
-            <Image url="@Art/YuRight.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="spacePortal" fitHeight="200.0" fitWidth="200.0" layoutX="24.0" layoutY="492.0">
-         <image>
-            <Image url="@Art/Portal.gif" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>
