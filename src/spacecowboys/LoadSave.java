@@ -7,7 +7,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class LoadSave{
     private String charName;
     private int pilot;
@@ -22,7 +23,6 @@ public class LoadSave{
     private int fuel;
     private String location;
     private int[] inventory;
-    
     public LoadSave(String name, int pilot, int engineer,
             int charisma, int luck, int xp, int level, int credits, int rep,
             int skillpoints, int fuel, String location, int[] inventory){
@@ -42,42 +42,35 @@ public class LoadSave{
     }
     public void save(String filename) throws IOException{
         File savefile = new File(filename);
-        try (FileWriter saver = new FileWriter(savefile, false)) {
-            saver.write(charName + "\n");
-            saver.write(pilot + "\n");
-            saver.write(engineering + "\n");
-            saver.write(charisma + "\n");
-            saver.write(luck + "\n");
-            saver.write(xp + "\n");
-            saver.write(level + "\n");
-            saver.write(credits + "\n");
-            saver.write(rep + "\n");
-            saver.write(skillPoints + "\n");
-            saver.write(location + "\n");
-            saver.write(fuel + "\n");
-            saver.write(this.invToString());
+        FileWriter saver = new FileWriter(savefile, false);
+        saver.write(charName + "\n");
+        saver.write(pilot + "\n");
+        saver.write(engineering + "\n");
+        saver.write(charisma + "\n");
+        saver.write(luck + "\n");
+        saver.write(xp + "\n");
+        saver.write(level + "\n");
+        saver.write(credits + "\n");
+        saver.write(rep + "\n");
+        saver.write(skillPoints + "\n");
+        saver.write(location + "\n");
+        saver.write(fuel + "\n");
+        for (int i = 0; i < inventory.length; i++){
+            saver.write(inventory[i]);
         }
-    }
-    
-    private String invToString(){
-        String str = new String();
-        for (int i: inventory){
-            str += inventory[i];
-            str += "\n";
-        }
-        return str;
+        saver.close();
     }
     
     public ArrayList<String> load(String f) throws FileNotFoundException, IOException{
-        ArrayList<String> lines = new ArrayList<>();
+        ArrayList<String> lines = new ArrayList<String>();
         File file = new File(f);
-        try (FileReader fileReader = new FileReader(file)) {
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                lines.add(line);
-            }
+        FileReader fileReader = new FileReader(file);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            lines.add(line);
         }
+        fileReader.close();
         return lines;
     }
     
@@ -162,7 +155,7 @@ public class LoadSave{
     }
     
     public int getFuel(String path) throws IOException{
-        return Integer.parseInt(this.load(path).get(11));
+        return Integer.parseInt(this.load(path).get(10));
     }
     
     public void setFuel(int n){
@@ -178,14 +171,34 @@ public class LoadSave{
     }
     
     public int[] getInventory(String path) throws IOException{
-        int[] items = new int[10];
+        int[] inventory = new int[10];
         for (int i = 0; i < 10; i++){
-            items[i] = Integer.parseInt(this.load(path).get(i+12));
+            inventory[i] = Integer.parseInt(this.load(path).get(i+11));
         }
-        return items;
+        return inventory;
     }
-
+    
     public void setInventory(int[] n){
         this.inventory = n;
     }
+    
+    public static void main(String[] args){
+        int[] inv = new int[10];
+        LoadSave ls = new LoadSave("Cameron", 5, 5, 5, 5, 0, 1, 0, 50, 0, 10, "Home", inv);
+        try {
+            System.out.println("Saving...");
+            ls.save("test.sav");
+            System.out.println("Save successful.");
+        } catch (IOException ex) {
+            System.out.println("Save failed.");
+            Logger.getLogger(LoadSave.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            System.out.println(ls.load("test.sav"));
+            
+        } catch (IOException ex) {
+            Logger.getLogger(LoadSave.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
+    

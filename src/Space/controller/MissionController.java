@@ -97,6 +97,7 @@ public class MissionController implements Initializable {
     boolean shieldBool;
     Timer shieldTimer;
     boolean thing;
+    Random rand;
 
 
     /**
@@ -125,7 +126,7 @@ public class MissionController implements Initializable {
         scoreLabel.setText(Integer.toString(score));
         BorderPane root = MainApp.getRootLayout(); 
         Scene scene = root.getScene();
-        Random rand = new Random();
+        rand = new Random();
         Timer gameTimer = new Timer();
             gameTimer.schedule(new TimerTask() {
             public void run() {
@@ -161,7 +162,7 @@ public class MissionController implements Initializable {
             }
         },0,30000); 
         
-         enemyTimer = new Timer();
+        enemyTimer = new Timer();
         enemyTimer.schedule(new TimerTask() {
             public void run() {
                 Platform.runLater(new Runnable() {

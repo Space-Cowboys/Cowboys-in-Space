@@ -1,7 +1,5 @@
 package spacecowboys;
 
-import economy.Good.Goods;
-
 public class ConstantData{
     public enum Resource{
         NORESOURCES("No resources"),
@@ -19,16 +17,16 @@ public class ConstantData{
         WARLIKE("Warlike");
         
         private final String id;
-        private final Goods[] goods;
+        private final Good[] goods;
         private final double[] mults;
         
         Resource(String i, Object ... args){
             this.id = i;
             int half = args.length / 2;
-            this.goods = new Goods[half];
+            this.goods = new Good[half];
             this.mults = new double[half];
             for (int j = 0; j < half; j++){
-                this.goods[j] = (Goods)args[j];
+                this.goods[j] = (Good)args[j];
                 this.mults[j] = (double)args[j+half];
             }
         }
@@ -38,7 +36,7 @@ public class ConstantData{
             return id;
         }
         
-        double getGood(Goods good){
+        double getGood(Good good){
             for (int i = 0; i < goods.length; i++){
                 if (goods[i] == good){
                     return mults[i];
@@ -59,16 +57,16 @@ public class ConstantData{
         HITECH("Hi-Tech");
         
         private final String id;
-        private final Goods[] goods;
+        private final Good[] goods;
         private final double[] mults;
         
         TechLevel(String i, Object ... args){
             this.id = i;
             int half = args.length / 2;
-            this.goods = new Goods[half];
+            this.goods = new Good[half];
             this.mults = new double[half];
             for (int j = 0; j < half; j++){
-                this.goods[j] = (Goods)args[j];
+                this.goods[j] = (Good)args[j];
                 this.mults[j] = (double)args[j+half];
             }
         }
@@ -78,7 +76,7 @@ public class ConstantData{
             return id;
         }
         
-        double getGood(Goods good){
+        double getGood(Good good){
             for (int i = 0; i < goods.length; i++){
                 if (goods[i] == good){
                     return mults[i];
@@ -108,16 +106,16 @@ public class ConstantData{
         THEO("Theocracy");
         
         private final String id;
-        private final Goods[] goods;
+        private final Good[] goods;
         private final double[] mults;
         
         Government(String i, Object ... args){
             this.id = i;
             int half = args.length / 2;
-            this.goods = new Goods[half];
+            this.goods = new Good[half];
             this.mults = new double[half];
             for (int j = 0; j < half; j++){
-                this.goods[j] = (Goods)args[j];
+                this.goods[j] = (Good)args[j];
                 this.mults[j] = (double)args[j+half];
             }
         }
@@ -127,7 +125,7 @@ public class ConstantData{
             return id;
         }
         
-        double getGood(Goods good){
+        double getGood(Good good){
             for (int i = 0; i < goods.length; i++){
                 if (goods[i] == good){
                     return mults[i];
@@ -154,21 +152,44 @@ public class ConstantData{
             return name;
         }
     }
-
+    
+    public enum Good{
+        WATER("Water"),
+        FUR("Fur"),
+        FOOD("Food"),
+        ORE("Ore"),
+        GAMES("Games"),
+        FIREARMS("Firearms"),
+        MEDICINE("Medicine"),
+        MACHINES("Machines"),
+        NARCOTICS("Narcotics"),
+        ROBOTS("Robots");
+        
+        private final String name;
+        
+        Good(String n){
+            this.name = n;
+        }
+        
+        @Override
+        public String toString(){
+            return name;
+        }
+    }
     public enum StarSystem{
-        RUSH("Rush Galaxy"),
-        BASTILLE("Bastille System"),
-        WEEZER("Weezer Cluster"),
-        QUEEN("Queen Sector"),
-        MUSE("Muse Nebula"),
-        INCUBUS("Incubus System"),
-        BOSTON("Boston Sector"),
-        OASIS("Oasis Galaxy"),
-        ACDC("AC/DC Quadrant"),
-        NIRVANA("Nirvana Quadrant"),
-        SILVERSUN("Silversun System"),
-        ROLLINGSTONES("Rolling Stones Cluster"), 
-        PSY("Psy Nebula");
+        A("Rush Galaxy"),
+        B("Bastille System"),
+        C("Weezer Cluster"),
+        D("Queen Sector"),
+        E("Muse Nebula"),
+        F("Incubus System"),
+        G("Boston Sector"),
+        H("Oasis Galaxy"),
+        I("AC/DC Quadrant"),
+        J("Nirvana Quadrant"),
+        K("Silversun System"),
+        L("Rolling Stones Cluster"), 
+        M("Psy Nebula");
         
         private final String name;
         
