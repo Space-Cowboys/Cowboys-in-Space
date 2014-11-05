@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="270.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <AnchorPane prefHeight="67.0" prefWidth="600.0" style="-fx-background-color: black; -fx-border-color: lime;">
+         <children>
+            <Text fill="WHITE" layoutX="266.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ship Shop">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="275.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="exit Shop" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="66.0" prefHeight="214.0" prefWidth="371.0" style="-fx-background-color: black; -fx-border-color: lime;" />
+      <AnchorPane layoutX="371.0" layoutY="66.0" prefHeight="214.0" prefWidth="229.0" style="-fx-background-color: black; -fx-border-color: lime;" />
+   </children>
+</AnchorPane>

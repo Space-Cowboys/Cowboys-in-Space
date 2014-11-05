@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.RushGalaxyController">
+   <children>
+      <ImageView fitHeight="470.0" fitWidth="500.0" layoutX="485.0" layoutY="102.0" opacity="0.61">
+         <image>
+            <Image url="@Art/rush%20star.png" />
+         </image>
+         <effect>
+            <Bloom />
+         </effect>
+      </ImageView>
+      <ImageView fx:id="Zoness" fitHeight="200.0" fitWidth="200.0" layoutX="1076.0" layoutY="423.0" onMouseEntered="#mouseOverZoness" onMouseExited="#mouseLeaveZoness" onMousePressed="#goToZoness">
+         <image>
+            <Image url="@Art/zoness.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Aurum" fitHeight="190.0" fitWidth="210.0" layoutX="210.0" layoutY="162.0" onMouseEntered="#mouseOverAurum" onMouseExited="#mouseLeaveAurum" onMousePressed="#goToAurum">
+         <image>
+            <Image url="@Art/aurum.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="621.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rush Galaxy">
+         <font>
+            <Font size="43.0" />
+         </font>
+      </Text>
+      <HBox layoutX="553.0" layoutY="81.0" spacing="5.0">
+         <children>
+            <Text fill="WHITE" layoutX="621.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Label fx:id="fuelRem" layoutX="712.0" layoutY="81.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Text fill="WHITE" layoutX="774.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="gallons of fuel remaining">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <AnchorPane fx:id="AurumInfo" layoutX="207.0" layoutY="375.0" prefHeight="267.0" prefWidth="252.0" style="-fx-border-color: green;" visible="false">
+         <children>
+            <Text fill="LIME" layoutX="108.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aurum" />
+            <Text fill="LIME" layoutX="26.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Common Resource:" />
+            <Text fill="LIME" layoutX="26.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desired Resource:" />
+            <Text fill="LIME" layoutX="26.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Needed Fuel:" />
+            <Text fill="LIME" layoutX="26.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Danger Level:" />
+            <Text fill="LIME" layoutX="144.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Robots" />
+            <Text fill="LIME" layoutX="144.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Narcotics/Fur" />
+            <Text fill="LIME" layoutX="144.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="130 gallons" />
+            <Text fill="LIME" layoutX="144.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Low" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ZonessInfo" layoutX="1050.0" layoutY="140.0" prefHeight="267.0" prefWidth="252.0" style="-fx-border-color: green;" visible="false">
+         <children>
+            <Text fill="LIME" layoutX="108.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zoness" />
+            <Text fill="LIME" layoutX="26.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Common Resource:" />
+            <Text fill="LIME" layoutX="26.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desired Resource:" />
+            <Text fill="LIME" layoutX="26.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Needed Fuel:" />
+            <Text fill="LIME" layoutX="26.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Danger Level:" />
+            <Text fill="LIME" layoutX="144.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Water" />
+            <Text fill="LIME" layoutX="144.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Firearms" />
+            <Text fill="LIME" layoutX="144.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="130 gallons" />
+            <Text fill="LIME" layoutX="144.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Very Low" />
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="aurumArrow" fitHeight="151.0" fitWidth="138.0" layoutX="258.0" layoutY="36.0" visible="false">
+         <image>
+            <Image url="@Art/arrowDown.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="zonessArrow" fitHeight="151.0" fitWidth="138.0" layoutX="1107.0" layoutY="599.0" visible="false">
+         <image>
+            <Image url="@Art/arrowup.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="wormhole" fitHeight="150.0" fitWidth="200.0" layoutX="635.0" layoutY="592.0" onMouseEntered="#mouseOverWorm" onMouseExited="#mouseLeaveWorm">
+         <image>
+            <Image url="@Art/wormhole.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="wormLabel1" fill="LIME" layoutX="700.0" layoutY="615.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wormhole" visible="false">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fx:id="wormLabel2" fill="LIME" layoutX="666.0" layoutY="731.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4,000 Gallons of Fuel" visible="false">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

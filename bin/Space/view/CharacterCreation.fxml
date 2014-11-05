@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1366.0" style="-fx-background-color: #0F0F0A;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.CharacterCreationController">
+   <children>
+      <VBox layoutX="89.0" layoutY="217.0" spacing="35.0">
+         <children>
+            <Text layoutX="313.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: White;" text="Pilot">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Text>
+            <Text layoutX="313.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="Engineering">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Text>
+            <Text layoutX="312.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="Charisma">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Text>
+            <Text layoutX="313.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white;" text="Luck">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <VBox layoutX="377.0" layoutY="235.0" spacing="57.0">
+         <children>
+            <HBox layoutX="381.0" layoutY="210.0" spacing="25.0">
+               <children>
+                  <Button layoutX="376.0" layoutY="119.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pilotDown" prefHeight="30.0" text="&lt;">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <ProgressBar fx:id="pilotBar" prefHeight="30.0" prefWidth="200.0" progress="0.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ProgressBar>
+                  <Button layoutX="487.0" layoutY="119.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#pilotUp" prefHeight="30.0" text="&gt;">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox layoutX="380.0" layoutY="299.0" spacing="25.0">
+               <children>
+                  <Button layoutX="376.0" layoutY="181.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#engineeringDown" prefHeight="30.0" text="&lt;">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <ProgressBar fx:id="engineeringBar" prefHeight="30.0" prefWidth="200.0" progress="0.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ProgressBar>
+                  <Button layoutX="487.0" layoutY="181.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#engineeringUp" prefHeight="30.0" text="&gt;">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox layoutX="381.0" layoutY="394.0" spacing="25.0">
+               <children>
+                  <Button layoutX="376.0" layoutY="247.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#charismaDown" prefHeight="30.0" text="&lt;">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <ProgressBar fx:id="charismaBar" prefHeight="30.0" prefWidth="200.0" progress="0.0" />
+                  <Button layoutX="487.0" layoutY="247.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#charismaUp" prefHeight="30.0" text="&gt;">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox layoutX="381.0" layoutY="480.0" spacing="25.0">
+               <children>
+                  <Button layoutX="376.0" layoutY="307.0" mnemonicParsing="false" onAction="#luckDown" text="&lt;">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <ProgressBar fx:id="luckBar" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="200.0" progress="0.0" />
+                  <Button layoutX="487.0" layoutY="307.0" maxHeight="30.0" minHeight="30.0" mnemonicParsing="false" onAction="#luckUp" prefHeight="30.0" text="&gt;">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Text fill="WHITE" layoutX="313.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create your character! ">
+         <font>
+            <Font size="85.0" />
+         </font>
+      </Text>
+      <TextField id="nameField" fx:id="nameField" layoutX="509.0" layoutY="139.0" prefHeight="40.0" prefWidth="286.0" promptText="Name" />
+      <Button layoutX="446.0" layoutY="677.0" mnemonicParsing="false" onAction="#confirm" text="Confirm Choices">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="703.0" layoutY="676.0" mnemonicParsing="false" onAction="#showWelcomeScreen" text="Back to Start">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Text fill="WHITE" layoutX="136.0" layoutY="636.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Skill Points Remaining:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Label fx:id="skillLabel" layoutX="366.0" layoutY="613.0" text="Label" textFill="#fcfcfc">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Text id="reminder" fx:id="reminder" fill="WHITE" layoutX="683.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please make sure to allocate all skill points and type in a name" textAlignment="CENTER" visible="false" wrappingWidth="500.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="313.0" fitWidth="313.0" layoutX="843.0" layoutY="204.0">
+         <image>
+            <Image url="@Art/YuLeft.png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="720.0" layoutY="241.0" spacing="60.0">
+         <children>
+            <Label fx:id="pilotLabel" layoutX="720.0" layoutY="236.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="engineeringLabel" layoutX="723.0" layoutY="322.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="charismaLabel" layoutX="723.0" layoutY="421.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="luckLabel" layoutX="723.0" layoutY="505.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

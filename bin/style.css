@@ -1,0 +1,5 @@
+#welcomeScreen {
+    .root {
+     -fx-background-image: url("spacer.jpg");
+}
+}
