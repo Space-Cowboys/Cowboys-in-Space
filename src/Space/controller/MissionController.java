@@ -110,14 +110,15 @@ public class MissionController implements Initializable {
      * This is what happens when the window itself is first initialized
      */
     public void initialize(URL url, ResourceBundle rb) {
+        back.setStyle("-fx-background-image: url(" + this.getClass().getResource("Art/starField1.jpg").toExternalForm() +"); -fx-background-size: 2250 100%;");
         shieldOn = false;
         RootLayoutController.setFlyingPoints(0);
-        laserCannon.setImage(new Image(MainApp.class.getResource("view/art/Cannon"
+        laserCannon.setImage(new Image(this.getClass().getResource("Art/Cannon"
                 + Integer.toString(RootLayoutController.getShip().getCurrentLaserLevel())+ ".gif").toExternalForm()));
-        shield.setImage(new Image(MainApp.class.getResource("view/art/Shield"
+        shield.setImage(new Image(this.getClass().getResource("Art/Shield"
                 + Integer.toString(RootLayoutController.getShip().getCurrentShieldLevel())+ ".png").toExternalForm()));
-        spaceShip.setImage(new Image(MainApp.class.getResource("view/art/PlayerShip"
-                + Integer.toString(RootLayoutController.getShip().getShipLevel())+".gif").toExternalForm()));
+        spaceShip.setImage(new Image(this.getClass().getResource("Art/PlayerShip" + Integer.toString(RootLayoutController.getShip().getShipLevel())
+        + ".gif").toExternalForm()));
         energyBar.setProgress(RootLayoutController.getShip().getCurrentEnergy() / (double) RootLayoutController.getShip().getMaxEnergyBars());
         healthBar.setProgress(RootLayoutController.getShip().getCurrentEnergy() / (double) RootLayoutController.getShip().getMaxEnergyBars());
         RootLayoutController.changeSong("src/Space/Music/flying.wav");
@@ -141,6 +142,8 @@ public class MissionController implements Initializable {
                             
                         }
                         if(thing && !randomEvent ) {
+                            gameTimer.cancel();
+                            enemyTimer.cancel();
                             try {
                                 // Load person overview. 
                                 RootLayoutController.setFlyingPoints(score);
@@ -225,13 +228,13 @@ public class MissionController implements Initializable {
                 if (ke.getCode().equals(KeyCode.RIGHT)) {
                     spaceShip.setLayoutX(spaceShip.getLayoutX() + 20);
                     if(shieldOn) {
-                        shield.setLayoutX(spaceShip.getLayoutX() + 15);
+                        shield.setLayoutX(shield.getLayoutX() + 20);
                     }
                     }
                 if (ke.getCode().equals(KeyCode.LEFT)) {
                     spaceShip.setLayoutX(spaceShip.getLayoutX() - 20);
                     if(shieldOn) {
-                        shield.setLayoutX(spaceShip.getLayoutX() + 15);
+                        shield.setLayoutX(shield.getLayoutX() - 20);
                     }
                     
                 }
@@ -243,7 +246,7 @@ public class MissionController implements Initializable {
                         shield.setVisible(true);
                         shieldBool = false;
                         shield.setLayoutX(spaceShip.getLayoutX());
-                        shield.setLayoutY(spaceShip.getLayoutY());
+                        shield.setLayoutY(spaceShip.getLayoutY() + 20);
                         shieldOn = true;
                         shieldHits = 0;
                         shieldTimer = new Timer();
@@ -343,8 +346,8 @@ public class MissionController implements Initializable {
                                             laser.setVisible(false);
                                         }
                                         
-                                        if (Math.abs(pirateShip.getLayoutX() - laser.getLayoutX()) < 200 
-                                                && Math.abs(pirateShip.getLayoutY() - laser.getLayoutY()) < 200
+                                        if (Math.abs(pirateShip.getLayoutX() - laser.getLayoutX()) < 400 
+                                                && Math.abs(pirateShip.getLayoutY() - laser.getLayoutY()) < 400
                                                 && isDone && randomEvent) {
                                                 hits++;
                                                 laserTimer.cancel();
@@ -444,6 +447,7 @@ public class MissionController implements Initializable {
                                 explosion2.setLayoutY(pirateShip.getLayoutY() + 10);
                                 explosionTimer++;
                                 if(explosionTimer > 15) {
+                                    hits = 0;
                                     pirateTimer.cancel();
                                     score += 200;
                                     try {

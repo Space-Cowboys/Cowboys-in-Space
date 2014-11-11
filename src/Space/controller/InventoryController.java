@@ -8,6 +8,7 @@ package Space.controller;
 
 import Space.MainApp;
 import Space.POJO.Ship;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -199,8 +200,8 @@ public class InventoryController implements Initializable {
         currentLaser.setText(Integer.toString(playerS.getCurrentLaserLevel()));
         currentShield.setText(Integer.toString(playerS.getCurrentShieldLevel()));
         shipLevelLabel.setText(Integer.toString(playerS.getShipLevel()));
-        playerShip.setImage(new Image(MainApp.class.getResource("view/art/PlayerShip"
-                + Integer.toString(playerS.getShipLevel())+ "Status.png").toExternalForm()));
+        playerShip.setImage(new Image(this.getClass().getResource("Art/PlayerShip" + Integer.toString(RootLayoutController.getShip().getShipLevel())
+        + "Status.png").toExternalForm()));
         posPil = RootLayoutController.getPilotSkill();
         posEng = RootLayoutController.getEngineeringSkill();
         posCha = RootLayoutController.getCharismaSkill();

@@ -55,12 +55,16 @@ public class ZonessPortController extends playerAreaController implements Initia
     
     @FXML //fx:id="outOfMoney"
     AnchorPane outOfMoney;
+    @FXML
+    Pane background;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         init();
+        background.setStyle("-fx-background-image: url(" +this.getClass().getResource("Art/ZonessPort.png").toExternalForm() +"); -fx-background-size: 100% 100%;");
+
         creditsLabel.setText(Integer.toString(RootLayoutController.getCredits()));
         fuelLabel.setText(Integer.toString(RootLayoutController.getFuel()));
         if (RootLayoutController.getOrientation() == 0) {
@@ -74,17 +78,13 @@ public class ZonessPortController extends playerAreaController implements Initia
         // Key event handling
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
-                if (ke.getCode().equals(KeyCode.DOWN)) {
-                    protag.setLayoutY(protag.getLayoutY()+5);
-                    System.out.println(protag.getLayoutY());
-                }
                 if (ke.getCode().equals(KeyCode.RIGHT)) {
-                    protag.setImage(new Image(MainApp.class.getResource("view/art/YuRight.png").toExternalForm()));
+                    protag.setImage(new Image(this.getClass().getResource("Art/YuRight.png").toExternalForm()));
                     protag.setLayoutX(protag.getLayoutX() +8);
 
                     }
                 if (ke.getCode().equals(KeyCode.LEFT)) {
-                    protag.setImage(new Image(MainApp.class.getResource("view/art/YuLeft.png").toExternalForm()));
+                    protag.setImage(new Image(this.getClass().getResource("Art/YuLeft.png").toExternalForm()));
                     protag.setLayoutX(protag.getLayoutX() - 8);
                 }
                 if (ke.getCode().equals(KeyCode.UP)) {

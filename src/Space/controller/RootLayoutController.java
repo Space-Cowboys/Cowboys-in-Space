@@ -255,11 +255,11 @@ public class RootLayoutController implements Initializable {
      * @param filename
      */
     public static void changeSong(String filename) {
-        mediaPlayer.stop();
+        /*mediaPlayer.stop();
         mediaPlayer = new MediaPlayer(new Media(
                 new File(filename).toURI().toString()));
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.play();
+        mediaPlayer.play();*/
     }
 
 
@@ -275,10 +275,10 @@ public class RootLayoutController implements Initializable {
         inventory = new Inventory();
         credits = STARTING_BALANCE;
         fuel = STARTING_FUEL;
-        mediaPlayer = new MediaPlayer(new Media(
-                new File("src/Space/Music/title.wav").toURI().toString()));
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.play();
+       // mediaPlayer = new MediaPlayer(new Media(
+         //       new File("src/Space/Music/title.wav").toURI().toString()));
+       // mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        //mediaPlayer.play();
     }
 
     /**

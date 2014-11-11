@@ -15,6 +15,7 @@ import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -31,10 +32,11 @@ public class AurumMarketController extends EmptyMarketController
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         super.init();
+        back.setStyle("-fx-background-image: url(" +this.getClass().getResource("Art/AurumMarketplace.png").toExternalForm() +"); -fx-background-size: 2250 100%;");
         myScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
                 if (ke.getCode().equals(KeyCode.RIGHT)) {
-                    protag.setImage(protagR.getImage());
+                    protag.setImage(new Image(this.getClass().getResource("Art/YuRight.png").toExternalForm()));
                     protag.setLayoutX(protag.getLayoutX() + 8);
                     if (protag.getLayoutX() > 500
                         && protag.getLayoutX() < 1300) {
@@ -42,7 +44,7 @@ public class AurumMarketController extends EmptyMarketController
                     }
                 }
                 if (ke.getCode().equals(KeyCode.LEFT)) {
-                    protag.setImage(protagL.getImage());
+                    protag.setImage(new Image(this.getClass().getResource("Art/YuLeft.png").toExternalForm()));
                     protag.setLayoutX(protag.getLayoutX() - 8);
                     if(protag.getLayoutX() > 500
                         && protag.getLayoutX() < 1300) {

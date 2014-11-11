@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<Pane prefHeight="720.0" prefWidth="1366.0" style="-fx-background-size: 100% 100%; -fx-background-image: url(/Space/view/art/WelcomeScreen2.png); -fx-border-image-repeat: no-repeat;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.WelcomeScreenController">
+<Pane fx:id="background" prefHeight="720.0" prefWidth="1366.0" style="-fx-background-size: 100% 100%; -fx-background-image: url(/Space/view/art/WelcomeScreen2.png); -fx-border-image-repeat: no-repeat;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Space.controller.WelcomeScreenController">
    <children>
       <AnchorPane layoutX="505.0" layoutY="241.0" />
       <VBox layoutX="1184.0" layoutY="437.0" prefHeight="180.0" prefWidth="138.0" spacing="40.0">

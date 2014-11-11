@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -25,13 +26,15 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
+
 /**
  * FXML Controller class
  *
  * @author Keanu
  */
 public class WelcomeScreenController implements Initializable {
-
+    @FXML
+    Pane background;
     
     
     @FXML public void exit(ActionEvent e) {
@@ -73,7 +76,7 @@ public class WelcomeScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        background.setStyle("-fx-background-image: url(" +this.getClass().getResource("Art/WelcomeScreen2.png").toExternalForm() +"); -fx-background-size: 100% 100%;");
 
     }    
 

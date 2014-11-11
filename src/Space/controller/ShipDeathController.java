@@ -36,6 +36,8 @@ public class ShipDeathController implements Initializable {
     
     public void goAway() {
         try {
+            RootLayoutController.getShip().setCurrentHealth(RootLayoutController.getShip().getMaxShipHealth());
+            RootLayoutController.setCredits(RootLayoutController.getCredits() - 100);
             // Load person overview. 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/" + RootLayoutController.getPlanet().getName() + "Shipyard.fxml"));

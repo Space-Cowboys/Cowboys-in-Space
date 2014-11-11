@@ -15,27 +15,27 @@
    <children>
       <ImageView id="testProtag" fx:id="shop" fitHeight="195.0" fitWidth="120.0" layoutX="508.0" layoutY="482.0">
          <image>
-            <Image url="@Art/ZonessShopOwner.gif" />
+            <Image url="@../controller/Art/ZonessShopOwner.gif" />
          </image>
       </ImageView>
       <ImageView id="testProtag" fx:id="protag" fitHeight="200.0" fitWidth="200.0" layoutY="480.0">
          <image>
-            <Image url="@Art/YuRight.png" />
+            <Image url="@../controller/Art/YuRight.png" />
          </image>
       </ImageView>
       <ImageView id="testProtag" fx:id="protagR" fitHeight="200.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" visible="false">
          <image>
-            <Image url="@Art/YuRight.png" />
+            <Image url="@../controller/Art/YuRight.png" />
          </image>
       </ImageView>
       <ImageView fx:id="protagL" fitHeight="195.0" fitWidth="120.0" visible="false">
          <image>
-            <Image url="@Art/YuLeft.png" />
+            <Image url="@../controller/Art/YuLeft.png" />
          </image>
       </ImageView>
       <ImageView fx:id="spacePortal" fitHeight="200.0" fitWidth="200.0" layoutY="492.0">
          <image>
-            <Image url="@Art/Portal.gif" />
+            <Image url="@../controller/Art/Portal.gif" />
          </image>
       </ImageView>
       <AnchorPane fx:id="shopContainer" layoutX="14.0" layoutY="37.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="637.0" visible="false">

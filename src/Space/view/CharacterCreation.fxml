@@ -140,7 +140,7 @@
       </Text>
       <ImageView fitHeight="313.0" fitWidth="313.0" layoutX="843.0" layoutY="204.0">
          <image>
-            <Image url="@Art/YuLeft.png" />
+            <Image url="@../controller/Art/YuLeft.png" />
          </image>
       </ImageView>
       <VBox layoutX="720.0" layoutY="241.0" spacing="60.0">

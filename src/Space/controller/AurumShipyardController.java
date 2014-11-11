@@ -170,6 +170,7 @@ public class AurumShipyardController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        back.setStyle("-fx-background-image: url(" +this.getClass().getResource("Art/AurumShipyard.png").toExternalForm() +"); -fx-background-size: 100% 100%;");
         if (RootLayoutController.getOrientation() == 0) {
             RootLayoutController.changeSong(
                     "src/Space/Music/cowboy ground.wav");
@@ -188,12 +189,12 @@ public class AurumShipyardController implements Initializable {
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
                 if (ke.getCode().equals(KeyCode.RIGHT)) {
-                    protag.setImage(protagR.getImage());
+                    protag.setImage(new Image(this.getClass().getResource("Art/YuRight.png").toExternalForm()));
                     protag.setLayoutX(protag.getLayoutX() + 8);
 
                     }
                 if (ke.getCode().equals(KeyCode.LEFT)) {
-                    protag.setImage(protagL.getImage());
+                    protag.setImage(new Image(this.getClass().getResource("Art/YuLeft.png").toExternalForm()));
                     protag.setLayoutX(protag.getLayoutX() - 8);
                    
                     
@@ -359,7 +360,7 @@ public class AurumShipyardController implements Initializable {
         energyLabel.setText("10");
         pilotLabel.setText("10");
         shipPriceLabel.setText("5000");
-        playerShip.setImage(new Image(MainApp.class.getResource("view/art/PlayerShip"
+        playerShip.setImage(new Image(this.getClass().getResource("Art/PlayerShip"
                 + Integer.toString(2) + "Status.png").toExternalForm()));
     }
     
@@ -407,7 +408,7 @@ public class AurumShipyardController implements Initializable {
         energyLabel.setText("15");
         pilotLabel.setText("20");
         shipPriceLabel.setText("10000");
-        playerShip.setImage(new Image(MainApp.class.getResource("view/art/PlayerShip"
+        playerShip.setImage(new Image(this.getClass().getResource("Art/PlayerShip"
                 + Integer.toString(3) + "Status.png").toExternalForm()));    
     }
     

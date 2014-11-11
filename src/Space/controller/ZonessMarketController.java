@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import java.util.TimerTask;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
@@ -29,7 +30,6 @@ import javafx.scene.layout.Pane;
  * @author Keanu
  */
 public class ZonessMarketController extends EmptyMarketController implements Initializable  {
-   
     /**
      * Initializes the controller class.
      * This is what happens when the window itself is first initialized
@@ -37,10 +37,12 @@ public class ZonessMarketController extends EmptyMarketController implements Ini
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         super.init();
+        back.setStyle("-fx-background-image: url(" +this.getClass().getResource("Art/ZonessMarketplace.png").toExternalForm() +"); -fx-background-size: 2250 100%;");
+
        myScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
                 if (ke.getCode().equals(KeyCode.RIGHT)) {
-                    protag.setImage(new Image(MainApp.class.getResource("view/art/YuRight.png").toExternalForm()));
+                    protag.setImage(new Image(this.getClass().getResource("Art/YuRight.png").toExternalForm()));
                     protag.setLayoutX(protag.getLayoutX() + 8);
                     if (protag.getLayoutX() > 500
                         && protag.getLayoutX() < 1300) {
@@ -48,7 +50,7 @@ public class ZonessMarketController extends EmptyMarketController implements Ini
                     }
                 }
                 if (ke.getCode().equals(KeyCode.LEFT)) {
-                    protag.setImage(new Image(MainApp.class.getResource("view/art/YuLeft.png").toExternalForm()));
+                    protag.setImage(new Image(this.getClass().getResource("Art/YuLeft.png").toExternalForm()));
                     protag.setLayoutX(protag.getLayoutX() - 8);
                     if(protag.getLayoutX() > 500
                         && protag.getLayoutX() < 1300) {

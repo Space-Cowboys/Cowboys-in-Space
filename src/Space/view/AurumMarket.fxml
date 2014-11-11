@@ -14,32 +14,32 @@
    <children>
       <ImageView fitHeight="175.0" fitWidth="175.0" layoutX="1038.0" layoutY="188.0">
          <image>
-            <Image url="@Art/Clock.gif" />
+            <Image url="@../controller/Art/Clock.gif" />
          </image>
       </ImageView>
       <ImageView fx:id="protagL" fitHeight="200.0" fitWidth="200.0" layoutX="418.0" layoutY="394.0" visible="false">
          <image>
-            <Image url="@Art/YuLeft.png" />
+            <Image url="@../controller/Art/YuLeft.png" />
          </image>
       </ImageView>
       <ImageView fx:id="protagR" fitHeight="200.0" fitWidth="200.0" layoutX="14.0" layoutY="251.0" visible="false">
          <image>
-            <Image url="@Art/YuRight.png" />
+            <Image url="@../controller/Art/YuRight.png" />
          </image>
       </ImageView>
       <ImageView fx:id="shop" fitHeight="200.0" fitWidth="133.0" layoutX="1474.0" layoutY="478.0">
          <image>
-            <Image url="@Art/ZonessShopOwner.gif" />
+            <Image url="@../controller/Art/ZonessShopOwner.gif" />
          </image>
       </ImageView>
       <ImageView fx:id="protag" fitHeight="200.0" fitWidth="200.0" layoutX="24.0" layoutY="472.0">
          <image>
-            <Image url="@Art/YuRight.png" />
+            <Image url="@../controller/Art/YuRight.png" />
          </image>
       </ImageView>
       <ImageView fx:id="spacePortal" fitHeight="200.0" fitWidth="200.0" layoutX="24.0" layoutY="492.0">
          <image>
-            <Image url="@Art/Portal.gif" />
+            <Image url="@../controller/Art/Portal.gif" />
          </image>
       </ImageView>
       <AnchorPane fx:id="shopContainer" layoutX="1336.0" layoutY="32.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="406.0" prefWidth="637.0" visible="false">
