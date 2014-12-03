@@ -36,8 +36,6 @@ public class RootLayoutController implements Initializable {
     private static int credits;
     private static int fuel;
     private static int rep = 0;
-    private static int xp = 0;
-    private static int level = 1;
     private static MediaPlayer mediaPlayer; 
     private static String location = "";
     private static LoadSave load;
@@ -48,6 +46,7 @@ public class RootLayoutController implements Initializable {
     private static final int STARTING_FUEL = 500;
     private static final int INVCAP = 10;
     private static Ship playerShip;
+    private static int mercLevel;
 
     /**
     * @return the score in gotten in the flying mission.
@@ -57,6 +56,56 @@ public class RootLayoutController implements Initializable {
         return flyingPoints;
     }
 
+    public static int getMercLevel() {
+        return mercLevel;
+    }
+    public static void setMercLevel(int num) {
+        mercLevel = num;
+    }
+    
+    public static int getMoneyInBank() {
+        return player.getMoneyinBank();
+    }
+    
+    public static int getLoanAmount() {
+        return player.getLoanAmount();
+    }
+    
+    public static int getCreditScore() {
+        return player.getCreditScore();
+    }
+    public static void setMoneyInBank(int credits) {
+        player.setMoneyinBank(credits);
+    }
+   
+    public static void setLoanAmount(int credits) {
+        player.setLoanAmount(credits);
+    }
+    public static void setCreditScore(int score) {
+        player.setCreditScore(score);
+    }
+    public static int getXp() {
+        return player.getExperiencePoints();
+    }
+
+    public static void setXp(int xp) {
+        player.setExperiencePoints(xp);
+    }
+
+    public static void setCurrentLoan(int num) {
+        player.setCurrentLoan(num);
+    }
+    public static int getCurrentLoan() {
+        return player.getCurrentLoan();
+    }
+    
+    public static void interestBank() {
+        player.setMoneyinBank((int)Math.ceil(player.getMoneyinBank() + (player.getMoneyinBank() * .01)));
+    }
+    
+    public static void interestLoan() {
+        player.setCurrentLoan((int) Math.ceil(player.getCurrentLoan() + (player.getCurrentLoan() * .02)));
+    }
     /**
     * This changes the flying points score. It usually changes it once an
     * enemy ship has been destroyed.
@@ -78,7 +127,13 @@ public class RootLayoutController implements Initializable {
     public static void setShip(Ship ship) {
         playerShip = ship;
     }
+    public static void setLevel(int i) {
+        player.setLevel(i);
+    }
     
+    public static int getLevel() {
+        return player.getLevel();
+    }
     public static Ship getShip() {
         return playerShip;
     }
@@ -98,8 +153,8 @@ public class RootLayoutController implements Initializable {
         setEngineeringSkill(load.getEngineering(path));
         setCharismaSkill(load.getCharisma(path));
         setLuckSkill(load.getLuck(path));
-        xp = (load.getXP(path));
-        level = (load.getLevel(path));
+        player.setExperiencePoints(load.getXP(path));
+        player.setLevel((load.getLevel(path)));
         setCredits(load.getCredits(path));
         rep = (load.getRep(path));
         setRemainingSkillPoints(load.getFreeSkill(path));
@@ -120,8 +175,8 @@ public class RootLayoutController implements Initializable {
         load.setEngineering(getEngineeringSkill());
         load.setCharisma(getCharismaSkill());
         load.setLuck(getLuckSkill());
-        load.setXP(xp);
-        load.setLevel(level);
+        load.setXP(player.getExperiencePoints());
+        load.setLevel(player.getLevel());
         load.setCredits(getCredits());
         load.setRep(rep);
         load.setFreeSkill(getSkillPoints());
@@ -255,11 +310,11 @@ public class RootLayoutController implements Initializable {
      * @param filename
      */
     public static void changeSong(String filename) {
-        /*mediaPlayer.stop();
+        mediaPlayer.stop();
         mediaPlayer = new MediaPlayer(new Media(
-                new File(filename).toURI().toString()));
+                filename));
         mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.play();*/
+        mediaPlayer.play();
     }
 
 
@@ -272,13 +327,15 @@ public class RootLayoutController implements Initializable {
         player = new Player();
         playerShip = new Ship(5,10,1,1);
         u = new Universe();
+                setXp(990);
+
         inventory = new Inventory();
         credits = STARTING_BALANCE;
         fuel = STARTING_FUEL;
-       // mediaPlayer = new MediaPlayer(new Media(
-         //       new File("src/Space/Music/title.wav").toURI().toString()));
-       // mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        //mediaPlayer.play();
+        mediaPlayer = new MediaPlayer(new Media(
+                this.getClass().getResource("Music/title.wav").toExternalForm()));
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
     }
 
     /**

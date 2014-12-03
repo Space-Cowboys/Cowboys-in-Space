@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="402.0" prefWidth="342.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <AnchorPane fx:id="initial" prefHeight="97.0" prefWidth="347.0" style="-fx-background-color: black; -fx-border-color: lime;">
+         <children>
+            <Text fill="WHITE" layoutX="110.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hi would you like to:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="30.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Check out a loan">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="205.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Check your bank">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="162.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="exit" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="initialBank" layoutY="97.0" prefHeight="200.0" prefWidth="347.0" style="-fx-background-color: black; -fx-border-color: lime;" visible="false">
+         <children>
+            <Text fill="WHITE" layoutX="116.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You currently have:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Label fx:id="moneyInBank" layoutX="160.0" layoutY="50.0" text="Label" textFill="WHITE" />
+            <Text fill="WHITE" layoutX="137.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="in the bank">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="126.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Would you like to:" />
+            <Button layoutX="64.0" layoutY="145.0" mnemonicParsing="false" text="Deposit" />
+            <Button layoutX="222.0" layoutY="145.0" mnemonicParsing="false" text="Withdraw" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="withdrawPane" layoutY="297.0" prefHeight="109.0" prefWidth="347.0" style="-fx-background-color: black; -fx-border-color: lime;" visible="false">
+         <children>
+            <Text fill="WHITE" layoutX="70.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Credits:" />
+            <Label fx:id="moneyInInventory" layoutX="201.0" layoutY="14.0" text="Label" textFill="WHITE" />
+            <TextField fx:id="withdrawArea" layoutX="99.0" layoutY="42.0" promptText="Amount to Withdraw" />
+            <Button layoutX="148.0" layoutY="77.0" mnemonicParsing="false" text="Accept" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="depositPane" layoutY="297.0" prefHeight="109.0" prefWidth="347.0" style="-fx-background-color: black; -fx-border-color: lime;" visible="false">
+         <children>
+            <Text fill="WHITE" layoutX="70.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Credits:" />
+            <Label fx:id="moneyInInventory2" layoutX="201.0" layoutY="14.0" text="Label" textFill="WHITE" />
+            <Button layoutX="148.0" layoutY="77.0" mnemonicParsing="false" text="Accept" />
+            <TextField fx:id="depositArea" layoutX="100.0" layoutY="42.0" promptText="Amount to Deposit" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="initialLoan" layoutY="97.0" prefHeight="200.0" prefWidth="347.0" style="-fx-background-color: black; -fx-border-color: lime;" visible="false">
+         <children>
+            <Text fill="WHITE" layoutX="141.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Label fx:id="loanAmount" layoutX="160.0" layoutY="50.0" text="Label" textFill="WHITE" />
+            <Text fill="WHITE" layoutX="97.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="remaining on your loan">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="126.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Would you like to:" />
+            <Button layoutX="140.0" layoutY="143.0" mnemonicParsing="false" text="Pay it off" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="payOffPane" layoutY="297.0" prefHeight="109.0" prefWidth="347.0" style="-fx-background-color: black; -fx-border-color: lime;" visible="false">
+         <children>
+            <Text fill="WHITE" layoutX="70.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Credits:" />
+            <Label fx:id="moneyInInventory3" layoutX="201.0" layoutY="14.0" text="Label" textFill="WHITE" />
+            <TextField fx:id="payOffArea" layoutX="99.0" layoutY="42.0" promptText="Amount to Pay Off" />
+            <Button layoutX="148.0" layoutY="77.0" mnemonicParsing="false" text="Accept" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="initialNoLoan" layoutY="97.0" prefHeight="200.0" prefWidth="347.0" style="-fx-background-color: black; -fx-border-color: lime;">
+         <children>
+            <Text fill="WHITE" layoutX="96.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You currently have no loan!">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Label fx:id="takeOutable" layoutX="160.0" layoutY="92.0" text="Label" textFill="WHITE" />
+            <Text fill="WHITE" layoutX="33.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Given your credit standing, you can take a loan up to:" />
+            <Button layoutX="135.0" layoutY="142.0" mnemonicParsing="false" text="Take a loan" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="takeOutLoan" layoutY="297.0" prefHeight="109.0" prefWidth="347.0" style="-fx-background-color: black; -fx-border-color: lime;">
+         <children>
+            <Text fill="WHITE" layoutX="70.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Credits:" />
+            <Label fx:id="moneyInInventory4" layoutX="201.0" layoutY="14.0" text="Label" textFill="WHITE" />
+            <TextField fx:id="takeOutLoanArea" layoutX="99.0" layoutY="42.0" promptText="Amount to take out" />
+            <Button layoutX="148.0" layoutY="77.0" mnemonicParsing="false" text="Accept" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -11,6 +11,7 @@ import Space.POJO.Planet;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -57,19 +58,42 @@ public class ZonessPortController extends playerAreaController implements Initia
     AnchorPane outOfMoney;
     @FXML
     Pane background;
+    
+    Image[] yuWalkRight;
+    Image[] yuWalkLeft;
+    int yuRightCount;
+    int yuLeftCount;
+    Timer rightTimer;
+    Timer leftTimer;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         init();
+        RootLayoutController.interestBank();
+        RootLayoutController.interestLoan();
+        yuWalkRight = new Image[4];
+        yuWalkLeft = new Image[4];
+        yuRightCount = 0;
+        yuLeftCount = 0;
         background.setStyle("-fx-background-image: url(" +this.getClass().getResource("Art/ZonessPort.png").toExternalForm() +"); -fx-background-size: 100% 100%;");
-
+        yuWalkRight[0] = new Image(this.getClass().getResource("Art/YuWalkRight1.png").toExternalForm());
+        yuWalkRight[1] = new Image(this.getClass().getResource("Art/YuWalkRight2.png").toExternalForm());
+        yuWalkRight[2] = new Image(this.getClass().getResource("Art/YuWalkRight3.png").toExternalForm());
+        yuWalkRight[3] = new Image(this.getClass().getResource("Art/YuWalkRight4.png").toExternalForm());
+        
+        yuWalkLeft[0] = new Image(this.getClass().getResource("Art/YuWalkLeft1.png").toExternalForm());
+        yuWalkLeft[1] = new Image(this.getClass().getResource("Art/YuWalkLeft2.png").toExternalForm());
+        yuWalkLeft[2] = new Image(this.getClass().getResource("Art/YuWalkLeft3.png").toExternalForm());
+        yuWalkLeft[3] = new Image(this.getClass().getResource("Art/YuWalkLeft4.png").toExternalForm());
+        
         creditsLabel.setText(Integer.toString(RootLayoutController.getCredits()));
         fuelLabel.setText(Integer.toString(RootLayoutController.getFuel()));
         if (RootLayoutController.getOrientation() == 0) {
-            RootLayoutController.changeSong(
-                "src/Space/Music/cowboy ground.wav");
+                    RootLayoutController.changeSong(this.getClass().getResource("Music/zoness.wav").toExternalForm());
+
         }
         Planet p = RootLayoutController.getUniverse().getFromName("Zoness");
         RootLayoutController.setPlanetLocation(p);
@@ -79,31 +103,42 @@ public class ZonessPortController extends playerAreaController implements Initia
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
                 if (ke.getCode().equals(KeyCode.RIGHT)) {
-                    protag.setImage(new Image(this.getClass().getResource("Art/YuRight.png").toExternalForm()));
-                    protag.setLayoutX(protag.getLayoutX() +8);
+                     if (rightTimer == null) {
+                    rightTimer = new Timer();
+                }
+                     if (protag.getLayoutX() < portal1.getLayoutX() + 50) {
+                                protag.setLayoutX(protag.getLayoutX() +12);
+                                }
+                    rightTimer.schedule(new TimerTask() {
+                    public void run() {
+                        Platform.runLater(new Runnable() {
+                            public void run() {
+                                
+                                protag.setImage(yuWalkRight[yuRightCount++ % 4]);
 
+                            }
+                        });
+                    }
+                },0,300); 
                     }
                 if (ke.getCode().equals(KeyCode.LEFT)) {
-                    protag.setImage(new Image(this.getClass().getResource("Art/YuLeft.png").toExternalForm()));
-                    protag.setLayoutX(protag.getLayoutX() - 8);
-                }
-                if (ke.getCode().equals(KeyCode.UP)) {
-                    if (isJumping == false) {
-                        protag.setLayoutY(protag.getLayoutY() - 50);
-                        isJumping = true;
-                        timer.schedule(new TimerTask() {
-                            public void run() {
-                                Platform.runLater(new Runnable() {
-                                    public void run() {
-                                        protag.setLayoutY(
-                                            protag.getLayoutY() + 50);
-                                        isJumping = false;
-
-                                    }
-                                });
-                            }
-                        }, 750);
+                    if (leftTimer == null) {
+                        leftTimer = new Timer();
                     }
+                    if (protag.getLayoutX() > portal2.getLayoutX()) {
+                                protag.setLayoutX(protag.getLayoutX() - 12);
+                                }
+                    leftTimer.schedule(new TimerTask() {
+                    public void run() {
+                        Platform.runLater(new Runnable() {
+                            public void run() {
+                                
+                                protag.setImage(yuWalkLeft[yuLeftCount++ % 4]);
+
+                            }
+                        });
+                    }
+                },0,300); 
                 }
                 if (ke.getCode().equals(KeyCode.SPACE) && Math.abs(
                     protag.getLayoutX() - portal2.getLayoutX()) < 50 ) {
@@ -157,6 +192,24 @@ public class ZonessPortController extends playerAreaController implements Initia
                         outOfMoney.setVisible(true);
                     }
                         
+                }
+            }
+        });
+        scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            public void handle(KeyEvent ke) {
+                if (ke.getCode().equals(KeyCode.RIGHT)) {
+                    if (rightTimer != null) {
+                    rightTimer.cancel();
+                    }
+                    protag.setImage(new Image(this.getClass().getResource("Art/YuRight.png").toExternalForm()));
+                    rightTimer = new Timer();
+                }
+                if (ke.getCode().equals(KeyCode.LEFT)) {
+                    if (leftTimer != null) {
+                    leftTimer.cancel();
+                    }
+                    protag.setImage(new Image(this.getClass().getResource("Art/YuLeft.png").toExternalForm()));
+                    leftTimer = new Timer();
                 }
             }
         });

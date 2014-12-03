@@ -36,8 +36,8 @@ public class InventoryController implements Initializable {
     @FXML //fx:id="healthBar"
     ProgressBar healthBar; 
     
-    @FXML //:fx:id="healthLabel"
-    Label healthLabel;
+    @FXML //:fx:id="xpLabel"
+    Label xpLabel;
     
     @FXML //fx:id="nameLabel"
     Label nameLabel;
@@ -209,9 +209,9 @@ public class InventoryController implements Initializable {
         posSkill = RootLayoutController.getSkillPoints();
         int[] quantity = RootLayoutController.getInventory().quantityCount();
         nameLabel.setText(RootLayoutController.getName());
-        levelLabel.setText(Integer.toString(1));
-        healthBar.setProgress(1); 
-        healthLabel.setText("100");
+        levelLabel.setText(Integer.toString(RootLayoutController.getLevel()));
+        healthBar.setProgress(RootLayoutController.getXp() / 1000.0); 
+        xpLabel.setText(Integer.toString(RootLayoutController.getXp()));
         pilSkill.setText(Integer.toString(RootLayoutController.getPilotSkill()));
         pilLabel2.setText(Integer.toString(RootLayoutController.getPilotSkill()));
         engSkill.setText(Integer.toString(RootLayoutController.getEngineeringSkill()));
@@ -303,11 +303,12 @@ public class InventoryController implements Initializable {
             pilBar2.setProgress(posPil / 100.0);
             posSkill--;
             pilLabel2.setText(Integer.toString(posPil));
-
         } 
     }
 
-
+    public void exitGame() {
+        System.exit(0); 
+    }
     public void engBarQuatUp() {
         if (posSkill > 0) {
                 posEng++;
@@ -405,5 +406,6 @@ public class InventoryController implements Initializable {
         engSkill.setText(Integer.toString(RootLayoutController.getEngineeringSkill()));
         chaSkill.setText(Integer.toString(RootLayoutController.getCharismaSkill()));
         lukSkill.setText(Integer.toString(RootLayoutController.getLuckSkill()));
+        
     }
 }

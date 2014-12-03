@@ -41,14 +41,27 @@ public class MissionCompleteController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         Random rand = new Random();
         scoreLabel.setText(Integer.toString(RootLayoutController.getFlyingPoints()));
-        int num = rand.nextInt(RootLayoutController.getFlyingPoints());
-        int num2 = rand.nextInt(RootLayoutController.getFlyingPoints());
+        if (RootLayoutController.getFlyingPoints() == 0) {
+            RootLayoutController.setFlyingPoints(10);
+        }
+        int num = rand.nextInt(RootLayoutController.getFlyingPoints()/2) + RootLayoutController.getFlyingPoints()/2;
+        int num2 = rand.nextInt(RootLayoutController.getFlyingPoints()/2) + RootLayoutController.getFlyingPoints()/2;
+        int num3 = rand.nextInt(RootLayoutController.getFlyingPoints()/2) + RootLayoutController.getFlyingPoints()/2;
         int leftover = num % 10; 
         int leftover2 = num2 % 10;
         int reward2 = num2 - leftover;
         int reward = num - leftover; 
+        leftover = num3 % 10;
+        int reward3 = num3 - leftover;
+        
         RootLayoutController.setCredits(RootLayoutController.getCredits() + reward2);
         RootLayoutController.setFuel(RootLayoutController.getFuel() + reward);
+        RootLayoutController.setXp( reward3 + RootLayoutController.getXp());
+        if (RootLayoutController.getXp() >= 1000) {
+            RootLayoutController.setLevel(RootLayoutController.getLevel() + 1);
+            RootLayoutController.setXp(RootLayoutController.getXp() - 1000);
+            RootLayoutController.setRemainingSkillPoints(RootLayoutController.getSkillPoints() + 4);
+        }
         fuelReward.setText(Integer.toString(reward));
         creditsReward.setText(Integer.toString(reward2));
         

@@ -82,5 +82,15 @@
             <Point3D x="1.0" z="1.0" />
          </rotationAxis>
       </ImageView>
+      <ImageView fx:id="mercShip" layoutX="741.0" layoutY="365.0" visible="false">
+         <image>
+            <Image url="@../controller/Art/MercShip1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mercLaser" layoutX="162.0" layoutY="203.0" visible="false">
+         <image>
+            <Image url="@../controller/Art/MercShipLaser.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -66,7 +66,7 @@ public class RushGalaxyController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         fuelRem.setText(Integer.toString(RootLayoutController.getFuel()));
-        RootLayoutController.changeSong("src/Space/Music/planetSelection.wav");
+        RootLayoutController.changeSong(this.getClass().getResource("Music/planetSelection.wav").toExternalForm());
         prevPlanet = RootLayoutController.getPlanet();
         
         if (RootLayoutController.getPlanet().getName().equals("Aurum")) {

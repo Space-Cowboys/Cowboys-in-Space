@@ -176,7 +176,7 @@ public class CharacterCreationController implements Initializable {
 	    } 
 	}
         @FXML public void confirm() {
-            if(RootLayoutController.getSkillPoints() == 0) {
+            if(RootLayoutController.getSkillPoints() == 0 && nameField.getCharacters().toString().length() > 0) {
                 RootLayoutController.setName(nameField.getCharacters().toString());
                 System.out.println(RootLayoutController.getName());
                 try {

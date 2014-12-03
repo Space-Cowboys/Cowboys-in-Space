@@ -16,6 +16,60 @@ public class Player {
     private int pilot;
     private int luck;
     private int skillPointsRemaining;
+    private int experiencePoints;
+    private int level;
+    private int moneyinBank;
+    private int loanAmount;
+    private int creditScore;
+    private int currentLoan;
+
+    public int getExperiencePoints() {
+        return experiencePoints;
+    }
+
+    public int getMoneyinBank() {
+        return moneyinBank;
+    }
+
+    public int getCurrentLoan() {
+        return currentLoan;
+    }
+
+    public void setCurrentLoan(int currentLoan) {
+        this.currentLoan = currentLoan;
+    }
+
+    public void setMoneyinBank(int moneyinBank) {
+        this.moneyinBank = moneyinBank;
+    }
+
+    public int getLoanAmount() {
+        return loanAmount;
+    }
+
+    public void setLoanAmount(int loanAmount) {
+        this.loanAmount = loanAmount;
+    }
+
+    public int getCreditScore() {
+        return creditScore;
+    }
+
+    public void setCreditScore(int creditScore) {
+        this.creditScore = creditScore;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public void setExperiencePoints(int experiencePoints) {
+        this.experiencePoints = experiencePoints;
+    }
     
   
     public Player() {
@@ -24,6 +78,12 @@ public class Player {
         pilot = 5;
         luck = 5;
         skillPointsRemaining = 5;
+        experiencePoints = 0;
+        level = 1;
+        creditScore = 5000;
+        moneyinBank = 0;
+        loanAmount = 0;
+        currentLoan = 0;
     }
 
     public int getSkillPointsRemaining() {

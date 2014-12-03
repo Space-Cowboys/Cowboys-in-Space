@@ -165,15 +165,37 @@ public class AurumShipyardController implements Initializable {
     Text message;
     
     Timer timer;
+    Image[] yuWalkRight;
+    Image[] yuWalkLeft;
+    int yuRightCount;
+    int yuLeftCount;
+    Timer rightTimer;
+    Timer leftTimer;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        RootLayoutController.interestBank();
+        RootLayoutController.interestLoan();
+         yuWalkRight = new Image[4];
+        yuWalkLeft = new Image[4];
+        yuRightCount = 0;
+        yuLeftCount = 0;
+        yuWalkRight[0] = new Image(this.getClass().getResource("Art/YuWalkRight1.png").toExternalForm());
+        yuWalkRight[1] = new Image(this.getClass().getResource("Art/YuWalkRight2.png").toExternalForm());
+        yuWalkRight[2] = new Image(this.getClass().getResource("Art/YuWalkRight3.png").toExternalForm());
+        yuWalkRight[3] = new Image(this.getClass().getResource("Art/YuWalkRight4.png").toExternalForm());
+        
+        yuWalkLeft[0] = new Image(this.getClass().getResource("Art/YuWalkLeft1.png").toExternalForm());
+        yuWalkLeft[1] = new Image(this.getClass().getResource("Art/YuWalkLeft2.png").toExternalForm());
+        yuWalkLeft[2] = new Image(this.getClass().getResource("Art/YuWalkLeft3.png").toExternalForm());
+        yuWalkLeft[3] = new Image(this.getClass().getResource("Art/YuWalkLeft4.png").toExternalForm());
+        
         back.setStyle("-fx-background-image: url(" +this.getClass().getResource("Art/AurumShipyard.png").toExternalForm() +"); -fx-background-size: 100% 100%;");
         if (RootLayoutController.getOrientation() == 0) {
-            RootLayoutController.changeSong(
-                    "src/Space/Music/cowboy ground.wav");
+                    RootLayoutController.changeSong(this.getClass().getResource("Music/aurum.wav").toExternalForm());
+
             protag.setLayoutX(100);
             protag.setImage(protagR.getImage());
         }
@@ -189,15 +211,40 @@ public class AurumShipyardController implements Initializable {
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
                 if (ke.getCode().equals(KeyCode.RIGHT)) {
-                    protag.setImage(new Image(this.getClass().getResource("Art/YuRight.png").toExternalForm()));
-                    protag.setLayoutX(protag.getLayoutX() + 8);
+                     if (rightTimer == null) {
+                    rightTimer = new Timer();
+                }
+                                protag.setLayoutX(protag.getLayoutX() +12);
+                                
+                    rightTimer.schedule(new TimerTask() {
+                    public void run() {
+                        Platform.runLater(new Runnable() {
+                            public void run() {
+                                
+                                protag.setImage(yuWalkRight[yuRightCount++ % 4]);
 
+                            }
+                        });
+                    }
+                },0,300); 
                     }
                 if (ke.getCode().equals(KeyCode.LEFT)) {
-                    protag.setImage(new Image(this.getClass().getResource("Art/YuLeft.png").toExternalForm()));
-                    protag.setLayoutX(protag.getLayoutX() - 8);
-                   
-                    
+                    if (leftTimer == null) {
+                        leftTimer = new Timer();
+                    }
+                                protag.setLayoutX(protag.getLayoutX() - 12);
+                                
+                    leftTimer.schedule(new TimerTask() {
+                    public void run() {
+                        Platform.runLater(new Runnable() {
+                            public void run() {
+                                
+                                protag.setImage(yuWalkLeft[yuLeftCount++ % 4]);
+
+                            }
+                        });
+                    }
+                },0,300); 
                 }
                 if (ke.getCode().equals(KeyCode.UP)) {
                     if (!isJumping) {
@@ -250,7 +297,7 @@ public class AurumShipyardController implements Initializable {
                     fuelShopContainer.setVisible(true);
                 }
                 if (ke.getCode().equals(KeyCode.SPACE) && Math.abs(
-                    protag.getLayoutX() - shipSeller.getLayoutX()) < 50 ) {
+                    protag.getLayoutX() - shipSeller.getLayoutX()) < 150 ) {
                     fuelShopContainer.setVisible(false);
                     shipShop.setVisible(true);
                     shipBuy.setVisible(false);
@@ -261,7 +308,6 @@ public class AurumShipyardController implements Initializable {
                     buyShip3Button.setVisible(false);
                     energyTankScreen.setVisible(false);
                     repairScreen.setVisible(false);
-                    RootLayoutController.setCredits(1000000);
                     creditsLabel2.setText(Integer.toString(RootLayoutController.getCredits()));
                     repairCost.setText(Integer.toString(100 * (RootLayoutController.getShip().getMaxShipHealth() - RootLayoutController.getShip().getCurrentHealth())));
                     
@@ -280,6 +326,24 @@ public class AurumShipyardController implements Initializable {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                }
+            }
+        });
+        scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            public void handle(KeyEvent ke) {
+                if (ke.getCode().equals(KeyCode.RIGHT)) {
+                    if (rightTimer != null) {
+                    rightTimer.cancel();
+                    }
+                    protag.setImage(new Image(this.getClass().getResource("Art/YuRight.png").toExternalForm()));
+                    rightTimer = new Timer();
+                }
+                if (ke.getCode().equals(KeyCode.LEFT)) {
+                    if (leftTimer != null) {
+                    leftTimer.cancel();
+                    }
+                    protag.setImage(new Image(this.getClass().getResource("Art/YuLeft.png").toExternalForm()));
+                    leftTimer = new Timer();
                 }
             }
         });

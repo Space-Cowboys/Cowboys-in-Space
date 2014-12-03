@@ -14,7 +14,7 @@
          <children>
             <Button id="New Game" layoutX="125.0" layoutY="320.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" onAction="#showCharacterCreation" prefHeight="40.0" prefWidth="138.0" text="New Game" />
             <Button id="Load Game" layoutX="221.0" layoutY="320.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" onAction="#load" prefHeight="40.0" text="Load Game" />
-            <Button id="Options" layoutX="317.0" layoutY="320.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" text="Options" />
+            <Button id="Options" layoutX="317.0" layoutY="320.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" text="Tutorial" />
             <Button id="Exit Game" layoutX="413.0" layoutY="320.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#exit" prefHeight="40.0" text="Exit Game" />
          </children>
       </VBox>

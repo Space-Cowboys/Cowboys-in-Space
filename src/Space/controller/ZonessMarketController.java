@@ -12,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -30,50 +31,86 @@ import javafx.scene.layout.Pane;
  * @author Keanu
  */
 public class ZonessMarketController extends EmptyMarketController implements Initializable  {
-    /**
+    Image[] yuWalkRight;
+    Image[] yuWalkLeft;
+    int yuRightCount;
+    int yuLeftCount;
+    Timer rightTimer;
+    Timer leftTimer;/**
      * Initializes the controller class.
      * This is what happens when the window itself is first initialized
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         super.init();
+        RootLayoutController.interestBank();
+        RootLayoutController.interestLoan();
+        
         back.setStyle("-fx-background-image: url(" +this.getClass().getResource("Art/ZonessMarketplace.png").toExternalForm() +"); -fx-background-size: 2250 100%;");
-
+        yuWalkRight = new Image[4];
+        yuWalkLeft = new Image[4];
+        yuRightCount = 0;
+        yuLeftCount = 0;
+        yuWalkRight[0] = new Image(this.getClass().getResource("Art/YuWalkRight1.png").toExternalForm());
+        yuWalkRight[1] = new Image(this.getClass().getResource("Art/YuWalkRight2.png").toExternalForm());
+        yuWalkRight[2] = new Image(this.getClass().getResource("Art/YuWalkRight3.png").toExternalForm());
+        yuWalkRight[3] = new Image(this.getClass().getResource("Art/YuWalkRight4.png").toExternalForm());
+        
+        yuWalkLeft[0] = new Image(this.getClass().getResource("Art/YuWalkLeft1.png").toExternalForm());
+        yuWalkLeft[1] = new Image(this.getClass().getResource("Art/YuWalkLeft2.png").toExternalForm());
+        yuWalkLeft[2] = new Image(this.getClass().getResource("Art/YuWalkLeft3.png").toExternalForm());
+        yuWalkLeft[3] = new Image(this.getClass().getResource("Art/YuWalkLeft4.png").toExternalForm());
        myScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
                 if (ke.getCode().equals(KeyCode.RIGHT)) {
-                    protag.setImage(new Image(this.getClass().getResource("Art/YuRight.png").toExternalForm()));
-                    protag.setLayoutX(protag.getLayoutX() + 8);
-                    if (protag.getLayoutX() > 500
-                        && protag.getLayoutX() < 1300) {
-                        back.setTranslateX(back.getTranslateX() - 8);
-                    }
+                    if (rightTimer == null) {
+                    rightTimer = new Timer();
                 }
-                if (ke.getCode().equals(KeyCode.LEFT)) {
-                    protag.setImage(new Image(this.getClass().getResource("Art/YuLeft.png").toExternalForm()));
-                    protag.setLayoutX(protag.getLayoutX() - 8);
-                    if(protag.getLayoutX() > 500
+                    if (protag.getLayoutX() < 2200) {
+                                protag.setLayoutX(protag.getLayoutX() + 12);
+                                if (protag.getLayoutX() > 500
                         && protag.getLayoutX() < 1300) {
-                        back.setTranslateX(back.getTranslateX() + 8);
+                        back.setTranslateX(back.getTranslateX() - 12);
                     }
-                }
-                if (ke.getCode().equals(KeyCode.UP)) {
-                    if (isJumping == false) {
-                        protag.setLayoutY(protag.getLayoutY() - 50);
-                        isJumping = true;
-                        timer.schedule(new TimerTask() {
+                                }
+                    rightTimer.schedule(new TimerTask() {
+                    public void run() {
+                        Platform.runLater(new Runnable() {
                             public void run() {
-                                Platform.runLater(new Runnable() {
-                                    public void run() {
-                                        protag.setLayoutY(
-                                            protag.getLayoutY() + 50);
-                                        isJumping = false;
-                                    }
-                                });
+                                
+                                protag.setImage(yuWalkRight[yuRightCount++ % 4]);
                             }
-                        }, 750);
+                        });
                     }
-               }
+                },0,400); 
+                }
+                 if (ke.getCode().equals(KeyCode.LEFT)) {
+                    if (leftTimer == null) {
+                        leftTimer = new Timer();
+                    }
+                    if (protag.getLayoutX() > 0) {
+                                protag.setLayoutX(protag.getLayoutX() - 12);
+                                
+                                if(protag.getLayoutX() > 500
+                        && protag.getLayoutX() < 1300) {
+                        back.setTranslateX(back.getTranslateX() + 12);
+                    }
+                                }
+                    leftTimer.schedule(new TimerTask() {
+                    public void run() {
+                        Platform.runLater(new Runnable() {
+                            public void run() {
+                                
+                       protag.setImage(yuWalkLeft[yuLeftCount++ % 4]);
+
+                                
+
+                            }
+                        });
+                    }
+                },0,400); 
+                    
+                }
                if (ke.getCode().equals(KeyCode.SPACE) && Math.abs(
                        shop.getLayoutX() - protag.getLayoutX()) < 80) {
                     shopWindowAnchor.setVisible(true);
@@ -117,10 +154,27 @@ public class ZonessMarketController extends EmptyMarketController implements Ini
                         e.printStackTrace();
                     }
                 }
+                
             }
 
-            private Object getResource(String viewartYuLeftjpg) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        });
+        myScene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            public void handle(KeyEvent ke) {
+                if (ke.getCode().equals(KeyCode.RIGHT)) {
+                    if (rightTimer != null) {
+                        rightTimer.cancel();
+
+                    }
+                    protag.setImage(new Image(this.getClass().getResource("Art/YuRight.png").toExternalForm()));
+                    rightTimer = new Timer();
+                }
+                if (ke.getCode().equals(KeyCode.LEFT)) {
+                    if (leftTimer != null) {
+                        leftTimer.cancel();
+                    }
+                    protag.setImage(new Image(this.getClass().getResource("Art/YuLeft.png").toExternalForm()));
+                    leftTimer = new Timer();
+                }
             }
         });
 

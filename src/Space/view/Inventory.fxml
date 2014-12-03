@@ -40,7 +40,12 @@
                         <Font size="25.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="89.0" layoutY="298.0" onMouseClicked="#exit" strokeType="OUTSIDE" strokeWidth="0.0" text="Exit">
+                  <Text fill="WHITE" layoutX="89.0" layoutY="298.0" onMouseClicked="#exit" strokeType="OUTSIDE" strokeWidth="0.0" text="Close Status">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" onMouseClicked="#exitGame" strokeType="OUTSIDE" strokeWidth="0.0" text="Exit Game">
                      <font>
                         <Font size="25.0" />
                      </font>
@@ -49,7 +54,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="statusPane" layoutX="192.0" prefHeight="750.0" prefWidth="1168.0">
+      <AnchorPane fx:id="statusPane" layoutX="193.0" prefHeight="750.0" prefWidth="1168.0" visible="false">
          <children>
             <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="203.0" layoutY="175.0">
                <image>
@@ -95,13 +100,13 @@
                   <Font size="38.0" />
                </font>
             </Label>
-            <Text layoutX="232.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Health">
+            <Text layoutX="203.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Experience">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
             <ProgressBar fx:id="healthBar" layoutX="310.0" layoutY="167.0" prefWidth="200.0" progress="0.0" />
-            <Label fx:id="healthLabel" layoutX="538.0" layoutY="166.0" text="Label" />
+            <Label layoutX="538.0" layoutY="166.0" text="Label" fx:id="xpLabel" />
             <Text layoutX="673.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level">
                <font>
                   <Font size="18.0" />
@@ -152,7 +157,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="inventoryPane" layoutX="192.0" prefHeight="750.0" prefWidth="1168.0" visible="false">
+      <AnchorPane fx:id="inventoryPane" layoutX="192.0" prefHeight="750.0" prefWidth="1168.0">
          <children>
             <GridPane alignment="CENTER" layoutX="116.0" layoutY="95.0">
               <columnConstraints>
@@ -190,7 +195,7 @@
                   </Label>
                   <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="1">
                      <image>
-                        <Image url="@../controller/Art/water.jpg" />
+                        <Image url="@../controller/Art/water.png" />
                      </image>
                   </ImageView>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Food" GridPane.rowIndex="3">
@@ -200,7 +205,7 @@
                   </Text>
                   <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <image>
-                        <Image url="@../controller/Art/utensil.jpg" />
+                        <Image url="@../controller/Art/Food.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="foodLabel" alignment="CENTER" contentDisplay="CENTER" style="-fx-alignment: center;" text="Label" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
@@ -250,7 +255,7 @@
                   </Label>
                   <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="13">
                      <image>
-                        <Image url="@../controller/Art/games.jpeg" />
+                        <Image url="@../controller/Art/games.png" />
                      </image>
                   </ImageView>
                </children>
@@ -272,7 +277,7 @@
                   </Label>
                   <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <image>
-                        <Image url="@../controller/Art/Medicine.png" />
+                        <Image url="@../controller/Art/medicine.png" />
                      </image>
                   </ImageView>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Firearms">
@@ -322,7 +327,7 @@
                   </Text>
                   <ImageView fitHeight="45.0" fitWidth="45.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                      <image>
-                        <Image url="@../controller/Art/narcotics.jpg" />
+                        <Image url="@../controller/Art/Narcotics.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="robotsLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="13">
@@ -392,23 +397,23 @@
                   <Font size="20.0" />
                </font>
             </Text>
-            <Button fx:id="accept" layoutX="411.0" layoutY="693.0" mnemonicParsing="false" text="Accept" />
-            <Button fx:id="pilBarQautDown" layoutX="412.0" layoutY="199.0" mnemonicParsing="false" text="&lt;">
+            <Button fx:id="accept" layoutX="411.0" layoutY="693.0" mnemonicParsing="false" onAction="#accept" text="Accept" />
+            <Button fx:id="pilBarQuatDown" layoutX="412.0" layoutY="199.0" mnemonicParsing="false" onAction="#pilBarQuatDown" text="&lt;">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="engBarQautDown" layoutX="412.0" layoutY="314.0" mnemonicParsing="false" text="&lt;">
+            <Button fx:id="engBarQuatDown" layoutX="412.0" layoutY="314.0" mnemonicParsing="false" onAction="#engBarQuatDown" text="&lt;">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="chaBarQautDown" layoutX="412.0" layoutY="417.0" mnemonicParsing="false" text="&lt;">
+            <Button fx:id="chaBarQuatDown" layoutX="412.0" layoutY="417.0" mnemonicParsing="false" onAction="#chaBarQuatDown" text="&lt;">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="lukBarQautDown" layoutX="412.0" layoutY="525.0" mnemonicParsing="false" text="&lt;">
+            <Button fx:id="lukBarQuatDown" layoutX="412.0" layoutY="525.0" mnemonicParsing="false" onAction="#lukBarQuatDown" text="&lt;">
                <font>
                   <Font size="15.0" />
                </font>
@@ -417,22 +422,22 @@
             <ProgressBar fx:id="engBar2" layoutX="479.0" layoutY="312.0" prefHeight="35.0" prefWidth="283.0" progress="0.0" />
             <ProgressBar fx:id="chaBar2" layoutX="479.0" layoutY="415.0" prefHeight="35.0" prefWidth="283.0" progress="0.0" />
             <ProgressBar fx:id="lukBar2" layoutX="479.0" layoutY="523.0" prefHeight="35.0" prefWidth="283.0" progress="0.0" />
-            <Button fx:id="pilBarQautUp" layoutX="799.0" layoutY="197.0" mnemonicParsing="false" text="&gt;">
+            <Button fx:id="pilBarQuatUp" layoutX="799.0" layoutY="197.0" mnemonicParsing="false" onAction="#pilBarQuatUp" text="&gt;">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="engBarQautUp" layoutX="799.0" layoutY="313.0" mnemonicParsing="false" text="&gt;">
+            <Button fx:id="engBarQuatUp" layoutX="799.0" layoutY="313.0" mnemonicParsing="false" onAction="#engBarQuatUp" text="&gt;">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="chaBarQautUp" layoutX="799.0" layoutY="417.0" mnemonicParsing="false" text="&gt;">
+            <Button fx:id="chaBarQuatUp" layoutX="799.0" layoutY="417.0" mnemonicParsing="false" onAction="#chaBarQuatUp" text="&gt;">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="lukBarQautUp" layoutX="799.0" layoutY="525.0" mnemonicParsing="false" text="&gt;">
+            <Button fx:id="lukBarQuatUp" layoutX="799.0" layoutY="525.0" mnemonicParsing="false" onAction="#lukBarQuatUp" text="&gt;">
                <font>
                   <Font size="15.0" />
                </font>
@@ -530,10 +535,10 @@
                </children>
             </VBox>
             <VBox layoutX="442.0" layoutY="159.0" spacing="37.0" />
-            <Button fx:id="currentShieldDown" layoutX="387.0" layoutY="494.0" mnemonicParsing="false" text="&lt;" />
-            <Button fx:id="currentLaserDown" layoutX="387.0" layoutY="565.0" mnemonicParsing="false" text="&lt;" />
-            <Button fx:id="currentShieldUp" layoutX="523.0" layoutY="494.0" mnemonicParsing="false" text="&gt;" />
-            <Button fx:id="currentLaserUp" layoutX="523.0" layoutY="565.0" mnemonicParsing="false" text="&gt;" />
+            <Button fx:id="ShieldDown" layoutX="387.0" layoutY="494.0" mnemonicParsing="false" onAction="#shipShieldDown" text="&lt;" />
+            <Button fx:id="currentLaserDown" layoutX="387.0" layoutY="565.0" mnemonicParsing="false" onAction="#shipLaserDown" text="&lt;" />
+            <Button fx:id="currentShieldUp" layoutX="523.0" layoutY="494.0" mnemonicParsing="false" onAction="#shipShieldUp" text="&gt;" />
+            <Button fx:id="currentLaserUp" layoutX="523.0" layoutY="565.0" mnemonicParsing="false" onAction="#shipLaserUp" text="&gt;" />
             <Label fx:id="shipHealthLabel" layoutX="621.0" layoutY="224.0" text="Label">
                <font>
                   <Font size="20.0" />
